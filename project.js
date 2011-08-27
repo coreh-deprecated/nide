@@ -1,4 +1,6 @@
 var fs = require('fs')
+var EventEmitter = require('events').EventEmitter
+var find = require('findit').find
 
 exports.init = function() {
     try {
@@ -18,4 +20,46 @@ exports.chdir = function(dir) {
             process.exit(-1)
         }
     }
+}
+
+exports.list = function() {
+    var ee = new EventEmitter();
+    var cwd = process.cwd()
+    var cwd_length = cwd.length + 1;
+    var result = {
+        name: "",
+        type: "directory",
+        path: "",
+        children: {}
+    }
+    var add = function(path) {
+        var current = result
+        var composite_path = ""
+        var components = path.substr(cwd_length).split('/')
+        for (var i = 0; i < components.length - 1; i++) {
+            if (!current.children[components[i]]) {
+                current.children[components[i]] = {
+                    name: components[i],
+                    type: "directory",
+                    path: (composite_path += "/" + components[i]),
+                    children: {}
+                }
+            }            
+            current = current.children[components[i]]
+        }
+        current.children[components[i]] = {
+            name: components[i],
+            type: "file",
+            path: (composite_path += "/" + components[i]),
+            children: {}
+        }
+    }
+    find(cwd)
+    .on('file', function(path) {
+        add(path)        
+    })
+    .on('end', function() {
+        ee.emit('success', result)
+    })
+    return ee
 }

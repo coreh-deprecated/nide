@@ -4,38 +4,73 @@ body {
 	font-size: 9pt;
 }
 
+#options {
+	position: absolute;
+	left: 0;
+	width: 239px;
+	height: 20px;
+	padding: 5px 0 5px 10px;
+	bottom: 0;
+	background: url('../img/noise.png') #eee;
+}
+
 #sidebar {
 	position: absolute;
 	left: 0;
 	top: 0;
-	bottom: 0;
-	width: 249px;
+	bottom: 30px;
+	width: 239px;
+	padding-left: 10px;
+	padding-top: 10px;
 	background: url('../img/noise.png') #eee;
 	box-shadow: 0 5px 15px -10px rgba(0,0,0,0.5) inset;
 	-moz-user-select: none;
 	-webkit-user-select: none;
+	overflow: auto;
+	cursor: default;
 }
 
 #sidebar ul {
+	margin: 8px 0;
 	padding-left: 0;
+}
+
+#sidebar ul ul {
+	margin: 0;
 }
 
 #sidebar li {
 	padding-left: 20px;
 	list-style: none;
+	white-space: nowrap;
 }
 
-#sidebar li.selected {
-	background: rgba(55,120,194,0.3);
-	border-radius: 5px 0 0 5px;
+#sidebar li.hidden {
+	opacity: 0.25;
 }
 
 #sidebar li.folder {
-	background: url('../img/right-arrow.png') 6px 2px no-repeat;
+	background: url('../img/right-arrow.png') 6px 4px no-repeat;
+}
+
+#sidebar li.folder > ul {
+	display: none;
 }
 
 #sidebar li.folder.open {
-	background: url('../img/down-arrow.png') 6px 2px no-repeat;
+	background: url('../img/down-arrow.png') 6px 4px no-repeat;
+}
+
+#sidebar li.folder.open > ul {
+	display: block;
+}
+
+#sidebar li.selected, #sidebar li.folder.selected {
+	background-color: rgba(55,120,194,0.3);
+	border-radius: 5px 0 0 5px;
+	box-shadow: 0 1px 2px rgba(0,0,0,0.2) inset, 0 1px 0 rgba(255,255,255,0.5);
+	color: #3d5979;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
 }
 
 #sidebar li img {
@@ -43,6 +78,12 @@ body {
 	vertical-align: -7px;
 }
 
+#sidebar input[type="search"] {
+	display: block;
+	width: 230px;
+	margin: 0;
+	padding: 0;
+}
 
 #content {
 	position: absolute;

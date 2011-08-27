@@ -2,21 +2,21 @@
 <html>
 <head>
 	<link rel="stylesheet" href="css/style.css"></link>
+	<script src="/socket.io/socket.io.js"></script>
+	<script src="js/jquery-1.6.2.min.js"></script>
+	<script src="js/modernizr-2.0.6.js"></script>
+	<script src="js/transformjs.1.0.beta.2.min.js"></script>
+	<script src="js/nide.js"></script>
 </head>
 <body>
 	<div id="sidebar">
-		<ul>
-			<li><img src="img/file.png">a</li>
-			<li><img src="img/file.png">a</li>
-			<li class="folder"><img src="img/folder.png">a</li>
-			<li class="folder open"><img src="img/folder.png">a
-				<ul>
-					<li class="folder"><img src="img/folder.png">a</li>
-					<li class="selected"><img src="img/file.png">a</li>
-					<li><img src="img/file.png">a</li>
-				</ul>
-			</li>
-		</ul>
+		<input type="search" placeholder="Search Project">
+		
+		<div id="files">
+		</div>
+	</div>
+	<div id="options">
+		<input type="checkbox"> Show hidden files
 	</div>
 	<div id="content"></div>
 </body>

@@ -16,7 +16,7 @@ program
     .action(function(dir){
         project.chdir(dir)
         project.init()
-        server.listen(program.port || process.env.PORT || 18080)
+        server.listen(program.port || process.env.PORT || 8123)
     })
   
 program
@@ -24,7 +24,8 @@ program
     .description('Listen for connections.')
     .action(function(dir){
         project.chdir(dir)
-        server.listen(program.port || process.env.PORT || 18080)
+        project.list()
+        server.listen(program.port || process.env.PORT || 8123)
     })
 
 program.parse(process.argv);

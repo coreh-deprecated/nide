@@ -12,7 +12,9 @@
   "dependencies": {
     "nko": "~0.1.0",
     "express": "~2.4.6",
-    "commander": "~0.1.0"
+    "commander": "~0.1.0",
+    "findit": "~0.1.1",
+    "socket.io": "~0.7.9"
   },
   "bin": {
     "nide": "./main.js"
