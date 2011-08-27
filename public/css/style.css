@@ -7,13 +7,29 @@ body {
 #options {
 	position: absolute;
 	left: 0;
-	width: 239px;
+	width: 249px;
 	height: 20px;
-	padding: 5px 0 5px 10px;
+	padding: 0 0 5px 0;
 	bottom: 0;
 	background: url('../img/noise.png') #eee;
 	-moz-user-select: none;
 	-webkit-user-select: none;
+	overflow: hidden;
+	box-shadow: 0 0 10px rgba(0,0,0,0.125), 0 1px 0 rgba(0,0,0,0.25) inset
+}
+
+#options button {
+	background: #fafafa;
+	border: 1px solid rgba(0,0,0,0.25);
+	box-shadow: 0 -10px rgba(0,0,0,0.05) inset, 0 1px 2px white;
+	padding: 2px 4px;
+	vertical-align: -10%;
+	margin: 0 0 0 -1px;
+	height: 26px;
+}
+
+#options button:active {
+	background: #ccc;
 }
 
 #search {
@@ -24,7 +40,7 @@ body {
 	position: absolute;
 	left: 0;
 	top: 0;
-	bottom: 30px;
+	bottom: 25px;
 	width: 239px;
 	padding-left: 10px;
 	padding-top: 10px;
@@ -100,7 +116,7 @@ body {
 
 #sidebar input[type="search"] {
 	display: block;
-	width: 230px;
+	width: 225px;
 	margin: 0;
 	padding: 0;
 }
@@ -131,7 +147,7 @@ body {
 	right: 0;
 	bottom: 0;
 	overflow: auto;
-	background: url('../img/folder-large.png') no-repeat center center, url('../img/noise.png') #82a7be;
+	background: url('../img/folder-large.png') no-repeat center center, url('../img/noise.png') #adbdc8;
 	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
 	color: rgba(0,0,0,0.75)
 }

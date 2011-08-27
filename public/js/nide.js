@@ -157,10 +157,10 @@ var DirectoryEditor = function(entry) {
     actionsBar.className = 'actions'
     actionsBar.innerHTML = '<b>' + cwd + entry.path + '</b> '
     var renameButton = document.createElement('button')
-    renameButton.innerHTML = 'Rename'
+    renameButton.innerHTML = 'Rename Folder'
     actionsBar.appendChild(renameButton)
     var deleteButton = document.createElement('button')
-    deleteButton.innerHTML = 'Delete'
+    deleteButton.innerHTML = 'Delete Folder and Contents'
     actionsBar.appendChild(deleteButton)
     editor.appendChild(actionsBar)
     return editor
