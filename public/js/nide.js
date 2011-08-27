@@ -2,6 +2,8 @@ var socket = io.connect(undefined, {'connect timeout': 25000});
 
 var currentFile
 
+var cwd = ''
+
 var searchResultHtmlElementByPath
 var fileHtmlElementByPath
 var fileEntries = []
@@ -55,6 +57,9 @@ var addHTMLElementForFileEntry = function(entry, parentElement, fileEntriesArray
     parentElement.appendChild(thisElement)
 }
 
+socket.on('cwd', function(path) {
+    cwd = path
+})
 
 socket.on('list', function (data) {
     searchResultHtmlElementByPath = {}
@@ -88,24 +93,99 @@ $(function(){
                     $(searchResultHtmlElementByPath[fileEntries[i].path]).slideUp()
                 }
             }
-            $('#files').slideUp();
-            $('#search-results').slideDown();
+            $('#project').slideUp();
+            $('#search').slideDown();
         } else {
-            $('#files').slideDown();
-            $('#search-results').slideUp();
+            $('#project').slideDown();
+            $('#search').slideUp();
         }
     }
     $('#search-field').keyup(doSearch).click(doSearch)
+    
+    $('#project').click(function(e) {
+        if (e.target == $('#project')[0]) {
+            selectFile({
+                type: 'project'
+            }, null, $('#project')[0])
+        }
+    })
 })
 
-var selectFile = function(entry, htmlElementByPathTable) {
+var loadFileCallbacks = {}
+var loadFile = function(path, callback) {
+    socket.emit('load', path)
+    if (!loadFileCallbacks[path]) {
+        loadFileCallbacks[path] = [callback]
+    }
+}
+
+socket.on('file', function(data) { 
+    var callbacks = loadFileCallbacks[data.path] || []
+    for (var i = 0; i < callbacks.length; i++) {
+        callbacks[i](data.error, data.file)
+    }
+    delete loadFileCallbacks[data.path]
+})
+
+var CodeEditor = function(entry) {
+    var editor = document.createElement('div')
+    var actionsBar = document.createElement('div')
+    actionsBar.className = 'actions'
+    actionsBar.innerHTML = '<b>' + cwd + entry.path + '</b> '
+    var renameButton = document.createElement('button')
+    renameButton.innerHTML = 'Rename'
+    actionsBar.appendChild(renameButton)
+    var deleteButton = document.createElement('button')
+    deleteButton.innerHTML = 'Delete'
+    actionsBar.appendChild(deleteButton)
+    editor.appendChild(actionsBar)
+    editor.className = 'code-editor'
+    loadFile(entry.path, function(err, file) {
+        var codeMirror = CodeMirror(editor, {
+           value: file,
+           mode:  "javascript",
+           lineNumbers: true,
+        });
+    })
+    return editor
+}
+
+var DirectoryEditor = function(entry) {
+    var editor = document.createElement('div')
+    editor.className = 'directory-editor'
+    var actionsBar = document.createElement('div')
+    actionsBar.className = 'actions'
+    actionsBar.innerHTML = '<b>' + cwd + entry.path + '</b> '
+    var renameButton = document.createElement('button')
+    renameButton.innerHTML = 'Rename'
+    actionsBar.appendChild(renameButton)
+    var deleteButton = document.createElement('button')
+    deleteButton.innerHTML = 'Delete'
+    actionsBar.appendChild(deleteButton)
+    editor.appendChild(actionsBar)
+    return editor
+}
+
+var setCurrentEditor = function(editor) {
+    $('#content')[0].innerHTML = ''
+    $('#content').append(editor)
+}
+
+var selectFile = function(entry, htmlElementByPathTable, htmlElement) {
     $('.selected').removeClass('selected')
     currentFile = entry.path
-    $(htmlElementByPathTable[currentFile]).addClass('selected')    
-    var codeMirror = CodeMirror($('#content')[0], {
-      value: "function myScript(){return 100;}\n",
-      mode:  "javascript",
-      lineNumbers: true,
-    });
-    console.log(codeMirror)
+    $(htmlElement || htmlElementByPathTable[currentFile]).addClass('selected')
+    
+    var editor;
+    switch(entry.type) {
+        case "file":
+            editor = new CodeEditor(entry)
+        break;
+        case "directory":
+            editor = new DirectoryEditor(entry)
+        break;
+    }
+    
+    setCurrentEditor(editor)
 }
+

@@ -32,5 +32,16 @@ exports.listen = function(port) {
         .on('success', function(data) {
             socket.emit('list', data)
         })
+        socket.emit('cwd', process.cwd())
+        socket.on('load', function(path) {
+            project.load(path)
+            .on('success', function(file) {
+                socket.emit('file', { path: path, error: null, file: file })
+            })
+            .on('error', function(err) {
+                socket.emit('file', { path: path, error: err, file: null })
+            })
+        })
     })
+
 }

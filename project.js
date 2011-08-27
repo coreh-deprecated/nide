@@ -65,3 +65,20 @@ exports.list = function() {
     })
     return ee
 }
+
+exports.load = function(path) {
+    var ee = new EventEmitter()
+    if (path.charAt(0) != '/' || path.indexOf('..') != -1) {
+        process.nextTick(function() {
+            ee.emit('error', 'Invalid Path')
+        })
+    } else {
+        fs.readFile(process.cwd() + path, 'utf8', function(err, data) {
+            if (err) ee.emit('error', err);
+            else {
+                ee.emit('success', data);
+            }
+        })
+    }
+    return ee
+}

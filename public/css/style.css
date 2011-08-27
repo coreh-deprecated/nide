@@ -16,7 +16,7 @@ body {
 	-webkit-user-select: none;
 }
 
-#search-results {
+#search {
 	display: none;
 }
 
@@ -76,6 +76,10 @@ body {
 	display: block;
 }
 
+#sidebar li.root {
+	padding-left: 0;
+}
+
 #sidebar li.selected, #sidebar li.folder.selected {
 	background-color: rgba(55,120,194,0.3);
 	border-radius: 5px 0 0 5px;
@@ -110,13 +114,41 @@ body {
 	background: url('../img/nide.png') center center no-repeat, url('../img/noise.png') #aaa;
 }
 
-.CodeMirror {
-	background: white;
+.code-editor {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: auto;
+	background: #eee;
 }
 
-.CodeMirror-scroll {
-  height: auto;
-  overflow-y: hidden;
-  overflow-x: auto;
-  width: 100%
+.directory-editor {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: auto;
+	background: url('../img/folder-large.png') no-repeat center center, url('../img/noise.png') #82a7be;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+	color: rgba(0,0,0,0.75)
+}
+
+#content .actions {
+	padding: 8px;
+}
+
+#content .CodeMirror {
+	background: white;
+	box-shadow: 0 0 10px rgba(0,0,0,0.5);
+	line-height: 1.5em;
+}
+
+#content .CodeMirror-scroll {
+	height: auto;
+	overflow-y: hidden;
+	overflow-x: auto;
+	width: 100%;
 }
