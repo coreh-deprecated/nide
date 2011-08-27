@@ -66,6 +66,23 @@ exports.list = function() {
     return ee
 }
 
+exports.save = function(path, contents) {
+    var ee = new EventEmitter()
+    if (path.charAt(0) != '/' || path.indexOf('..') != -1) {
+        process.nextTick(function() {
+            ee.emit('error', 'Invalid Path')
+        })
+    } else {
+        fs.writeFile(process.cwd() + path, contents, 'utf8', function(err) {
+            if (err) ee.emit('error', err);
+            else {
+                ee.emit('success');
+            }
+        })
+    }
+    return ee;
+}
+
 exports.load = function(path) {
     var ee = new EventEmitter()
     if (path.charAt(0) != '/' || path.indexOf('..') != -1) {

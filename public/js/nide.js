@@ -127,6 +127,30 @@ socket.on('file', function(data) {
     delete loadFileCallbacks[data.path]
 })
 
+var saveFileCallbacks = {}
+var saveFile = function(path, content, callback) {
+    socket.emit('save', path, content)
+    if (!saveFileCallbacks[path]) {
+        saveFileCallbacks[path] = [callback]
+    }
+}
+
+socket.on('save-success', function(data) { 
+    var callbacks = saveFileCallbacks[data.path] || []
+    for (var i = 0; i < callbacks.length; i++) {
+        callbacks[i](null)
+    }
+    delete saveFileCallbacks[data.path]
+})
+
+socket.on('save-error', function(data) { 
+    var callbacks = saveFileCallbacks[data.path] || []
+    for (var i = 0; i < callbacks.length; i++) {
+        callbacks[i](data.error)
+    }
+    delete saveFileCallbacks[data.path]
+})
+
 var CodeEditor = function(entry) {
     var editor = document.createElement('div')
     var actionsBar = document.createElement('div')
@@ -143,10 +167,38 @@ var CodeEditor = function(entry) {
     loadFile(entry.path, function(err, file) {
         var codeMirror = CodeMirror(editor, {
            value: file,
-           mode:  "javascript",
+           mode: "javascript",
            lineNumbers: true,
         });
+        
+        var content = file
+        var changed = false;
+        var saving = false;
+        
+        codeMirror.onChange = function(text) {
+            content = text
+            changed = true
+        }
+        
+        setInterval(function() {
+            if (changed && !saving) {
+                var done = false;
+                saveFile(path, content, function(err){
+                    if (!err) {
+                        changed = false
+                    }
+                    saving = false
+                    done = true;
+                })
+                setTimeout(function() {
+                    if (!done) {
+                        saving = false
+                    }
+                }, 8000)
+            }
+        }, 3000)
     })
+    
     return editor
 }
 

@@ -107,6 +107,8 @@ body {
 #sidebar li img {
 	margin: 4px;
 	vertical-align: -7px;
+	min-width: 16px;
+	min-height: 16px;
 }
 
 #sidebar li i {
