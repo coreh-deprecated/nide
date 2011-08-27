@@ -37,20 +37,22 @@ exports.list = function() {
         var composite_path = ""
         var components = path.substr(cwd_length).split('/')
         for (var i = 0; i < components.length - 1; i++) {
+            composite_path = composite_path + "/" + components[i]
             if (!current.children[components[i]]) {
                 current.children[components[i]] = {
                     name: components[i],
                     type: "directory",
-                    path: (composite_path += "/" + components[i]),
+                    path: composite_path,
                     children: {}
                 }
             }            
             current = current.children[components[i]]
         }
+        composite_path = composite_path + "/" + components[i]
         current.children[components[i]] = {
             name: components[i],
             type: "file",
-            path: (composite_path += "/" + components[i]),
+            path: composite_path,
             children: {}
         }
     }

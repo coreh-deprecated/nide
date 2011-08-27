@@ -2,21 +2,31 @@
 <html>
 <head>
 	<link rel="stylesheet" href="css/style.css"></link>
+	<link rel="stylesheet" href="css/codemirror.css">
+	<link rel="stylesheet" href="css/codemirror-default.css">
 	<script src="/socket.io/socket.io.js"></script>
 	<script src="js/jquery-1.6.2.min.js"></script>
 	<script src="js/modernizr-2.0.6.js"></script>
 	<script src="js/transformjs.1.0.beta.2.min.js"></script>
 	<script src="js/nide.js"></script>
+	<script src="js/codemirror.js"></script>
+	<script src="js/mode/javascript/javascript.js"></script>
 </head>
 <body>
 	<div id="sidebar">
-		<input type="search" placeholder="Search Project">
-		
+		<input type="search" id="search-field" placeholder="Filter Files by Name">
 		<div id="files">
+			<ul>
+				<li><img src="img/ajax-loader.gif">Loading project...
+			</ul>
 		</div>
+		<div id="search-results"></div>
+		<ul>
+			<li><img src="img/npm.png">NPM</li>
+		</ul>
 	</div>
 	<div id="options">
-		<input type="checkbox"> Show hidden files
+		<label><input type="checkbox" id="show-hidden"> Show hidden files</label>
 	</div>
 	<div id="content"></div>
 </body>

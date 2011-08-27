@@ -12,6 +12,12 @@ body {
 	padding: 5px 0 5px 10px;
 	bottom: 0;
 	background: url('../img/noise.png') #eee;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+
+#search-results {
+	display: none;
 }
 
 #sidebar {
@@ -46,6 +52,11 @@ body {
 }
 
 #sidebar li.hidden {
+	display: none !important;
+}
+
+#sidebar.show-hidden li.hidden {
+	display: block !important;
 	opacity: 0.25;
 }
 
@@ -78,6 +89,11 @@ body {
 	vertical-align: -7px;
 }
 
+#sidebar li i {
+	font-size: 8pt;
+	color: #444;
+}
+
 #sidebar input[type="search"] {
 	display: block;
 	width: 230px;
@@ -91,5 +107,16 @@ body {
 	right: 0;
 	top: 0;
 	bottom: 0;
-	background: url('../img/noise.png') #aaa;
+	background: url('../img/nide.png') center center no-repeat, url('../img/noise.png') #aaa;
+}
+
+.CodeMirror {
+	background: white;
+}
+
+.CodeMirror-scroll {
+  height: auto;
+  overflow-y: hidden;
+  overflow-x: auto;
+  width: 100%
 }
