@@ -14,5 +14,8 @@
     "express": "~2.4.6",
     "commander": "~0.1.0"
   },
+  "bin": {
+    "nide": "./main.js"
+  },
   "devDependencies": {}
 }

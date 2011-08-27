@@ -1,40 +1,30 @@
 #!/usr/bin/env node
 
 var nko = require('nko')('EhXaOhxAiOnjSvKc');
-var express = require('express');
 var program = require('commander');
+var server = require('./server');
+var project = require('./project');
 
 program
-  .version('0.1.0')
-  .option('-C, --chdir <path>', 'change the working directory')
+    .version('0.1.0')
+    .option('-p, --port <number>', 'use a custom http port')
+    .option('-P, --password <password>', 'require `password` to access`')
  
 program
-  .command('init')
-  .description('Initialize a new project and listen for connections.')
-  .action(function(env){
-      console.log('init')
-  })
+    .command('init [directory]')
+    .description('Initialize a new project and listen for connections.')
+    .action(function(dir){
+        project.chdir(dir)
+        project.init()
+        server.listen(program.port || process.env.PORT || 18080)
+    })
   
 program
-  .command('run')
-  .description('Listen for connections.')
-  .action(function(env){
-      console.log('run')      
-  })
+    .command('run [directory]')
+    .description('Listen for connections.')
+    .action(function(dir){
+        project.chdir(dir)
+        server.listen(program.port || process.env.PORT || 18080)
+    })
 
 program.parse(process.argv);
-
-var app = express.createServer();
-
-app.configure(function(){
-  app.use(express.bodyParser());
-  app.use(express.methodOverride());
-  app.use(app.router);
-  app.use(express.static(__dirname + '/public'));
-});
-
-app.get('/', function(req, res){
-    res.send('Hello World');
-});
-
-app.listen(3000);
