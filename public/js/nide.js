@@ -129,7 +129,7 @@ socket.on('file', function(data) {
 
 var saveFileCallbacks = {}
 var saveFile = function(path, content, callback) {
-    socket.emit('save', path, content)
+    socket.emit('save', {path: path, content: content})
     if (!saveFileCallbacks[path]) {
         saveFileCallbacks[path] = [callback]
     }
@@ -169,26 +169,27 @@ var CodeEditor = function(entry) {
            value: file,
            mode: "javascript",
            lineNumbers: true,
+           onChange: function(editor) {
+               content = editor.getValue()
+               changed = true
+           }
         });
         
         var content = file
         var changed = false;
         var saving = false;
         
-        codeMirror.onChange = function(text) {
-            content = text
-            changed = true
-        }
-        
         setInterval(function() {
             if (changed && !saving) {
+                console.log("salvando")
                 var done = false;
-                saveFile(path, content, function(err){
+                saving = true;
+                saveFile(entry.path, content, function(err){
                     if (!err) {
                         changed = false
+                        done = true;
                     }
                     saving = false
-                    done = true;
                 })
                 setTimeout(function() {
                     if (!done) {

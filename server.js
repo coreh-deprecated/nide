@@ -45,10 +45,10 @@ exports.listen = function(port) {
         socket.on('save', function(data) {
             project.save(data.path, data.content)
             .on('success', function(file) {
-                socket.emit('save-success', { path: path })
+                socket.emit('save-success', { path: data.path })
             })
             .on('error', function(err) {
-                socket.emit('save-error', { path: path, error: err })
+                socket.emit('save-error', { path: data.path, error: err })
             })
         })
     })

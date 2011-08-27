@@ -73,6 +73,7 @@ exports.save = function(path, contents) {
             ee.emit('error', 'Invalid Path')
         })
     } else {
+        console.log(contents)
         fs.writeFile(process.cwd() + path, contents, 'utf8', function(err) {
             if (err) ee.emit('error', err);
             else {
