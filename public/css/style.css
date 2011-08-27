@@ -1,0 +1,54 @@
+body {
+	background: #666;
+	font-family: 'Lucida Grande', 'Segoe UI', 'Ubuntu', sans-serif;
+	font-size: 9pt;
+}
+
+#sidebar {
+	position: absolute;
+	left: 0;
+	top: 0;
+	bottom: 0;
+	width: 249px;
+	background: url('../img/noise.png') #eee;
+	box-shadow: 0 5px 15px -10px rgba(0,0,0,0.5) inset;
+	-moz-user-select: none;
+	-webkit-user-select: none;
+}
+
+#sidebar ul {
+	padding-left: 0;
+}
+
+#sidebar li {
+	padding-left: 20px;
+	list-style: none;
+}
+
+#sidebar li.selected {
+	background: rgba(55,120,194,0.3);
+	border-radius: 5px 0 0 5px;
+}
+
+#sidebar li.folder {
+	background: url('../img/right-arrow.png') 6px 2px no-repeat;
+}
+
+#sidebar li.folder.open {
+	background: url('../img/down-arrow.png') 6px 2px no-repeat;
+}
+
+#sidebar li img {
+	margin: 4px;
+	vertical-align: -7px;
+}
+
+
+#content {
+	position: absolute;
+	left: 250px;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: url('../img/noise.png') #aaa;
+}

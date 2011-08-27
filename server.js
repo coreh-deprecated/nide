@@ -8,10 +8,6 @@ server.configure(function(){
   server.use(express.static(__dirname + '/public'));
 });
 
-server.get('/', function(req, res){
-    res.send('Hello World');
-});
-
 exports.listen = function(port) {
     server.listen(port);
     console.log("Server listening on port " + port + ".");
