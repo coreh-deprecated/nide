@@ -1,0 +1,16 @@
+{
+  "author": "Marco Aurelio",
+  "name": "the-restless",
+  "description": "Node IDE",
+  "version": "0.1.0",
+  "repository": {
+    "url": ""
+  },
+  "engines": {
+    "node": "~v0.4.9"
+  },
+  "dependencies": {
+    "nko": "~0.1.0"
+  },
+  "devDependencies": {}
+}
