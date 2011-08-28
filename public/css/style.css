@@ -2,6 +2,7 @@ body {
 	background: #666;
 	font-family: 'Lucida Grande', 'Segoe UI', 'Ubuntu', sans-serif;
 	font-size: 9pt;
+	overflow: hidden;
 }
 
 #options {

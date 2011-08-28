@@ -308,6 +308,7 @@ socket.on('version-error', function(data) {
 })
 
 var CodeEditor = function(entry) {
+    var codeMirror;
     var galaxyBackground = document.createElement('div')
     galaxyBackground.innerHTML = 
         '<h1 class="now">Now</h1>' +
@@ -354,6 +355,7 @@ var CodeEditor = function(entry) {
                 noPreviousMessage.className = 'no-previous'
                 galaxyBackground.appendChild(noPreviousMessage)
             }
+            $(".then", galaxyBackground).html((new Date(versions[currentVersion].date)).toString())
             for (var i = 0; i < versions.length; i++) {
                 var version = versions[i]
                 var versionEditor = document.createElement('div')
@@ -367,16 +369,17 @@ var CodeEditor = function(entry) {
                     bottom: '50px',
                     left: '52.5%'
                 }, time).addClass('windowed');
-                (function(versionEditor) {
+                (function(versionEditor, i) {
                     loadVersion(version.uuid, function(err, contents) {
                         var codeMirror = CodeMirror(versionEditor, {
-                            value: contents,
+                            value: contents || err,
                             readOnly: 'true',
                             mode: "javascript",
                             lineNumbers: true
                         })
+                        versions[i].content = contents;
                     })
-                })(versionEditor);
+                })(versionEditor, i);
                 if (versions.length - 1 - i > 3) {
                     $(versionEditor).hide()
                 } else {
@@ -395,6 +398,7 @@ var CodeEditor = function(entry) {
                 if (currentVersion <= 0) {
                     currentVersion = 0;
                 }
+                $(".then", galaxyBackground).html((new Date(versions[currentVersion].date)).toString())
                 for (var i = 0; i < versions.length; i++) {
                     var version = versions[i]
                     var versionEditor = versionEditors[i]
@@ -428,6 +432,19 @@ var CodeEditor = function(entry) {
             $(".forward", galaxyBackground).unbind('click').click(function(){
                 goVersion(1)                
             })
+            $(".revert", galaxyBackground).unbind('click').click(function(){
+                versionEditors[currentVersion].style.zIndex = 100
+                $(versionEditors[currentVersion]).animate({
+                    left: '5%',
+                    top: '50px',
+                    bottom: '50px',
+                    right: '52.5%'
+                }, time, function() {
+                    codeMirror.setValue(versions[currentVersion].content)
+                    $(versionEditors[currentVersion]).hide()
+                    $(".done").click()
+                })
+            })
         })
     })
     $(".done", galaxyBackground).click(function(e) {
@@ -456,7 +473,7 @@ var CodeEditor = function(entry) {
     editor.appendChild(actionsBar)
     editor.className = 'code-editor'
     loadFile(entry.path, function(err, file) {
-        var codeMirror = CodeMirror(editor, {
+    codeMirror = CodeMirror(editor, {
             value: file,
             mode: "javascript",
             lineNumbers: true,
