@@ -11,7 +11,7 @@ server.configure(function(){
   server.use(express.static(__dirname + '/public'));
 });
 
-var io = sockeio.listen(server, { 'log level': 3 })
+var io = sockeio.listen(server, { 'log level': 1 })
 
 io.configure(function () {
     io.set('transports', ['flashsocket', 'xhr-polling', 'jsonp-polling']);

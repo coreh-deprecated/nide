@@ -361,6 +361,9 @@ var CodeEditor = function(entry) {
                 noPreviousMessage.innerHTML = 'There are no previous versions for this file.'
                 noPreviousMessage.className = 'no-previous'
                 galaxyBackground.appendChild(noPreviousMessage)
+                $(".revert, .backward, .forward", galaxyBackground).hide()
+            } else {
+                $(".revert, .backward, .forward", galaxyBackground).show()
             }
             $(".then", galaxyBackground).html((new Date(versions[currentVersion].date)).toString())
             for (var i = 0; i < versions.length; i++) {
@@ -562,6 +565,7 @@ socket.on('uninstall-error', function(message) {
 
 var NPMEditor = function(entry) {
     var editor = document.createElement('div')
+    var sidebarEntry = $('.selected')
     editor.className = 'npm-editor'
     editor.innerHTML = 
         '<div class="actions"><b>Node Package Manager - Installed Packages</b> <button class="refresh">Refresh</button></div>' +
@@ -586,6 +590,7 @@ var NPMEditor = function(entry) {
             pack.value = packages[i]
             $(".packages", editor).append(pack)
         }
+        sidebarEntry.removeClass('syncing')
     }
     updatePackages()
     $(".add", editor).click(function(){
@@ -593,6 +598,7 @@ var NPMEditor = function(entry) {
         var save = $(".save", editor)[0].checked
         if (package) {
             socket.emit('install', { package: package, save: save })
+            sidebarEntry.addClass('syncing')
         }
     })
     $(".remove", editor).click(function(){
@@ -607,11 +613,13 @@ var NPMEditor = function(entry) {
             if (selected.length > 0) {
                 var save = $(".save", editor)[0].checked
                 socket.emit('uninstall', { package: selected.join(' '), save: save })
+                sidebarEntry.addClass('syncing')
             }
         }
     })
     $(".refresh", editor).click(function(){
         socket.emit('packages-refresh')
+        sidebarEntry.addClass('syncing')
     })
     return editor
 }

@@ -268,7 +268,7 @@ body {
 	right: 0;
 	top: 0;
 	bottom: 0;
-	background: url('../img/noise.png') #eee;
+	background: url('../img/noise.png'), url('../img/npm-logo.png') no-repeat 90% 90% #eee;
 	padding: 8px;
 	overflow: auto;
 }
@@ -281,6 +281,7 @@ body {
 	height: 400px;
 	display: block;
 	outline: none;
+	background: rgba(255,255,255,0.9)
 }
 
 #content .npm-editor .package:nth-child(2n) {
