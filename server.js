@@ -37,6 +37,7 @@ exports.listen = function(port) {
             socket.emit('list', data)
         })
         socket.emit('cwd', process.cwd())
+        socket.emit('node-version', process.version)
         socket.on('load', function(path) {
             project.load(path)
             .on('success', function(file) {

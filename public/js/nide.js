@@ -3,6 +3,7 @@ var socket = io.connect(undefined, {'connect timeout': 25000});
 var currentFile
 
 var cwd = ''
+var nodeVersion = ''
 
 var searchResultHtmlElementByPath
 var fileHtmlElementByPath
@@ -66,6 +67,10 @@ socket.on('cwd', function(path) {
     cwd = path
 })
 
+socket.on('node-version', function(version) {
+    nodeVersion = version
+})
+
 socket.on('list', function (data) {
     searchResultHtmlElementByPath = {}
     fileHtmlElementByPath = {}
@@ -122,6 +127,15 @@ $(function(){
                 type: 'npm',
                 path: '/'
             }, null, $('#npm')[0])
+        }
+    })
+    
+    $('#docs').click(function(e) {
+        if (e.target == $('#docs')[0]) {
+            selectFile({
+                type: 'documentation',
+                path: '/'
+            }, null, $('#docs')[0])
         }
     })
 
@@ -320,6 +334,18 @@ var DirectoryEditor = function(entry) {
     return editor
 }
 
+var documentationIframe
+var DocumentationViewer = function(entry) {
+    var editor = document.createElement('div')
+    editor.className = 'documentation-viewer'
+    if (!documentationIframe) {
+        documentationIframe = document.createElement('iframe')
+        documentationIframe.src = 'http://nodejs.org/docs/' + nodeVersion + '/api/index.html'
+    }
+    editor.appendChild(documentationIframe)
+    return editor
+}
+
 var setCurrentEditor = function(editor) {
     $('#content')[0].innerHTML = ''
     $('#content').append(editor)
@@ -337,6 +363,9 @@ var selectFile = function(entry, htmlElementByPathTable, htmlElement) {
         break;
         case "directory":
             editor = new DirectoryEditor(entry)
+        break;
+        case "documentation":
+            editor = new DocumentationViewer(entry)
         break;
     }
     
