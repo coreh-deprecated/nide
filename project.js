@@ -233,3 +233,32 @@ exports.load = function(path) {
     }
     return ee
 }
+
+exports.versions = function(path) {
+    var ee = new EventEmitter()
+    var versions = versionHistory[path]
+    if (!versions) {
+        versions = []
+    }
+    process.nextTick(function() {
+        ee.emit('success', versions)
+    })
+    return ee;
+}
+
+exports.version = function(versionUuid) {
+    var ee = new EventEmitter()
+    if (!versionUuid.match(/^[0-9a-f]{8}\-[0-9a-f]{4}\-[0-9a-f]{4}\-[0-9a-f]{4}-[0-9a-f]{12}$/)) {
+        process.nextTick(function() {
+            ee.emit('error', 'Invalid version uuid')
+        })
+    } else {
+        fs.readFile(process.cwd() + '/.nide/' + versionUuid, 'utf8', function(err, data) {
+            if (err) ee.emit('error', err);
+            else {
+                ee.emit('success', data);
+            }
+        })
+    }
+    return ee
+}

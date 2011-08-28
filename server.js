@@ -104,6 +104,21 @@ exports.listen = function(port) {
                 socket.emit('rename-error', { path: data.oldpath, error: err })
             })
         })
+        socket.on('versions', function(path) {
+            project.versions(path)
+            .on('success', function(versions) {
+                socket.emit('versions', { path: path, versions: versions })
+            })
+        })
+        socket.on('version', function(uuid) {
+            project.version(uuid)
+            .on('success', function(file) {
+                socket.emit('version-success', { uuid: uuid, error: null, content: file })
+            })
+            .on('error', function(err) {
+                socket.emit('version-error', { uuid: uuid, error: err, content: null })
+            })
+        })
     })
 
 }

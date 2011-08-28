@@ -223,6 +223,8 @@ var loadFile = function(path, callback) {
     socket.emit('load', path)
     if (!loadFileCallbacks[path]) {
         loadFileCallbacks[path] = [callback]
+    } else {
+        loadFileCallbacks[path].push(callback)
     }
 }
 
@@ -239,6 +241,8 @@ var saveFile = function(path, content, callback) {
     socket.emit('save', {path: path, content: content})
     if (!saveFileCallbacks[path]) {
         saveFileCallbacks[path] = [callback]
+    } else {
+        saveFileCallbacks[path].push(callback)
     }
 }
 
@@ -258,6 +262,51 @@ socket.on('save-error', function(data) {
     delete saveFileCallbacks[data.path]
 })
 
+
+var versionsCallbacks = {}
+var loadVersions = function(path, callback) {
+    socket.emit('versions', path)
+    if (!versionsCallbacks[path]) {
+        versionsCallbacks[path] = [callback]
+    } else {
+        versionsCallbacks[path].push(callback)
+    }
+}
+
+socket.on('versions', function(data) { 
+    var callbacks = versionsCallbacks[data.path] || []
+    for (var i = 0; i < callbacks.length; i++) {
+        callbacks[i](data.error, data.versions)
+    }
+    delete versionsCallbacks[data.path]
+})
+
+var versionCallbacks = {}
+var loadVersion = function(uuid, callback) {
+    socket.emit('version', uuid)
+    if (!versionCallbacks[uuid]) {
+        versionCallbacks[uuid] = [callback]
+    } else {
+        versionCallbacks[uuid].push(callback)
+    }
+}
+
+socket.on('version-success', function(data) { 
+    var callbacks = versionCallbacks[data.uuid] || []
+    for (var i = 0; i < callbacks.length; i++) {
+        callbacks[i](null, data.content)
+    }
+    delete versionCallbacks[data.uuid]
+})
+
+socket.on('version-error', function(data) { 
+    var callbacks = versionCallbacks[data.uuid] || []
+    for (var i = 0; i < callbacks.length; i++) {
+        callbacks[i](data.error)
+    }
+    delete versionCallbacks[data.uuid]
+})
+
 var CodeEditor = function(entry) {
     var editor = document.createElement('div')
     var actionsBar = document.createElement('div')
@@ -272,6 +321,14 @@ var CodeEditor = function(entry) {
         }
     })
     actionsBar.appendChild(renameButton)
+    var versionsButton = document.createElement('button')
+    versionsButton.innerHTML = 'Versions'
+    $(versionsButton).click(function(e) {
+        loadVersions(entry.path, function(err, versions) {
+            console.log(versions)
+        })
+    })
+    actionsBar.appendChild(versionsButton)
     editor.appendChild(actionsBar)
     editor.className = 'code-editor'
     loadFile(entry.path, function(err, file) {
