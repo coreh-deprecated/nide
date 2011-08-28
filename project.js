@@ -62,6 +62,32 @@ exports.init = function() {
         console.error('Error: Cannot create new project. `.nide` already exists.')
         process.exit(-1)
     }
+    var gitignore = ''
+    try {
+        gitignore = fs.readFileSync('.gitignore', 'utf8')
+    } catch (e) {}
+    var gitignoreLines = gitignore.split('\n')
+    if (gitignoreLines.indexOf('.nide') == -1) {
+        if (gitignoreLines[gitignoreLines.length-1] == '') {
+            gitignoreLines[gitignoreLines.length-1] = '.nide'
+        } else {
+            gitignoreLines.push('.nide')
+        }
+        fs.writeFileSync('.gitignore', gitignoreLines.join('\n') + '\n', 'utf8')
+    }
+    var npmignore = ''
+    try {
+        npmignore = fs.readFileSync('.npmignore', 'utf8')
+    } catch (e) {}
+    var npmignoreLines = npmignore.split('\n')
+    if (npmignoreLines.indexOf('.nide') == -1) {
+        if (npmignoreLines[npmignoreLines.length-1] == '') {
+            npmignoreLines[npmignoreLines.length-1] = '.nide'
+        } else {
+            npmignoreLines.push('.nide')
+        }
+        fs.writeFileSync('.npmignore', npmignoreLines.join('\n') + '\n', 'utf8')
+    }
 }
 
 exports.chdir = function(dir) {
