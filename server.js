@@ -14,7 +14,7 @@ server.configure(function(){
 var io = sockeio.listen(server, { 'log level': 3 })
 
 io.configure(function () {
-    io.set('transports', ['flashsocket', 'htmlfile', 'xhr-polling', 'jsonp-polling']);
+    io.set('transports', ['htmlfile', 'xhr-polling', 'jsonp-polling']);
 });
 
 
