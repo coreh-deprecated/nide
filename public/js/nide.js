@@ -1,4 +1,4 @@
-var socket = io.connect(undefined, {'connect timeout': 25000});
+var socket = io.connect(window.location.origin, {'connect timeout': 25000});
 
 var currentFile
 
