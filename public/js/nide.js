@@ -127,12 +127,16 @@ $(function(){
 
     $('#add-file').click(function(e) {
         var filename = prompt('Type in a filename for the new file:', 'untitled.js')
-        addFile(filename)
+        if (filename) {
+            addFile(filename)
+        }
     })
     
     $('#add-folder').click(function(e) {
         var filename = prompt('Type in a filename for the new folder', 'folder')
-        addFolder(filename)
+        if (filename) {
+            addFolder(filename)
+        }
     })
     
     $('#remove-file').click(function(e) {
@@ -152,11 +156,15 @@ $(function(){
     })
 })
 
+var renameFile = function(oldpath, newpath) {
+    socket.emit('rename', { oldpath: oldpath, newpath: newpath })
+}
+
 var removeFile = function() {
     socket.emit('remove', currentFile.path)
 }
 
-var addFolder = function(filename, callback) {
+var addFolder = function(filename) {
     var path;
     if (!currentFile) {
         path = '/'
@@ -176,8 +184,7 @@ var addFolder = function(filename, callback) {
     socket.emit('add-folder', path + filename);
 }
 
-
-var addFile = function(filename, callback) {
+var addFile = function(filename) {
     var path;
     if (!currentFile) {
         path = '/'
@@ -244,18 +251,24 @@ var CodeEditor = function(entry) {
     actionsBar.innerHTML = '<b>' + cwd + entry.path + '</b> '
     var renameButton = document.createElement('button')
     renameButton.innerHTML = 'Rename'
+    $(renameButton).click(function(e) {
+        var newName = prompt('New filename:', entry.name)
+        if (newName) {
+            renameFile(entry.path, entry.path.replace(/\/[^\/]+$/, '/' + newName))
+        }
+    })
     actionsBar.appendChild(renameButton)
     editor.appendChild(actionsBar)
     editor.className = 'code-editor'
     loadFile(entry.path, function(err, file) {
         var codeMirror = CodeMirror(editor, {
-           value: file,
-           mode: "javascript",
-           lineNumbers: true,
-           onChange: function(editor) {
-               content = editor.getValue()
-               changed = true
-           }
+            value: file,
+            mode: "javascript",
+            lineNumbers: true,
+            onChange: function(editor) {
+                content = editor.getValue()
+                changed = true
+            }
         });
         
         var content = file
@@ -264,7 +277,6 @@ var CodeEditor = function(entry) {
         
         setInterval(function() {
             if (changed && !saving) {
-                console.log("salvando")
                 var done = false;
                 saving = true;
                 var selected = $('.selected')
@@ -297,6 +309,12 @@ var DirectoryEditor = function(entry) {
     actionsBar.innerHTML = '<b>' + cwd + entry.path + '</b> '
     var renameButton = document.createElement('button')
     renameButton.innerHTML = 'Rename'
+    $(renameButton).click(function(e) {
+        var newName = prompt('New folder name:', entry.name)
+        if (newName) {
+            renameFile(entry.path, entry.path.replace(/\/[^\/]+$/, '/' + newName))
+        }
+    })
     actionsBar.appendChild(renameButton)
     editor.appendChild(actionsBar)
     return editor

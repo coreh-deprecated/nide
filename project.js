@@ -137,6 +137,26 @@ exports.remove = function(path) {
     return ee;
 }
 
+
+exports.rename = function(oldpath, newpath) {
+    var ee = new EventEmitter()
+    if (oldpath.charAt(0) != '/' || oldpath.indexOf('..') != -1 || oldpath == '/' ||
+        newpath.charAt(0) != '/' || newpath.indexOf('..') != -1 || newpath == '/') {
+        process.nextTick(function() {
+            ee.emit('error', 'Invalid Path')
+        })
+    } else {
+        fs.rename(process.cwd() + oldpath, process.cwd() + newpath, function(err) {
+            if (!err) {
+                ee.emit('success')
+            } else {
+                ee.emit('err', err)
+            }
+        })
+    }
+    return ee;
+}
+
 exports.save = function(path, contents) {
     var ee = new EventEmitter()
     if (path.charAt(0) != '/' || path.indexOf('..') != -1) {

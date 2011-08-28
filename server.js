@@ -91,6 +91,18 @@ exports.listen = function(port) {
                 socket.emit('remove-error', { path: path, error: err })
             })
         })
+        socket.on('rename', function(data) {
+            project.rename(data.oldpath, data.newpath)
+            .on('success', function(file) {
+                project.list()
+                .on('success', function(data) {
+                    socket.emit('list', data)
+                })
+            })
+            .on('error', function(err) {
+                socket.emit('rename-error', { path: data.oldpath, error: err })
+            })
+        })
     })
 
 }

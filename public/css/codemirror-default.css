@@ -13,7 +13,17 @@
 .cm-s-default span.cm-variable-3 {color: #0a5;}
 .cm-s-default span.cm-property {color: #338;}
 .cm-s-default span.cm-operator {color: #777;}
-.cm-s-default span.cm-comment {color: #a50;}
+.cm-s-default span.cm-comment {
+	color: #a50;
+	background: rgba(200,180,50, 0.05);
+	border-radius: 4px;
+	padding: 2px 0;
+	text-shadow: 0 1px 0 white;
+	opacity: 0.5;
+}
+.cm-s-default span.cm-comment:hover {
+	opacity: 1.0;
+}
 .cm-s-default span.cm-string {
 	color: #a11;
 	background: rgba(200,50,180, 0.05);
