@@ -55,6 +55,42 @@ exports.listen = function(port) {
                 socket.emit('save-error', { path: data.path, error: err })
             })
         })
+        socket.on('add', function(path) {
+            project.add(path)
+            .on('success', function(file) {
+                project.list()
+                .on('success', function(data) {
+                    socket.emit('list', data)
+                })
+            })
+            .on('error', function(err) {
+                socket.emit('add-error', { path: path, error: err })
+            })
+        })
+        socket.on('add-folder', function(path) {
+            project.addFolder(path)
+            .on('success', function(file) {
+                project.list()
+                .on('success', function(data) {
+                    socket.emit('list', data)
+                })
+            })
+            .on('error', function(err) {
+                socket.emit('add-folder-error', { path: path, error: err })
+            })
+        })
+        socket.on('remove', function(path) {
+            project.remove(path)
+            .on('success', function(file) {
+                project.list()
+                .on('success', function(data) {
+                    socket.emit('list', data)
+                })
+            })
+            .on('error', function(err) {
+                socket.emit('remove-error', { path: path, error: err })
+            })
+        })
     })
 
 }

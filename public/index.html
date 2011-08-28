@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<title>Nide</title>
 	<link rel="stylesheet" href="css/style.css"></link>
 	<link rel="stylesheet" href="css/codemirror.css">
 	<link rel="stylesheet" href="css/codemirror-default.css">
@@ -32,12 +33,11 @@
 			</div>
 		</ul>
 		<ul>
-			<li class="root"><img src="img/npm.png">NPM</li>
+			<li class="root" id="npm"><img src="img/npm.png">NPM</li>
 		</ul>
 	</div>
 	<div id="options">
-		<button><img src="img/add.png"></button><button><img src="img/remove.png"></button>
-		<button><img src="img/create-folder.png"></button>
+		<button id="add-file" title="New File"><img src="img/add.png"></button><button id="remove-file" title="Remove File"><img src="img/remove.png"></button><button id="add-folder" title="New Folder"><img src="img/create-folder.png"></button>
 		<label><input type="checkbox" id="show-hidden"> Show hidden files</label>
 	</div>
 	<div id="content"></div>

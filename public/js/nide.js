@@ -6,6 +6,7 @@ var cwd = ''
 
 var searchResultHtmlElementByPath
 var fileHtmlElementByPath
+var stateByPath = {}
 var fileEntries = []
 
 var ignore = ['.git', '.nide', '.DS_Store']
@@ -26,6 +27,9 @@ var addHTMLElementForFileEntry = function(entry, parentElement, fileEntriesArray
     
     if (entry.type == "directory") {
         thisElement.className = 'folder'
+        if (stateByPath[entry.path] == 'open') {
+            thisElement.className += ' open'
+        }
         thisElement.innerHTML = '<img src="img/folder.png">' + entry.name + (ownContext ? (' <i>(' + entry.path + ')</i>') : '')
         $(thisElement).click(function(e) {
             if (!e.offsetX) e.offsetX = e.clientX - $(e.target).position().left;
@@ -33,6 +37,7 @@ var addHTMLElementForFileEntry = function(entry, parentElement, fileEntriesArray
             if (e.target == thisElement && e.offsetY < 24) {
                 if (e.offsetX < 24) {
                     $(this).toggleClass('open');
+                    stateByPath[entry.path] = $(this).hasClass('open') ? 'open' : '';
                     e.stopPropagation()
                 } else {
                     selectFile(entry, htmlElementByPathTable)
@@ -105,11 +110,92 @@ $(function(){
     $('#project').click(function(e) {
         if (e.target == $('#project')[0]) {
             selectFile({
-                type: 'project'
+                type: 'project',
+                path: '/'
             }, null, $('#project')[0])
         }
     })
+
+    $('#npm').click(function(e) {
+        if (e.target == $('#npm')[0]) {
+            selectFile({
+                type: 'npm',
+                path: '/'
+            }, null, $('#npm')[0])
+        }
+    })
+
+    $('#add-file').click(function(e) {
+        var filename = prompt('Type in a filename for the new file:', 'untitled.js')
+        addFile(filename)
+    })
+    
+    $('#add-folder').click(function(e) {
+        var filename = prompt('Type in a filename for the new folder', 'folder')
+        addFolder(filename)
+    })
+    
+    $('#remove-file').click(function(e) {
+        if (currentFile) {
+            var confirmed
+            if (currentFile.type == 'file') {
+                confirmed = confirm('Are you sure?')
+            } else if (currentFile.type == 'directory') {
+                confirmed = confirm('This will remove the directory and all its contents. Are you sure?')
+            } else {
+                confirmed = false
+            }
+            if (confirmed) {
+                removeFile()
+            }
+        }
+    })
 })
+
+var removeFile = function() {
+    socket.emit('remove', currentFile.path)
+}
+
+var addFolder = function(filename, callback) {
+    var path;
+    if (!currentFile) {
+        path = '/'
+    } else {
+        switch(currentFile.type) {
+            case 'directory':
+                path = currentFile.path + '/'
+                break;
+            case 'file':
+                path = currentFile.path.replace(/\/[^\/]+$/, '/')
+                break;
+            default:
+                path = '/'
+                break;
+        }
+    }
+    socket.emit('add-folder', path + filename);
+}
+
+
+var addFile = function(filename, callback) {
+    var path;
+    if (!currentFile) {
+        path = '/'
+    } else {
+        switch(currentFile.type) {
+            case 'directory':
+                path = currentFile.path + '/'
+                break;
+            case 'file':
+                path = currentFile.path.replace(/\/[^\/]+$/, '/')
+                break;
+            default:
+                path = '/'
+                break;
+        }
+    }
+    socket.emit('add', path + filename);
+}
 
 var loadFileCallbacks = {}
 var loadFile = function(path, callback) {
@@ -159,9 +245,6 @@ var CodeEditor = function(entry) {
     var renameButton = document.createElement('button')
     renameButton.innerHTML = 'Rename'
     actionsBar.appendChild(renameButton)
-    var deleteButton = document.createElement('button')
-    deleteButton.innerHTML = 'Delete'
-    actionsBar.appendChild(deleteButton)
     editor.appendChild(actionsBar)
     editor.className = 'code-editor'
     loadFile(entry.path, function(err, file) {
@@ -184,10 +267,13 @@ var CodeEditor = function(entry) {
                 console.log("salvando")
                 var done = false;
                 saving = true;
+                var selected = $('.selected')
+                selected.addClass('syncing')
                 saveFile(entry.path, content, function(err){
                     if (!err) {
                         changed = false
                         done = true;
+                        selected.removeClass('syncing')
                     }
                     saving = false
                 })
@@ -210,11 +296,8 @@ var DirectoryEditor = function(entry) {
     actionsBar.className = 'actions'
     actionsBar.innerHTML = '<b>' + cwd + entry.path + '</b> '
     var renameButton = document.createElement('button')
-    renameButton.innerHTML = 'Rename Folder'
+    renameButton.innerHTML = 'Rename'
     actionsBar.appendChild(renameButton)
-    var deleteButton = document.createElement('button')
-    deleteButton.innerHTML = 'Delete Folder and Contents'
-    actionsBar.appendChild(deleteButton)
     editor.appendChild(actionsBar)
     return editor
 }
@@ -226,8 +309,8 @@ var setCurrentEditor = function(editor) {
 
 var selectFile = function(entry, htmlElementByPathTable, htmlElement) {
     $('.selected').removeClass('selected')
-    currentFile = entry.path
-    $(htmlElement || htmlElementByPathTable[currentFile]).addClass('selected')
+    currentFile = entry
+    $(htmlElement || htmlElementByPathTable[currentFile.path]).addClass('selected')
     
     var editor;
     switch(entry.type) {

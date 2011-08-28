@@ -104,6 +104,12 @@ body {
 	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
 }
 
+#sidebar li.selected.syncing {
+	background-image: url('../img/ajax-loader.gif');
+	background-repeat: no-repeat;
+	background-position: right center;
+}
+
 #sidebar li img {
 	margin: 4px;
 	vertical-align: -7px;

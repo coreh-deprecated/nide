@@ -1,6 +1,7 @@
 var fs = require('fs')
 var EventEmitter = require('events').EventEmitter
 var find = require('findit').find
+var exec = require('child_process').exec
 
 exports.init = function() {
     try {
@@ -48,22 +49,92 @@ exports.list = function() {
             }            
             current = current.children[components[i]]
         }
-        composite_path = composite_path + "/" + components[i]
-        current.children[components[i]] = {
-            name: components[i],
-            type: "file",
-            path: composite_path,
-            children: {}
+        if (components[i] != '.') {
+            composite_path = composite_path + "/" + components[i]
+            current.children[components[i]] = {
+                name: components[i],
+                type: "file",
+                path: composite_path,
+                children: {}
+            }
         }
     }
     find(cwd)
     .on('file', function(path) {
         add(path)        
     })
+    .on('directory', function(path) {
+        add(path + "/.")        
+    })
     .on('end', function() {
         ee.emit('success', result)
     })
     return ee
+}
+
+exports.add = function(path) {
+    var ee = new EventEmitter()
+    if (path.charAt(0) != '/' || path.indexOf('..') != -1) {
+        process.nextTick(function() {
+            ee.emit('error', 'Invalid Path')
+        })
+    } else {
+        fs.stat(process.cwd() + path, function(err, result) {
+            if (!err) {
+                ee.emit('error', 'File already exists');
+            } else {
+                fs.writeFile(process.cwd() + path, '', 'utf8', function(err) {
+                    if (err) ee.emit('error', err);
+                    else {
+                        ee.emit('success');
+                    }
+                })
+            }
+        })
+    }
+    return ee;
+}
+
+exports.addFolder = function(path) {
+    var ee = new EventEmitter()
+    if (path.charAt(0) != '/' || path.indexOf('..') != -1) {
+        process.nextTick(function() {
+            ee.emit('error', 'Invalid Path')
+        })
+    } else {
+        fs.stat(process.cwd() + path, function(err, result) {
+            if (!err) {
+                ee.emit('error', 'Folder already exists');
+            } else {
+                console.log(process.cwd() + path)
+                fs.mkdir(process.cwd() + path, '755', function(err) {
+                    if (err) ee.emit('error', err);
+                    else {
+                        ee.emit('success');
+                    }
+                })
+            }
+        })
+    }
+    return ee;
+}
+
+exports.remove = function(path) {
+    var ee = new EventEmitter()
+    if (path.charAt(0) != '/' || path.indexOf('..') != -1 || path == '/') {
+        process.nextTick(function() {
+            ee.emit('error', 'Invalid Path')
+        })
+    } else {
+        exec('rm -rf -- ' + process.cwd() + path, function(err) {
+            if (!err) {
+                ee.emit('success')
+            } else {
+                ee.emit('err', err)
+            }
+        })
+    }
+    return ee;
 }
 
 exports.save = function(path, contents) {
@@ -73,7 +144,6 @@ exports.save = function(path, contents) {
             ee.emit('error', 'Invalid Path')
         })
     } else {
-        console.log(contents)
         fs.writeFile(process.cwd() + path, contents, 'utf8', function(err) {
             if (err) ee.emit('error', err);
             else {
