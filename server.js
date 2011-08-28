@@ -20,7 +20,15 @@ io.configure(function () {
 
 exports.listen = function(port) {
     
-    server.listen(port);
+    server.listen(port, function() {
+        // if run as root, downgrade to the owner of this file
+        if (process.getuid() === 0)
+            require('fs').stat(__filename, function(err, stats) {
+            if (err) return console.log(err)
+            process.setuid(stats.uid);
+        });
+    });
+    
     console.log("Server listening on port " + port + ".");
     
     io.sockets.on('connection', function(socket) {
