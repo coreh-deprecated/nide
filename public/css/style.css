@@ -146,6 +146,7 @@ body {
 	bottom: 0;
 	overflow: auto;
 	background: #eee;
+	z-index: 100;
 }
 
 .code-editor.windowed {
@@ -177,6 +178,7 @@ body {
 	font-size: 10pt;
 	font-weight: normal;
 	text-shadow: 0 1px 1px black;
+	z-index: 99
 }
 
 .galaxy-background h1.then {
@@ -190,6 +192,7 @@ body {
 	font-size: 10pt;
 	font-weight: normal;
 	text-shadow: 0 1px 1px black;
+	z-index: 99
 }
 
 .galaxy-background > button {
@@ -202,6 +205,7 @@ body {
 	font-family: inherit;
 	font-size: inherit;
 	text-shadow: 0 1px 1px black;
+	z-index: 99
 }
 
 .galaxy-background > button:active {
@@ -231,6 +235,18 @@ body {
 	position: absolute;
 	left: 75%;
 	bottom: 10px;
+}
+
+.galaxy-background .no-previous {
+	color: white;
+	position: absolute;
+	left: 50%;
+	right: 0;
+	width: 50%;
+	top: 50%;
+	margin-top: -0.5em;
+	text-align: center;
+	text-shadow: 0 1px 1px black;
 }
 
 .directory-editor {
@@ -265,6 +281,8 @@ body {
 
 #content .actions {
 	padding: 8px;
+	white-space: nowrap;
+	overflow: hidden;
 }
 
 #content .CodeMirror {

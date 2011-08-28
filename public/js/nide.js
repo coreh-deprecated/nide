@@ -333,24 +333,32 @@ var CodeEditor = function(entry) {
     var versionsButton = document.createElement('button')
     versionsButton.innerHTML = 'Versions'
     var time = 1000;
+    var noPreviousMessage
     $(versionsButton).click(function(e) {
         loadVersions(entry.path, function(err, versions) {
+            var currentVersion = versions.length - 1;
             if (err) return;
             $(actionsBar).slideUp(time);
             $(galaxyBackground).animate({
                 left: '-250px'
             }, time)
-            editor.style.zIndex = 100;
             $(editor).animate({
                 left: '5%',
                 top: '50px',
                 bottom: '50px',
                 right: '52.5%'
             }, time).addClass('windowed')
+            if (versions.length == 0) {
+                noPreviousMessage = document.createElement('div')
+                noPreviousMessage.innerHTML = 'There are no previous versions for this file.'
+                noPreviousMessage.className = 'no-previous'
+                galaxyBackground.appendChild(noPreviousMessage)
+            }
             for (var i = 0; i < versions.length; i++) {
                 var version = versions[i]
                 var versionEditor = document.createElement('div')
                 versionEditor.className = 'code-editor'
+                versionEditor.style.zIndex = 98;
                 versionEditors.push(versionEditor)
                 galaxyBackground.appendChild(versionEditor)
                 $(versionEditor).animate({
@@ -379,6 +387,47 @@ var CodeEditor = function(entry) {
                     })
                 }
             }
+            var goVersion = function(delta) {
+                currentVersion += delta;
+                if (currentVersion >= versions.length) {
+                    currentVersion = versions.length - 1;
+                }
+                if (currentVersion <= 0) {
+                    currentVersion = 0;
+                }
+                for (var i = 0; i < versions.length; i++) {
+                    var version = versions[i]
+                    var versionEditor = versionEditors[i]
+                    var hidden = false;
+                    if (currentVersion - i > 3) {
+                        $(versionEditor).fadeOut()
+                        hidden = true
+                    } else if (currentVersion - i < 0) {
+                        $(versionEditor).fadeOut()
+                        hidden = true
+                    } else {
+                        $(versionEditor).fadeIn()
+                    }
+                    if (hidden) {
+                        $(versionEditor).animate({
+                            scale: (1 - (currentVersion - i) * 0.05),
+                            translateY: -(currentVersion - i)*20,
+                        }, { queue: false })
+                    } else {
+                        $(versionEditor).animate({
+                            scale: (1 - (currentVersion - i) * 0.05),
+                            translateY: -(currentVersion - i)*20,
+                            opacity: (1 - (currentVersion - i) * (1/3))
+                        }, { queue: false })
+                    }
+                }
+            }
+            $(".backward", galaxyBackground).unbind('click').click(function(){
+                goVersion(-1)
+            })
+            $(".forward", galaxyBackground).unbind('click').click(function(){
+                goVersion(1)                
+            })
         })
     })
     $(".done", galaxyBackground).click(function(e) {
@@ -397,6 +446,10 @@ var CodeEditor = function(entry) {
                 galaxyBackground.removeChild(versionEditors[i])
             }
             versionEditors = []
+            if (noPreviousMessage) {
+                galaxyBackground.removeChild(noPreviousMessage)
+                noPreviousMessage = undefined
+            }
         })
     })
     actionsBar.appendChild(versionsButton)
