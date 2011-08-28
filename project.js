@@ -39,7 +39,7 @@ setInterval(function() {
             delete fileStates[file]
         }
     }
-}, 1000*60*5) // 5 minutes
+}, 1000*5)
 
 exports.start = function() {
     loadVersionHistory()
