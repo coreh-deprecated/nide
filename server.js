@@ -29,7 +29,7 @@ exports.listen = function(port) {
         });
     });
     
-    console.log("Server listening on port " + port + ".");
+    console.log("Nide listening on port " + port + ".");
     
     io.sockets.on('connection', function(socket) {
         project.list()
@@ -40,8 +40,14 @@ exports.listen = function(port) {
         .on('success', function(packages) {
             socket.emit('packages', packages)
         })
+        if (project.shouldDisplayWelcome) {
+            socket.emit('welcome')
+        }
         socket.emit('cwd', process.cwd())
         socket.emit('node-version', process.version)
+        socket.on('skip-welcome', function() {
+            project.shouldDisplayWelcome = false;
+        })
         socket.on('load', function(path) {
             project.load(path)
             .on('success', function(file) {

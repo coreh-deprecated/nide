@@ -32,7 +32,7 @@ program
     })})
   
 program
-    .command('run [directory]')
+    .command('listen [directory]')
     .description('Listen for connections.')
     .action(function(dir){checkForDependencies(function(){
         project.chdir(dir)

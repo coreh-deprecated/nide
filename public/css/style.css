@@ -332,3 +332,74 @@ body {
 	overflow-x: auto;
 	width: 100%;
 }
+
+#lightbox {
+	position: absolute;
+	background: rgba(0,0,0,0.25);
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	display: none;
+}
+
+.setup {
+	position: absolute;
+	top: 50px;
+	left: 50%;
+	width: 600px;
+	background: url('../img/noise.png') #ddd;
+	border-radius: 5px;
+	margin-left: -300px;
+	box-shadow: 0 10px 20px rgba(0,0,0,0.5), 0 0 1px rgba(0,0,0,0.5), 0 5px 5px rgba(255,255,255,0.25) inset, 0 1px 0 rgba(255,255,255,0.5) inset, 0 -7px 5px -5px rgba(0,0,0,0.125) inset
+}
+
+.setup h1 {
+	font-weight: normal;
+	padding: 5px 20px;
+	text-shadow: 0 1px white;
+	font-size: 13pt;
+}
+
+.setup .content {
+	background: #fcfcfc;
+	padding: 20px;
+	box-shadow: 0 0 1px rgba(0,0,0,0.5);
+	border-radius: 0 0 5px 5px;
+}
+
+.setup p {
+	margin-top: 0;
+	line-height: 1.5em;
+}
+
+.setup input.default {
+	font-family: inherit;
+	font-weight: bold !important;
+	-webkit-appearance: default-button;
+}
+
+.setup input[type='text'] {
+	width: 400px;
+	font-family: inherit;
+	font-size: inherit;
+	padding: 3px;
+	display: inline;
+}
+
+.setup small {
+	display: block;
+}
+
+.setup table {
+	width: 100%;
+}
+
+.setup td {
+	text-align: right;
+}
+
+.setup .actions {
+	text-align: right;
+	margin-top: 10px;
+}

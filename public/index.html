@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Nide</title>
+	<title>nide</title>
 	<link rel="stylesheet" href="css/style.css"></link>
 	<link rel="stylesheet" href="css/codemirror.css">
 	<link rel="stylesheet" href="css/codemirror-default.css">
@@ -43,5 +43,32 @@
 		<label><input type="checkbox" id="show-hidden"> Show hidden files</label>
 	</div>
 	<div id="content"></div>
+	<div id="lightbox">
+		<div class="setup">
+			<h1>Welcome to nide!</h1>
+			<div class="content">
+				<p>
+					It seems this is the first time you open this project in nide.
+					This screen will help you set up your <code>package.json</code> file.
+				</p>
+				<form action="">
+				<table>
+					<tr>
+						<td>Project Name:<small>To be used via NPM</small></td><td><input type="text" name="name" placeholder="e.g: my-project"></td>
+					</tr><tr>
+						<td>Project Description:</td><td><input type="text" name="description" placeholder="e.g: Secret Node.JS Project"></td>
+					</tr><tr>
+						<td>Author Name:</td><td><input name="author" type="text"></td>
+					</tr><tr>
+						<td>Version:<small>(in X.Y.Z format)</small></td><td><input type="text" name="version" value="0.1.0"></td>
+					</tr>
+				</table>
+				<div class="actions">
+					<button>Skip this step</button> <input type="submit" class="default" value="Create package.json">
+				</div>
+				</form>
+			</div>
+		</div>
+	</div>
 </body>
 </html>

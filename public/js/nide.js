@@ -78,6 +78,37 @@ socket.on('packages', function(reportedPackages) {
     updatePackages()
 })
 
+socket.on('welcome', function() {
+    $('#lightbox').fadeIn()
+    $('.setup form').bind('submit', function(e) {
+        var name = $(".setup input[name='name']")[0].value;
+        var description = $(".setup input[name='description']")[0].value;
+        var author = $(".setup input[name='author']")[0].value;
+        var version = $(".setup input[name='version']")[0].value;
+        if (!version.match(/^[0-9]+\.[0-9]+\.[0-9]+$/)) {
+            alert('Please enter the version number in the X.Y.Z format.')
+            e.preventDefault();
+            return;
+        }
+        e.preventDefault()
+        socket.emit('add', '/package.json')
+        socket.emit('save', { path: '/package.json', content: JSON.stringify({
+            name: name,
+            description: description,
+            version: version,
+            author: author,
+            dependencies: {},
+            devDependencies: {}
+        }, undefined, '    ')})
+        $('#lightbox').fadeOut()
+        socket.emit('skip-welcome')
+    })
+    $('.setup .skip').click(function(){
+        $('#lightbox').fadeOut()
+        socket.emit('skip-welcome')
+    })
+})
+
 socket.on('list', function (data) {
     searchResultHtmlElementByPath = {}
     fileHtmlElementByPath = {}
@@ -268,7 +299,6 @@ socket.on('save-error', function(data) {
     }
     delete saveFileCallbacks[data.path]
 })
-
 
 var versionsCallbacks = {}
 var loadVersions = function(path, callback) {

@@ -55,6 +55,8 @@ exports.start = function() {
     }
 }
 
+exports.shouldDisplayWelcome = false
+
 exports.init = function() {
     try {
         fs.mkdirSync('.nide', '755')
@@ -62,6 +64,7 @@ exports.init = function() {
         console.error('Error: Cannot create new project. `.nide` already exists.')
         process.exit(-1)
     }
+    console.log('Created project directory')
     var gitignore = ''
     try {
         gitignore = fs.readFileSync('.gitignore', 'utf8')
@@ -75,6 +78,7 @@ exports.init = function() {
         }
         fs.writeFileSync('.gitignore', gitignoreLines.join('\n') + '\n', 'utf8')
     }
+    console.log('Added project directory to .gitignore')
     var npmignore = ''
     try {
         npmignore = fs.readFileSync('.npmignore', 'utf8')
@@ -87,6 +91,12 @@ exports.init = function() {
             npmignoreLines.push('.nide')
         }
         fs.writeFileSync('.npmignore', npmignoreLines.join('\n') + '\n', 'utf8')
+    }
+    console.log('Added project directory to .npmignore')
+    try {
+        packageJson = fs.readFileSync('package.json', 'utf8')
+    } catch (e) {
+        exports.shouldDisplayWelcome = true;
     }
 }
 
