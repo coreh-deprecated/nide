@@ -43,13 +43,23 @@ setInterval(function() {
 
 exports.start = function() {
     loadVersionHistory()
+    try {
+        var stat = fs.statSync('.nide')
+        if (!stat.isDirectory()) {
+            console.error('Error: `.nide` is not a directory.')
+            process.exit(-1)
+        }
+    } catch (e) {
+        console.error('Error: Not inside a project. Run `nide init` to create a new project on the current directory.')
+        process.exit(-1)
+    }
 }
 
 exports.init = function() {
     try {
         fs.mkdirSync('.nide', '755')
     } catch (e) {
-        console.error('Cannot initialize new project. `.nide` already exists.')
+        console.error('Error: Cannot create new project. `.nide` already exists.')
         process.exit(-1)
     }
 }

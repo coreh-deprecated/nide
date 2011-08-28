@@ -7,9 +7,9 @@ var project = require('./project');
 var exec = require('child_process').exec
 
 var checkForDependencies = function(callback) {
-    exec('which git', function(err, stdout, stderr) {
+    exec('which npm', function(err, stdout, stderr) {
         if (err) {
-            console.error('Could not find `git` command. Is git installed?')
+            console.error('Could not find `npm` command. Is npm installed?')
             process.exit(-1)
         } else {
             callback()
@@ -20,7 +20,6 @@ var checkForDependencies = function(callback) {
 program
     .version('0.1.0')
     .option('-p, --port <number>', 'use a custom http port')
-    .option('-P, --password <password>', 'require `password` to access`')
  
 program
     .command('init [directory]')
@@ -39,6 +38,11 @@ program
         project.chdir(dir)
         project.start()
         server.listen(program.port || process.env.PORT || 8123)
-    })})
+    })})    
 
-program.parse(process.argv);
+if (process.argv.length > 2) {
+    program.parse(process.argv);
+} else {
+    project.start()
+    server.listen(program.port || process.env.PORT || 8123)
+}

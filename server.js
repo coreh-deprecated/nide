@@ -5,16 +5,16 @@ var project = require('./project.js')
 var server = express.createServer();
 
 server.configure(function(){
-  server.use(express.bodyParser());
-  server.use(express.methodOverride());
-  server.use(server.router);
-  server.use(express.static(__dirname + '/public'));
+    server.use(express.bodyParser());
+    server.use(express.methodOverride());
+    server.use(server.router);
+    server.use(express.static(__dirname + '/public'));
 });
 
 var io = sockeio.listen(server, { 'log level': 1 })
 
 io.configure(function () {
-    io.set('transports', ['flashsocket', 'xhr-polling', 'jsonp-polling']);
+    io.set('transports', ['flashsocket', 'htmlfile', 'xhr-polling', 'jsonp-polling']);
 });
 
 
