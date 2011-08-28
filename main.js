@@ -28,6 +28,7 @@ program
     .action(function(dir){checkForDependencies(function(){
         project.chdir(dir)
         project.init()
+        project.start()
         server.listen(program.port || process.env.PORT || 8123)
     })})
   
@@ -36,7 +37,7 @@ program
     .description('Listen for connections.')
     .action(function(dir){checkForDependencies(function(){
         project.chdir(dir)
-        project.list()
+        project.start()
         server.listen(program.port || process.env.PORT || 8123)
     })})
 

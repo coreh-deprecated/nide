@@ -2,6 +2,48 @@ var fs = require('fs')
 var EventEmitter = require('events').EventEmitter
 var find = require('findit').find
 var exec = require('child_process').exec
+var uuid = require('node-uuid')
+
+var fileStates = {}
+var versionHistory = {}
+
+var saveVersionHistory = function() {
+    var contents = JSON.stringify(versionHistory)
+    fs.writeFile(process.cwd() + '/.nide/versions.json', contents)
+}
+
+var loadVersionHistory = function() {
+    try {
+        versionHistory = JSON.parse(fs.readFileSync(process.cwd() + '/.nide/versions.json'))
+    } catch (e) {
+        
+    }
+}
+
+setInterval(function() {
+    for (var file in fileStates) {
+        if (fileStates[file] == 'modified') {
+            if (!versionHistory[file]) {
+                versionHistory[file] = []
+            }
+            var generatedUuid = uuid()
+            versionHistory[file].push({
+                date: (new Date()).valueOf(),
+                uuid: generatedUuid
+            })
+            exec('cp -- ' + (process.cwd() + file) + ' ' + (process.cwd() + '/.nide/' + generatedUuid), function(err) {
+                if (!err) {
+                    saveVersionHistory()
+                }
+            })
+            delete fileStates[file]
+        }
+    }
+}, 1000*60*5) // 5 minutes
+
+exports.start = function() {
+    loadVersionHistory()
+}
 
 exports.init = function() {
     try {
@@ -167,6 +209,7 @@ exports.save = function(path, contents) {
         fs.writeFile(process.cwd() + path, contents, 'utf8', function(err) {
             if (err) ee.emit('error', err);
             else {
+                fileStates[path] = 'modified'
                 ee.emit('success');
             }
         })
