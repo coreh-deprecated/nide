@@ -262,3 +262,48 @@ exports.version = function(versionUuid) {
     }
     return ee
 }
+
+exports.packages = function() {
+    var ee = new EventEmitter()
+    exec('npm ls', function(err, stdout, stderr) {
+        if (err) {
+            ee.emit('error', err);
+            return;
+        }
+        var lines = stdout.split('\n')
+        var packages = []
+        for (var i = 0; i < lines.length; i++) {
+            var packageName = lines[i].match(/^(├──|├─┬|└─┬|└──) (.+)$/)
+            if (packageName && packageName[2]) {
+                packages.push(packageName[2])
+            }
+        }
+        ee.emit('success', packages)
+    })
+    return ee;
+}
+
+exports.install = function(package, save) {
+    var ee = new EventEmitter()
+    exec('npm install' + (save ? ' --save' : '')+ ' -- ' + package, function(err, stdout, stderr) {
+        if (err) {
+            ee.emit('error', stderr);
+        } else {
+            ee.emit('success')
+        }
+    })
+    return ee;
+}
+
+exports.uninstall = function(package, save) {
+    var ee = new EventEmitter()
+    console.log(package)
+    exec('npm uninstall' + (save ? ' --save' : '') + ' -- ' + package, function(err, stdout, stderr) {
+        if (err) {
+            ee.emit('error', stderr);
+        } else {
+            ee.emit('success')
+        }
+    })
+    return ee;
+}

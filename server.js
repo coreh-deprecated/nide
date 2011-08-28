@@ -14,7 +14,7 @@ server.configure(function(){
 var io = sockeio.listen(server, { 'log level': 3 })
 
 io.configure(function () {
-    io.set('transports', ['xhr-polling', 'jsonp-polling']);
+    io.set('transports', ['flashsocket', 'xhr-polling', 'jsonp-polling']);
 });
 
 
@@ -35,6 +35,10 @@ exports.listen = function(port) {
         project.list()
         .on('success', function(data) {
             socket.emit('list', data)
+        })
+        project.packages()
+        .on('success', function(packages) {
+            socket.emit('packages', packages)
         })
         socket.emit('cwd', process.cwd())
         socket.emit('node-version', process.version)
@@ -117,6 +121,36 @@ exports.listen = function(port) {
             })
             .on('error', function(err) {
                 socket.emit('version-error', { uuid: uuid, error: err, content: null })
+            })
+        })
+        socket.on('install', function(data) {
+            project.install(data.package, data.save)
+            .on('success', function() {
+                project.packages()
+                .on('success', function(packages) {
+                    socket.emit('packages', packages)
+                })
+            })
+            .on('error', function(err) {
+                socket.emit('install-error', err)
+            })
+        })
+        socket.on('uninstall', function(data) {
+            project.uninstall(data.package, data.save)
+            .on('success', function() {
+                project.packages()
+                .on('success', function(packages) {
+                    socket.emit('packages', packages)
+                })
+            })
+            .on('error', function(err) {
+                socket.emit('uninstall-error', err)
+            })
+        })
+        socket.on('packages-refresh', function(data) {
+            project.packages()
+            .on('success', function(packages) {
+                socket.emit('packages', packages)
             })
         })
     })

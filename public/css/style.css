@@ -19,7 +19,7 @@ body {
 	box-shadow: 0 0 10px rgba(0,0,0,0.125), 0 1px 0 rgba(0,0,0,0.25) inset
 }
 
-#options button {
+#options button, button.gradient {
 	background: #fafafa;
 	border: 1px solid rgba(0,0,0,0.25);
 	box-shadow: 0 -10px rgba(0,0,0,0.05) inset, 0 1px 2px white;
@@ -29,7 +29,7 @@ body {
 	height: 26px;
 }
 
-#options button:active {
+#options button:active, button.gradient:active {
 	background: #ccc;
 }
 
@@ -260,6 +260,39 @@ body {
 	background: url('../img/folder-large.png') no-repeat center center, url('../img/noise.png') #adbdc8;
 	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
 	color: rgba(0,0,0,0.75)
+}
+
+#content .npm-editor {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: url('../img/noise.png') #eee;
+	padding: 8px;
+	overflow: auto;
+}
+
+#content .npm-editor .packages {
+	font-family: inherit;
+	font-size: 110%;
+	margin: 0;
+	width: 100%;
+	height: 400px;
+	display: block;
+	outline: none;
+}
+
+#content .npm-editor .package:nth-child(2n) {
+	background: #fafafa;
+}
+
+#content .npm-editor .package.extraneous {
+	color: rgba(0,0,0,0.5)
+}
+
+#content .npm-editor .package.unmet {
+	color: rgb(180,0,0)
 }
 
 #content .documentation-viewer {

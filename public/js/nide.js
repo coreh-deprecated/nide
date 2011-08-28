@@ -3,12 +3,14 @@ var socket = io.connect(window.location.origin, {'connect timeout': 25000});
 var currentFile
 
 var cwd = ''
-var nodeVersion = ''
+var nodeVersion = 'v0.4.11'
 
 var searchResultHtmlElementByPath
 var fileHtmlElementByPath
 var stateByPath = {}
 var fileEntries = []
+var packages = []
+var updatePackages = function() {}
 
 var ignore = ['.git', '.nide', '.DS_Store']
 var limitRecursion = ['node_modules']
@@ -69,6 +71,11 @@ socket.on('cwd', function(path) {
 
 socket.on('node-version', function(version) {
     nodeVersion = version
+})
+
+socket.on('packages', function(reportedPackages) {
+    packages = reportedPackages
+    updatePackages()
 })
 
 socket.on('list', function (data) {
@@ -545,6 +552,70 @@ var DocumentationViewer = function(entry) {
     return editor
 }
 
+socket.on('install-error', function(message) {
+    alert('Could not install package:\n\n' + message)
+})
+
+socket.on('uninstall-error', function(message) {
+    alert('Could not uninstall package:\n\n' + message)
+})
+
+var NPMEditor = function(entry) {
+    var editor = document.createElement('div')
+    editor.className = 'npm-editor'
+    editor.innerHTML = 
+        '<div class="actions"><b>Node Package Manager - Installed Packages</b> <button class="refresh">Refresh</button></div>' +
+        '<div class="actions"><select multiple class="packages"></select></div>' +
+        '<div class="actions">' +
+        '<button class="gradient add"><img src="img/add.png"></button>' + 
+        '<button class="gradient remove"><img src="img/remove.png"></button> ' +
+        '<label><input type="checkbox" checked class="save"> Register packages on <code>package.json</code> on install.</label>'
+        '</div>'
+    updatePackages = function() {
+        $(".packages", editor)[0].innerHTML = '';
+        for (var i = 0; i < packages.length; i++) {
+            var pack = document.createElement("option")
+            pack.className = 'package'
+            if (packages[i].match(/  extraneous$/)) {
+                pack.className += ' extraneous';
+            }
+            if (packages[i].match(/^UNMET DEPENDENCY /)) {
+                pack.className += ' unmet';
+            }
+            pack.innerHTML = packages[i]
+            pack.value = packages[i]
+            $(".packages", editor).append(pack)
+        }
+    }
+    updatePackages()
+    $(".add", editor).click(function(){
+        var package = prompt('Package to be installed:', 'package-name')
+        var save = $(".save", editor)[0].checked
+        if (package) {
+            socket.emit('install', { package: package, save: save })
+        }
+    })
+    $(".remove", editor).click(function(){
+        if (confirm('Are you sure?')) {
+            var packageSelect = $(".packages", editor)[0]
+            var selected = [];
+            for (var i = 0; i < packageSelect.options.length; i++) {
+                if (packageSelect.options[i].selected) {
+                    selected.push(packageSelect.options[i].value.replace(/  extraneous$/,'').replace(/\@.+$/,''));
+                }
+            }
+            if (selected.length > 0) {
+                var save = $(".save", editor)[0].checked
+                socket.emit('uninstall', { package: selected.join(' '), save: save })
+            }
+        }
+    })
+    $(".refresh", editor).click(function(){
+        socket.emit('packages-refresh')
+    })
+    return editor
+}
+
 var setCurrentEditor = function(editor) {
     $('#content')[0].innerHTML = ''
     $('#content').append(editor)
@@ -566,8 +637,11 @@ var selectFile = function(entry, htmlElementByPathTable, htmlElement) {
         case "documentation":
             editor = new DocumentationViewer(entry)
         break;
+        case "npm":
+            editor = new NPMEditor(entry)
+        break;
     }
-    
+        
     setCurrentEditor(editor)
 }
 
