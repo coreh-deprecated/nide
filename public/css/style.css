@@ -148,6 +148,91 @@ body {
 	background: #eee;
 }
 
+.code-editor.windowed {
+	border-radius: 5px;
+	border: 5px solid rgba(0,0,0,0.5);
+	box-shadow: 0 0 10px rgba(255,255,255,0.5);
+	background-clip: padding-box;
+}
+
+.galaxy-background {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	overflow: auto;
+	background: url('../img/galaxy.jpg') center center #000;
+	background-size: cover;
+}
+
+.galaxy-background h1.now {
+	position: absolute;
+	width: 50%;
+	left: 0;
+	right: 50%;
+	top: 10px;
+	color: white;
+	text-align: center;
+	font-size: 10pt;
+	font-weight: normal;
+	text-shadow: 0 1px 1px black;
+}
+
+.galaxy-background h1.then {
+	position: absolute;
+	width: 50%;
+	left: 50%;
+	right: 0;
+	top: 10px;
+	color: white;
+	text-align: center;
+	font-size: 10pt;
+	font-weight: normal;
+	text-shadow: 0 1px 1px black;
+}
+
+.galaxy-background > button {
+	background: rgba(0,0,0,0.5);
+	border: 1px solid rgba(255,255,255,0.5);
+	border-radius: 5px;
+	padding: 5px 20px;
+	color: white;
+	box-shadow: 0 23px 5px -10px rgba(255,255,255,0.25) inset, 0 2px 5px black;
+	font-family: inherit;
+	font-size: inherit;
+	text-shadow: 0 1px 1px black;
+}
+
+.galaxy-background > button:active {
+	box-shadow: 0 23px 5px -10px rgba(255,255,255,0.125) inset, 0 2px 5px black;
+	color: #aaa;
+}
+
+.galaxy-background > button.done {
+	position: absolute;
+	right: 52.5%;
+	bottom: 10px;
+}
+
+.galaxy-background > button.revert {
+	position: absolute;
+	left: 52.5%;
+	bottom: 10px;
+}
+
+.galaxy-background > button.backward {
+	position: absolute;
+	right: 25%;
+	bottom: 10px;
+}
+
+.galaxy-background > button.forward {
+	position: absolute;
+	left: 75%;
+	bottom: 10px;
+}
+
 .directory-editor {
 	position: absolute;
 	top: 0;

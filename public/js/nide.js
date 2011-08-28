@@ -308,7 +308,16 @@ socket.on('version-error', function(data) {
 })
 
 var CodeEditor = function(entry) {
+    var galaxyBackground = document.createElement('div')
+    galaxyBackground.innerHTML = 
+        '<h1 class="now">Now</h1>' +
+        '<h1 class="then">Then</h1>' +
+        '<button class="done">Done</button>' +
+        '<button class="revert">Revert</button>' +
+        '<button class="backward" title="Go backward in time"><img src="img/backward.png"</button>' +
+        '<button class="forward" title="Go forward in time"><img src="img/forward.png"</button>';
     var editor = document.createElement('div')
+    var versionEditors = []
     var actionsBar = document.createElement('div')
     actionsBar.className = 'actions'
     actionsBar.innerHTML = '<b>' + cwd + entry.path + '</b> '
@@ -323,9 +332,71 @@ var CodeEditor = function(entry) {
     actionsBar.appendChild(renameButton)
     var versionsButton = document.createElement('button')
     versionsButton.innerHTML = 'Versions'
+    var time = 1000;
     $(versionsButton).click(function(e) {
         loadVersions(entry.path, function(err, versions) {
-            console.log(versions)
+            if (err) return;
+            $(actionsBar).slideUp(time);
+            $(galaxyBackground).animate({
+                left: '-250px'
+            }, time)
+            editor.style.zIndex = 100;
+            $(editor).animate({
+                left: '5%',
+                top: '50px',
+                bottom: '50px',
+                right: '52.5%'
+            }, time).addClass('windowed')
+            for (var i = 0; i < versions.length; i++) {
+                var version = versions[i]
+                var versionEditor = document.createElement('div')
+                versionEditor.className = 'code-editor'
+                versionEditors.push(versionEditor)
+                galaxyBackground.appendChild(versionEditor)
+                $(versionEditor).animate({
+                    right: '5%',
+                    top: '50px',
+                    bottom: '50px',
+                    left: '52.5%'
+                }, time).addClass('windowed');
+                (function(versionEditor) {
+                    loadVersion(version.uuid, function(err, contents) {
+                        var codeMirror = CodeMirror(versionEditor, {
+                            value: contents,
+                            readOnly: 'true',
+                            mode: "javascript",
+                            lineNumbers: true
+                        })
+                    })
+                })(versionEditor);
+                if (versions.length - 1 - i > 3) {
+                    $(versionEditor).hide()
+                } else {
+                    $(versionEditor).css({
+                        scale: (1 - (versions.length - 1 - i) * 0.05),
+                        translateY: -(versions.length - 1 - i)*20,
+                        opacity: (1 - (versions.length - 1 - i) * (1/3))
+                    })
+                }
+            }
+        })
+    })
+    $(".done", galaxyBackground).click(function(e) {
+        $(actionsBar).slideDown(time);
+        $(galaxyBackground).animate({
+            left: 0
+        }, time)
+        $(editor).animate({
+            left: '0%',
+            top: '0px',
+            bottom: '0px',
+            right: '0%'
+        }, time, function() {
+            $(editor).removeClass('windowed')
+            for (var i = 0; i < versionEditors.length; i++) {
+                galaxyBackground.removeChild(versionEditors[i])
+            }
+            versionEditors = []
         })
     })
     actionsBar.appendChild(versionsButton)
@@ -368,8 +439,9 @@ var CodeEditor = function(entry) {
             }
         }, 3000)
     })
-    
-    return editor
+    galaxyBackground.appendChild(editor)
+    galaxyBackground.className = 'galaxy-background'
+    return galaxyBackground
 }
 
 var DirectoryEditor = function(entry) {
