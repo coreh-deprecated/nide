@@ -1,8 +1,8 @@
 {
   "author": "Marco Aurelio",
-  "name": "Beautiful IDE for Node.js",
+  "name": "nide",
   "keywords": ["ide", "integrated", "development", "environment", "editor", "coding", "tool"],
-  "description": "Node IDE",
+  "description": "Beautiful IDE for Node.js",
   "version": "0.1.0",
   "repository": {
     "url": ""
