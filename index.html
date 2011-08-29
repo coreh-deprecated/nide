@@ -1,0 +1,360 @@
+<DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8">
+	<title>nide - Beautiful IDE for Node.JS</title>
+	<style>
+	html {
+		background: #fafafa;
+	}
+	
+	body {
+		font-family: 'Lucida Grande', 'Segoe UI', 'Ubuntu', sans-serif;
+		text-align: center;
+		width: 968px;
+		margin: 0 auto;
+		padding: 0;
+		text-shadow: 0 1px 0 white;
+		position: relative;
+		color: #111;
+	}
+	
+	h1 {
+		font-family: 'Myriad Pro', 'Lucida Grande', 'Segoe UI', 'Ubuntu', sans-serif;
+		font-size: 200px;
+		margin: 150px 0 0 100px;
+		padding: 0;
+		line-height: 0.7em;
+	}
+	h1.fit {
+		font-size:150px;
+	}
+	
+	h2 {
+		margin: 0 100px 0 100px;
+		padding: 0;
+	}
+	
+	h2.top {
+		margin-top: 75px;
+	}
+	
+	.description {
+		margin: 0 0 0 100px;
+		width: 400px;
+	}
+	
+	.description.wide {
+		width: 800px;
+	}
+	
+	a {
+		color: #12c;
+	}
+	
+	p.center {
+		text-align: center;
+	}
+
+	/* Gallery styles */
+
+	#gallery{
+
+		/* CSS3 Rounded Corners */
+
+		-moz-border-radius-bottomleft:4px;
+		-webkit-border-bottom-left-radius:4px;
+		border-bottom-left-radius:4px;
+
+		-moz-border-radius-bottomright:4px;
+		-webkit-border-bottom-right-radius:4px;
+		border-bottom-right-radius:4px;
+
+		/* The width of the gallery */
+		width:968px;
+		overflow:hidden;
+	}
+
+	#slides{
+		/* This is the slide area */
+		height:960px;
+
+		/* jQuery changes the width later on to the sum of the widths of all the slides. */
+		width:968px;
+		overflow:hidden;
+	}
+	
+	#wrapper {
+		background: white;
+		border-radius: 5px;
+	}
+
+	.slide{
+		float:left;
+		min-height: 600px;
+		width: 968px;
+		text-align: left;
+		position: relative;
+	}
+
+
+	ul.menu{
+		margin: 20px 0 20px;
+		background: #ddd;
+		box-shadow: 0 1px 3px rgba(0,0,0,0.5), 0 -30px 20px -10px rgba(0,0,0,0.1) inset;
+		border-radius: 3px;
+	}
+
+	ul.menu li{
+		/* Every thumbnail is a li element */
+		width:120px;
+		display:inline-block;
+		list-style:none;
+		overflow:hidden;
+		padding: 8px;
+	}
+
+	ul.menu li.inact:hover{
+	}
+
+	ul.menu li.act,li.act:hover{
+		background: rgba(0,0,0,0.35);
+		color: #eee;
+		text-shadow: 0 1px 1px black;
+		box-shadow: 0 1px 2px rgba(0,0,0,0.5) inset;
+	}
+
+	ul.menu li.act a{
+		cursor:default;
+	}
+
+	li a{
+		display:block;
+		text-decoration: none;
+		padding: 4px;
+		color: inherit;
+	}
+
+	a img{
+		border:none;
+	}
+
+	.initial {
+		background: url('initial.jpg') right top no-repeat;
+	}
+	
+	.highlight {
+		position: absolute;
+		width: 10px;
+		height: 10px;
+		background: #e11;
+		border-radius: 100px;
+		border: 5px solid white;
+		box-shadow: 0 0 2px 2px rgba(240, 18, 18, 0.5);
+		overflow: hidden;
+		cursor: pointer;
+	}
+	
+	.highlight:hover {
+		overflow: visible;
+		opacity: 1 !important;
+		z-index: 1;
+	}
+	
+	.highlight .highlight-content {
+		position: absolute;
+		left: -25px;
+		top: 10px;
+		padding: 8px;
+		background: rgba(0,0,0,0.8);
+		border-radius: 4px;
+		opacity: 0;
+		color: white;
+		text-shadow: 0 1px black;
+		min-width: 250px;
+		font-size: 90%;
+	}
+	
+	.highlight .highlight-content.right {
+		left: -200px;
+	}
+	
+	.highlight:hover .highlight-content {
+		opacity: 1;
+		-webkit-transition: 1s ease opacity;
+		-moz-transition: 1s ease opacity;
+		-ms-transition: 1s ease opacity;
+		-o-transition: 1s ease opacity;
+		transition: 1s ease opacity;
+	}
+	
+	.description li {
+		margin: 10px 0
+	}
+	
+	#vote {
+		position: absolute;
+		right: 0;
+		top: 10px;
+	}
+	
+	</style>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+	<script type="text/javascript" src="script.js"></script>
+	<script>
+	setInterval(function(){
+		$('.highlight').animate({
+			opacity: 0.5
+		}, 500).animate({
+			opacity: 1
+		}, 500)
+	},1000)
+	</script>
+</head>
+<body>
+	<a href="http://github.com/coreh/nide"><img style="position: absolute; top: 0; left: 0; border: 0; z-index: 1" src="https://a248.e.akamai.net/assets.github.com/img/5d21241b64dc708fcbb701f68f72f41e9f1fadd6/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
+  <div id="gallery">
+    <div id="menu">
+	<ul class="menu">
+		<li class="menuItem"><a href="">About</a></li>
+		<li class="menuItem"><a href="">The Interface</a></li>
+		<li class="menuItem"><a href="">The Features</a></li>
+		<li class="menuItem"><a href="">Help Nide</a></li>
+    </ul>
+	</div>
+	<div id="wrapper">
+    <div id="slides">
+    <div class="slide initial">
+		<div id="vote">
+			<small>Nide needs your help! <b>Please vote for us</b> on the ongoing Node.JS Knockout Competition.</small> → <iframe src="http://nodeknockout.com/iframe/the-restless" style="vertical-align: -25%" frameborder=0 scrolling=no allowtransparency=true width=115 height=25>	</iframe>
+		</div>
+		<h1>nide</h1>
+		<h2>Beautiful IDE for Node.JS</h2>
+		<div class="description">
+			<p><code>nide</code> is a web-based IDE for Node.js, designed with simplicity and ease-of-use in mind.</p>
+		 	<p>The current version of nide was designed and developed in <b>only 48 hours</b>, at the Node.js KO coding competition.</p>
+		</div>
+		<br>
+		<h2>Try it out!</h2>
+		<div class="description">
+			<p>An online installation of nide is available <a href="http://the-restless.nko2.nodeknockout.com">here</a> for demonstration purposes.</p>
+			<p>You can install nide locally by using the following command (requires Node.js and NPM):</p>
+			<pre>    sudo npm install -g nide</pre>
+			<p>After that, you can create a new project steping into an empty folder and typing:<p>
+			<pre>    nide init</pre>
+			<p>Nide will create the project and listen on port <code>8123</code>. Fire your web browser to <code>http://localhost:8123</code> and you're set.</p>
+		</div>
+		<h2>Vote</h2>
+		<div class="description">
+			<p>If you like this project, please consider voting for it on Node.js Knockout.</p>
+			<p>Just click this button → <iframe src="http://nodeknockout.com/iframe/the-restless" style="vertical-align: -25%" frameborder=0 scrolling=no allowtransparency=true width=115 height=25></iframe> Thank you.<p>
+		</div>
+	</div>
+    <div class="slide">
+		<div class="highlight" style="left: 400px; top: 58px">
+			<div class="highlight-content">
+				<b>Code in your browser.</b>
+				<p>
+					You can access your project from any environment: Local, intranet or Internet.
+				</p>
+			</div>
+		</div>
+		<div class="highlight" style="left: 47px; top: 128px">
+			<div class="highlight-content">
+				<b>The whole world at a glance.</b>
+				<p>
+					The project tree shows all the files and folders in your current project, for instant navigation.
+				</p>
+			</div>
+		</div>
+		<div class="highlight" style="left: 47px; top: 232px">
+			<div class="highlight-content">
+				<b>Package Management.</b>
+				<p>
+					Nide integrates tightly with NPM, so you can install and uninstall packages
+					without ever leaving the IDE.
+				</p>
+				<p>
+					Nide can also instruct NPM to automatically update your <code>package.json</code> file with 
+					the new dependencies.
+				</p>
+			</div>
+		</div>
+		<div class="highlight" style="left: 237px; top: 263px">
+			<div class="highlight-content">
+				<b>Documentation</b>
+				<p>
+					Nide sports a built-in documentation browser that automatically figures which node version
+					you're using and fetches the right documentation for you.
+				</p>
+			</div>
+		</div>
+		<div class="highlight" style="left: 300px; top: 132px">
+			<div class="highlight-content">
+				<b>Minimalistic editing environment</b>
+				<p>
+					Nide integrates with CodeMirror to provide a desktop-class editing experience,
+					without annoyances or distractions.
+				</p>
+			</div>
+		</div>
+		<div class="highlight" style="left: 330px; top: 132px">
+			<div class="highlight-content">
+				<b>Auto Save</b>
+				<p>
+					The contents of the current file are automatically synchronized with the backend,
+					as you type.
+				</p>
+			</div>
+		</div>
+		<div class="highlight" style="left: 640px; top: 97px">
+			<div class="highlight-content right">
+				<b>Go Back</b>
+				<p>
+					With just one click you can get access to the full editing history. Mac-style. <i>Roar</i>.
+				</p>
+				<img src="versions-small.png">
+			</div>
+		</div>
+		<img src="editing.png" class="fade" alt="side" />
+	</div>
+    <div class="slide">
+		<h2 class="top">Features</h2>
+    	<div class="description">
+			<ul>
+			<li>Project tree display
+			<li>File operations (create/delete/rename files and folders, hide/show hidden files)
+			<li>Syntax highlighted code editing
+			<li>OS X Lion-style automatic save
+			<li>OS X Lion-style version management with revert and side-by-side editing features
+			<li>Real time project tree filtering (using regular expressions)
+			<li>NPM integration (display currently installed packages, add/remove packages)
+			<li>Sleek interface reminiscent of TextMate
+			<li>Node.JS Documentation browsing
+			</ul>
+	    </div>
+		<h2>License</h2>
+		<div class="description">
+			<p>Nide is distributed under the MIT license.</p>
+		</div>
+    </div>
+    <div class="slide">
+		<h1 class="fit">Knockout.</h1>
+    	<div class="description">
+			.
+	    </div>
+		<h2>Nide needs your help on the ongoing <a href="http://nodeknockout.com/">Node.js Knockout</a> competition.</h2>
+		<div class="description wide">
+			<p>If you like this project, please consider voting for it.</p>
+			<p>To do so, just click this button → <iframe src="http://nodeknockout.com/iframe/the-restless" style="vertical-align: -25%" frameborder=0 scrolling=no allowtransparency=true width=115 height=25></iframe></p>
+			<p>Thanks in advance.</p>
+			<p class="center"><img src="ko.png"></p>
+		</div>
+    </div>
+	</div>
+
+
+
+  </div>
+</body>
+</html>
