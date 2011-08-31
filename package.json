@@ -8,7 +8,7 @@
     "url": ""
   },
   "engines": {
-    "node": "~v0.4.9"
+    "node": "~0.4.9"
   },
   "dependencies": {
     "nko": "~0.1.0",
