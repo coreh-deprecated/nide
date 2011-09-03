@@ -24,7 +24,7 @@
 		font-size: 200px;
 		margin: 150px 0 0 100px;
 		padding: 0;
-		line-height: 0.7em;
+		line-height: 0.8em;
 	}
 	h1.fit {
 		font-size:150px;
@@ -37,6 +37,10 @@
 	
 	h2.top {
 		margin-top: 75px;
+	}
+	
+	h2.left {
+		margin-left: 0;
 	}
 	
 	.description {
@@ -198,6 +202,37 @@
 		position: absolute;
 		right: 0;
 		top: 10px;
+		margin-right: 10px;
+	}
+	
+	#donate {
+		position: absolute;
+		right: 0;
+		top: 850px;
+		width: 300px;
+		margin-right: 30px;
+	}
+	
+	#donate input {
+		border: 1px solid #ca7c00;
+		background: #ffc555;
+		font-family: inherit;
+		font-size: inherit;
+		padding: 8px 18px;
+		border-radius: 5px;
+		box-shadow: 0 1px 1px white inset, 0 -10px 20px -10px #ca7c00 inset;
+		color: #333;
+		text-shadow: 0 1px rgba(255,255,255,0.5);
+	}
+	
+	#donate input:hover {
+		background: #ffd566;
+	}
+	
+	#donate input:active {
+		background: #ffc555;
+		box-shadow: 0 10px 20px -10px #ca7c00 inset;
+		padding: 9px 18px 7px;
 	}
 	
 	</style>
@@ -228,7 +263,18 @@
     <div id="slides">
     <div class="slide initial">
 		<div id="vote">
-			<small>Nide needs your help! <b>Please vote for us</b> on the ongoing <a href="http://nodeknockout.com/teams/the-restless">Node.JS Knockout Competition</a>.</small> → <iframe src="http://nodeknockout.com/iframe/the-restless" style="vertical-align: -25%" frameborder=0 scrolling=no allowtransparency=true width=115 height=25>	</iframe>
+			<small>Nide needs your help! <b>Please vote for us</b> on the ongoing <a href="http://nodeknockout.com/teams/the-restless">Node.JS Knockout Competition</a>.</small> → <iframe src="http://nodeknockout.com/iframe/the-restless" style="vertical-align: -25%" frameborder=0 scrolling=no allowtransparency=true width=115 height=25></iframe><small>(<a href="http://nodeknockout.com/teams/the-restless">Alternate Voting Link</a>)</small>
+		</div>
+		<div id="donate">
+			<h2 class="left">Buy me a Drink</h2>
+			<p>Nide is an Open Source project developed on my free time.</p>
+			<p>If you find it useful or interesting, you can make a donation to support it's continuous development.</p>
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="D26DPZQP2WV2U">
+			<input type="submit" name="submit" value="Donate (via Paypal)">
+			<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+			</form>
 		</div>
 		<h1>nide</h1>
 		<h2>Beautiful IDE for Node.JS</h2>
@@ -250,13 +296,14 @@
 		<h2>Vote</h2>
 		<div class="description">
 			<p>If you like this project, please consider voting for it on Node.js Knockout.</p>
-			<p>Just click this button → <iframe src="http://nodeknockout.com/iframe/the-restless" style="vertical-align: -25%" frameborder=0 scrolling=no allowtransparency=true width=115 height=25></iframe> Thank you.<p>
+			<p>Just click this button → <iframe src="http://nodeknockout.com/iframe/the-restless" style="vertical-align: -25%" frameborder=0 scrolling=no allowtransparency=true width=115 height=25></iframe> Thank you.</p>
+			<p>(If the button above doesn't work, you can go <a href="http://nodeknockout.com/teams/the-restless">here</a> and try again)<p>
 		</div>
 		<br>
 		<h2>Spread the word</h2>
 		<div class="description wide">
 			<p>Spread the word about Nide on Facebook, Twitter or Google+:</p>
-			<p><iframe src="http://www.facebook.com/plugins/like.php?href&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=false&amp;action=recommend&amp;colorscheme=light&amp;font=lucida+grande&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:35px;" allowTransparency="true"></iframe></p>
+			<p><iframe src="http://www.facebook.com/plugins/like.php?href=http://coreh.github.com/nide&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=false&amp;action=recommend&amp;colorscheme=light&amp;font=lucida+grande&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:35px;" allowTransparency="true"></iframe></p>
 			<p><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
 			<p><div class="g-plusone" data-annotation="inline"></div></p>
 				<script type="text/javascript">
@@ -366,7 +413,7 @@
 		<h2>Nide needs your help on the ongoing <a href="http://nodeknockout.com/teams/the-restless">Node.js Knockout</a> competition.</h2>
 		<div class="description wide">
 			<p>If you like this project, please consider voting for it.</p>
-			<p>To do so, just click this button → <iframe src="http://nodeknockout.com/iframe/the-restless" style="vertical-align: -25%" frameborder=0 scrolling=no allowtransparency=true width=115 height=25></iframe></p>
+			<p>To do so, just click this button → <iframe src="http://nodeknockout.com/iframe/the-restless" style="vertical-align: -25%" frameborder=0 scrolling=no allowtransparency=true width=115 height=25></iframe> (<a href="http://nodeknockout.com/teams/the-restless">Alternate Voting Link</a>)</p>
 			<p>Thanks in advance.</p>
 			<p class="center"><img src="ko.png"></p>
 		</div>
@@ -384,6 +431,15 @@
 				  })();
 				</script>
 			</p>
+			<h2 class="left">Donate</h2>
+			<p>Nide is an Open Source project developed on my free time.</p>
+			<p>If you find it useful or interesting, you can make a donation to support it's continuous development.</p>
+			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+			<input type="hidden" name="cmd" value="_s-xclick">
+			<input type="hidden" name="hosted_button_id" value="D26DPZQP2WV2U">
+			<input type="submit" name="submit" value="Donate (via Paypal)">
+			<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+			</form>
 		</div>
     </div>
 	</div>
