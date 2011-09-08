@@ -3,7 +3,7 @@
   "name": "nide",
   "keywords": ["ide", "integrated", "development", "environment", "editor", "coding", "tool"],
   "description": "Beautiful IDE for Node.js",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "repository": {
     "url": ""
   },
