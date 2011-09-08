@@ -1,6 +1,5 @@
 #!/usr/bin/env node
 
-var nko = require('nko')('EhXaOhxAiOnjSvKc');
 var program = require('commander');
 var server = require('./server');
 var project = require('./project');
@@ -41,8 +40,11 @@ program
     })})    
 
 if (process.argv.length > 2) {
+    if (process.argv[2].charAt(0) == '-') {
+    	process.argv.splice(2, 0, 'listen')
+    }
     program.parse(process.argv);
 } else {
-    project.start()
-    server.listen(program.port || process.env.PORT || 8123)
+    process.argv.push('listen');
+    program.parse(process.argv);
 }
