@@ -346,14 +346,40 @@ socket.on('version-error', function(data) {
 
 var CodeEditor = function(entry) {
     var createCodeMirror = function(parentNode, file, path, options) {
+    	var mode = undefined;
+        if (path.match(/\.js$/)) {
+            mode = 'javascript';
+        } else if (path.match(/\.coffee$/)) {
+            mode = 'coffeescript';
+        } else if (path.match(/\.json$/)) {
+            mode = { name: 'javascript', json: true };
+        } else if (path.match(/\.x?html?$/)) {
+	    mode = 'htmlmixed';
+        } else if (path.match(/\.php$/)) {
+	    mode = 'php';
+        } else if (path.match(/\.py$/)) {
+            mode = 'python';
+        } else if (path.match(/\.rb$/)) {
+            mode = 'ruby';
+        } else if (path.match(/\.lua$/)) {
+            mode = 'lua';
+        } else if (path.match(/\.(c|h|cpp|hpp|cc|m|cs|java)$/)) {
+            mode = 'clike';
+        } else if (path.match(/\.css$/)) {
+            mode = 'css';
+        } else if (path.match(/\.(xml|svg|od(t|p|s))$/)) {
+            mode = 'xml';
+        }
+   
     	return CodeMirror(parentNode, {
             value: file,
-            mode: "javascript",
+            mode: mode,
             lineNumbers: true,
             onChange: options.onChange,
             readOnly: options.readOnly,
             enterMode: 'keep',
             electricChars: false,
+            smartHome: true,
             matchBrackets: true
         });
     }
