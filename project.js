@@ -111,52 +111,59 @@ exports.chdir = function(dir) {
     }
 }
 
-exports.list = function() {
-    var ee = new EventEmitter();
+var listCache = undefined
+var addToListCache = function(path) {
     var cwd = process.cwd()
     var cwd_length = cwd.length + 1;
-    var result = {
-        name: "",
-        type: "directory",
-        path: "",
-        children: {}
-    }
-    var add = function(path) {
-        var current = result
-        var composite_path = ""
-        var components = path.substr(cwd_length).split('/')
-        for (var i = 0; i < components.length - 1; i++) {
-            composite_path = composite_path + "/" + components[i]
-            if (!current.children[components[i]]) {
-                current.children[components[i]] = {
-                    name: components[i],
-                    type: "directory",
-                    path: composite_path,
-                    children: {}
-                }
-            }            
-            current = current.children[components[i]]
-        }
-        if (components[i] != '.') {
-            composite_path = composite_path + "/" + components[i]
+    var current = listCache
+    var composite_path = ""
+    var components = path.substr(cwd_length).split('/')
+    for (var i = 0; i < components.length - 1; i++) {
+        composite_path = composite_path + "/" + components[i]
+        if (!current.children[components[i]]) {
             current.children[components[i]] = {
                 name: components[i],
-                type: "file",
+                type: "directory",
                 path: composite_path,
                 children: {}
             }
+        }            
+        current = current.children[components[i]]
+    }
+    if (components[i] != '.') {
+        composite_path = composite_path + "/" + components[i]
+        current.children[components[i]] = {
+            name: components[i],
+            type: "file",
+            path: composite_path,
+            children: {}
         }
     }
-    find(cwd)
-    .on('file', function(path) {
-        add(path)        
-    })
-    .on('directory', function(path) {
-        add(path + "/.")        
-    })
-    .on('end', function() {
-        ee.emit('success', result)
-    })
+}
+exports.list = function() {
+    var ee = new EventEmitter();
+    if (!listCache) {
+        listCache = {
+            name: "",
+            type: "directory",
+            path: "",
+            children: {}
+        }
+        find(process.cwd())
+        .on('file', function(path) {
+            addToListCache(path)        
+        })
+        .on('directory', function(path) {
+            addToListCache(path + "/.")        
+        })
+        .on('end', function() {
+            ee.emit('success', listCache)
+        })
+    } else {
+    	process.nextTick(function() {
+            ee.emit('success', listCache)
+        })
+    }
     return ee
 }
 
@@ -174,6 +181,7 @@ exports.add = function(path) {
                 fs.writeFile(process.cwd() + path, '', 'utf8', function(err) {
                     if (err) ee.emit('error', err);
                     else {
+                        addToListCache(process.cwd() + path)
                         ee.emit('success');
                     }
                 })
@@ -198,6 +206,7 @@ exports.addFolder = function(path) {
                 fs.mkdir(process.cwd() + path, '755', function(err) {
                     if (err) ee.emit('error', err);
                     else {
+                        addToListCache(path + '/.')
                         ee.emit('success');
                     }
                 })
@@ -216,6 +225,8 @@ exports.remove = function(path) {
     } else {
         exec('rm -rf -- ' + process.cwd() + path, function(err) {
             if (!err) {
+                // TODO: Implement removal from list cache
+                listCache = undefined
                 ee.emit('success')
             } else {
                 ee.emit('err', err)
