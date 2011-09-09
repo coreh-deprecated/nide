@@ -78,8 +78,10 @@ CodeMirror.defineMode("javascript", function(config, parserConfig) {
     else if (isOperatorChar.test(ch)) {
       stream.eatWhile(isOperatorChar);
       return ret("operator", null, stream.current());
-    }
-    else {
+    } else if (ch == '#') {
+        stream.skipToEnd();
+        return ret("error", "error");
+    } else {
       stream.eatWhile(/[\w\$_]/);
       var word = stream.current(), known = keywords.propertyIsEnumerable(word) && keywords[word];
       return known ? ret(known.type, known.style, word) :

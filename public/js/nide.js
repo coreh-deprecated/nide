@@ -378,6 +378,7 @@ var CodeEditor = function(entry) {
             onChange: options.onChange,
             readOnly: options.readOnly,
             enterMode: 'keep',
+            tabMode: 'shift',
             electricChars: false,
             smartHome: true,
             matchBrackets: true
