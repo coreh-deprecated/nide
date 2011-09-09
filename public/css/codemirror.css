@@ -50,10 +50,21 @@
 span.CodeMirror-selected {
   background: #ccc !important;
   color: HighlightText !important;
+  padding: 2px 0;
+  border-radius: 0 !important;
 }
 .CodeMirror-focused span.CodeMirror-selected {
   background: Highlight !important;
 }
 
-.CodeMirror-matchingbracket {color: #0f0 !important;}
-.CodeMirror-nonmatchingbracket {color: #f22 !important;}
+.CodeMirror-matchingbracket {
+  color: #641 !important;
+  background: #fe7;
+  box-shadow: 0 0 10px #fe7;
+  border-radius: 4px;
+}
+.CodeMirror-nonmatchingbracket {
+  color: #f22 !important;
+  box-shadow: 0 0 2px #f22;
+  border-radius: 4px;
+}

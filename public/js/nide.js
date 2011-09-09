@@ -345,6 +345,18 @@ socket.on('version-error', function(data) {
 })
 
 var CodeEditor = function(entry) {
+    var createCodeMirror = function(parentNode, file, path, options) {
+    	return CodeMirror(parentNode, {
+            value: file,
+            mode: "javascript",
+            lineNumbers: true,
+            onChange: options.onChange,
+            readOnly: options.readOnly,
+            enterMode: 'keep',
+            electricChars: false,
+            matchBrackets: true
+        });
+    }
     var codeMirror;
     var galaxyBackground = document.createElement('div')
     galaxyBackground.innerHTML = 
@@ -411,12 +423,10 @@ var CodeEditor = function(entry) {
                 }, time).addClass('windowed');
                 (function(versionEditor, i) {
                     loadVersion(version.uuid, function(err, contents) {
-                        var codeMirror = CodeMirror(versionEditor, {
-                            value: contents || err,
-                            readOnly: 'true',
-                            mode: "javascript",
-                            lineNumbers: true
-                        })
+                        if (err) {
+                            contents = '<ERROR: Could not load file contents>'
+                        }
+                        var codeMirror = createCodeMirror(versionEditor, contents, entry.path, { readOnly: true })
                         versions[i].content = contents;
                     })
                 })(versionEditor, i);
@@ -513,15 +523,10 @@ var CodeEditor = function(entry) {
     editor.appendChild(actionsBar)
     editor.className = 'code-editor'
     loadFile(entry.path, function(err, file) {
-    codeMirror = CodeMirror(editor, {
-            value: file,
-            mode: "javascript",
-            lineNumbers: true,
-            onChange: function(editor) {
-                content = editor.getValue()
-                changed = true
-            }
-        });
+        codeMirror = createCodeMirror(editor, file, entry.path, { onChange: function(editor) {
+            content = editor.getValue()
+            changed = true
+        }})
         
         var content = file
         var changed = false;
