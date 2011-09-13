@@ -377,6 +377,7 @@ var CodeEditor = function(entry) {
             lineNumbers: true,
             onChange: options.onChange,
             readOnly: options.readOnly,
+            indentUnit: 4,
             enterMode: 'keep',
             tabMode: 'shift',
             electricChars: false,
