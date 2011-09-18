@@ -4,9 +4,8 @@
   "keywords": ["ide", "integrated", "development", "environment", "editor", "coding", "tool"],
   "description": "Beautiful IDE for Node.js",
   "version": "0.1.3",
-  "repository": {
-    "url": ""
-  },
+  "repository": "http://github.com/Coreh/nide.git",
+  "homepage": "http://coreh.github.com/nide/",
   "engines": {
     "node": "~0.4.9"
   },
