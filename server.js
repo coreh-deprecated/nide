@@ -36,7 +36,7 @@ exports.listen = function(port) {
     switch (process.platform) {
       case "win32": browser = "start"; break;
       case "darwin": browser = "open"; break;
-      default: browser = "google-chrome"; break;
+      default: browser = "xdg-open"; break;
     }
     // if this fails, it'll just exit with a non-zero code.
     child_process.spawn(browser, [nideUrl]);
