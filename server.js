@@ -1,6 +1,7 @@
 var express = require('express');
 var sockeio = require('socket.io')
 var project = require('./project.js')
+var child_process = require('child_process')
 
 var server = express.createServer();
 
@@ -29,7 +30,16 @@ exports.listen = function(port) {
         });
     });
     
-    console.log("Nide listening on port " + port + ".");
+    console.log("Nide running at http://localhost:" + port);
+    var nideUrl = "http://localhost:" + port;
+    var browser;
+    switch (process.platform) {
+      case "win32": browser = "start"; break;
+      case "darwin": browser = "open"; break;
+      default: browser = "google-chrome"; break;
+    }
+    // if this fails, it'll just exit with a non-zero code.
+    child_process.spawn(browser, [nideUrl]);
     
     io.sockets.on('connection', function(socket) {
         project.list()
