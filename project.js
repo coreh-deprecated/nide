@@ -202,11 +202,10 @@ exports.addFolder = function(path) {
             if (!err) {
                 ee.emit('error', 'Folder already exists');
             } else {
-                console.log(process.cwd() + path)
                 fs.mkdir(process.cwd() + path, '755', function(err) {
                     if (err) ee.emit('error', err);
                     else {
-                        addToListCache(path + '/.')
+                        addToListCache(process.cwd() + path + '/.')
                         ee.emit('success');
                     }
                 })
