@@ -212,6 +212,13 @@ var renameFile = function(oldpath, newpath) {
     socket.emit('rename', { oldpath: oldpath, newpath: newpath })
 }
 
+socket.on('rename-success', function(data) {
+    selectFile({
+        type: 'file',
+        path: data.path
+    }, fileHtmlElementByPath);
+})
+
 var removeFile = function() {
     socket.emit('remove', currentFile.path)
 }

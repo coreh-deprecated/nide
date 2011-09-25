@@ -225,7 +225,7 @@ exports.remove = function(path) {
     } else {
         exec('rm -rf -- ' + process.cwd() + path, function(err) {
             if (!err) {
-                // TODO: Implement removal from list cache
+                // Invalidate file list cache
                 listCache = undefined
                 ee.emit('success')
             } else {
@@ -247,6 +247,8 @@ exports.rename = function(oldpath, newpath) {
     } else {
         fs.rename(process.cwd() + oldpath, process.cwd() + newpath, function(err) {
             if (!err) {
+                // Invalidate file list cache
+                listCache = undefined
                 ee.emit('success')
             } else {
                 ee.emit('err', err)

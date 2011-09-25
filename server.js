@@ -116,8 +116,9 @@ exports.listen = function(port) {
             project.rename(data.oldpath, data.newpath)
             .on('success', function(file) {
                 project.list()
-                .on('success', function(data) {
-                    socket.emit('list', data)
+                .on('success', function(list) {
+                    socket.emit('list', list)
+                    socket.emit('rename-success', { path: data.newpath })
                 })
             })
             .on('error', function(err) {
