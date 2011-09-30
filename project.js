@@ -1,6 +1,6 @@
 var fs = require('fs')
 var EventEmitter = require('events').EventEmitter
-var find = require('findit').find
+var dive = require('dive')
 var exec = require('child_process').exec
 var uuid = require('node-uuid')
 
@@ -16,7 +16,7 @@ var loadVersionHistory = function() {
     try {
         versionHistory = JSON.parse(fs.readFileSync(process.cwd() + '/.nide/versions.json'))
     } catch (e) {
-        
+
     }
 }
 
@@ -127,7 +127,7 @@ var addToListCache = function(path) {
                 path: composite_path,
                 children: {}
             }
-        }            
+        }
         current = current.children[components[i]]
     }
     if (components[i] != '.') {
@@ -149,15 +149,20 @@ exports.list = function() {
             path: "",
             children: {}
         }
-        find(process.cwd())
-        .on('file', function(path) {
-            addToListCache(path)        
-        })
-        .on('directory', function(path) {
-            addToListCache(path + "/.")        
-        })
-        .on('end', function() {
-            ee.emit('success', listCache)
+        dive(process.cwd(), { recursive: true, all: true, directories: true },
+            function(err, path) {
+          if (err) throw err
+
+          fs.stat(path, function(err, stats) {
+            if (err) throw err
+
+            if (stats.isFile())
+              addToListCache(path)
+            else
+              addToListCache(path + "/.")
+          })
+        }, function() {
+          ee.emit('success', listCache)
         })
     } else {
     	process.nextTick(function() {
