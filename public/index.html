@@ -2,25 +2,36 @@
 <html>
 <head>
 	<title>nide</title>
+	
 	<link rel="stylesheet" href="css/style.css">
+	
 	<link rel="stylesheet" href="css/codemirror.css">
 	<link rel="stylesheet" href="css/codemirror-default.css">
-	<script src="/socket.io/socket.io.js"></script>
-	<script src="js/jquery-1.6.2.min.js"></script>
-	<script src="js/modernizr-2.0.6.js"></script>
-	<script src="js/transformjs.1.0.beta.2.js"></script>
+
+	<!-- External Dependencies -->
+	<script src="socket.io/socket.io.js"></script>
+	<script src="js/external/jquery-1.6.2.min.js"></script>
+	<script src="js/external/modernizr-2.0.6.js"></script>
+	<script src="js/external/transformjs.1.0.beta.2.js"></script>
+	<script src="js/external/codemirror.js"></script>
+	
+	<!-- CodeMirror syntax highlighting modes -->
+	<script src="js/external/mode/javascript/javascript.js"></script>
+	<script src="js/external/mode/coffeescript/coffeescript.js"></script>
+	<script src="js/external/mode/htmlmixed/htmlmixed.js"></script>
+	<script src="js/external/mode/php/php.js"></script>
+	<script src="js/external/mode/python/python.js"></script>
+	<script src="js/external/mode/ruby/ruby.js"></script>
+	<script src="js/external/mode/lua/lua.js"></script>
+	<script src="js/external/mode/css/css.js"></script>        
+	<script src="js/external/mode/clike/clike.js"></script>        
+	<script src="js/external/mode/xml/xml.js"></script>
+	
 	<script src="js/nide.js"></script>
-	<script src="js/codemirror.js"></script>
-	<script src="js/mode/javascript/javascript.js"></script>
-	<script src="js/mode/coffeescript/coffeescript.js"></script>
-	<script src="js/mode/htmlmixed/htmlmixed.js"></script>
-	<script src="js/mode/php/php.js"></script>
-	<script src="js/mode/python/python.js"></script>
-	<script src="js/mode/ruby/ruby.js"></script>
-	<script src="js/mode/lua/lua.js"></script>
-	<script src="js/mode/css/css.js"></script>        
-	<script src="js/mode/clike/clike.js"></script>        
-	<script src="js/mode/xml/xml.js"></script>
+	<script src="js/CodeEditor.js"></script>
+	<script src="js/DirectoryEditor.js"></script>
+	<script src="js/DocumentationViewer.js"></script>
+	<script src="js/NPMEditor.js"></script>
 </head>
 <body>
 	<div id="sidebar">
