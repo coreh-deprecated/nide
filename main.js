@@ -17,7 +17,7 @@ var checkForDependencies = function(callback) {
 }
 
 program
-    .version('0.1.3')
+    .version('0.1.4')
     .option('-p, --port <number>', 'use a custom http port')
  
 program
