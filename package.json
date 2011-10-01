@@ -11,9 +11,9 @@
   },
   "dependencies": {
     "express": "~2.4.6",
-    "commander": "~0.1.0",
+    "commander": "~0.2.0",
     "dive": ">=0.1.0",
-    "socket.io": "~0.7.9",
+    "socket.io": "~0.8.4",
     "node-uuid": "~1.2.0"
   },
   "bin": {
