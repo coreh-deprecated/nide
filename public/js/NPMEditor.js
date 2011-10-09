@@ -32,7 +32,7 @@ var NPMEditor = function(entry) {
         var package = prompt('Package to be installed:', 'package-name')
         var save = $(".save", editor)[0].checked
         if (package) {
-            socket.emit('install', { package: package, save: save })
+            connection.installPackage(package, save);
             sidebarEntry.addClass('syncing')
         }
     })
@@ -47,13 +47,13 @@ var NPMEditor = function(entry) {
             }
             if (selected.length > 0) {
                 var save = $(".save", editor)[0].checked
-                socket.emit('uninstall', { package: selected.join(' '), save: save })
+                connection.uninstallPackage(selected, save);
                 sidebarEntry.addClass('syncing')
             }
         }
     })
     $(".refresh", editor).click(function(){
-        socket.emit('packages-refresh')
+        connection.refreshPackages()
         sidebarEntry.addClass('syncing')
     })
     return editor

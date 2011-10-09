@@ -9,7 +9,7 @@ var DirectoryEditor = function(entry) {
     $(renameButton).click(function(e) {
         var newName = prompt('New folder name:', entry.name)
         if (newName) {
-            renameFile(entry.path, entry.path.replace(/\/[^\/]+$/, '/' + newName))
+            connection.renameFile(entry.path, entry.path.replace(/\/[^\/]+$/, '/' + newName))
         }
     })
     actionsBar.appendChild(renameButton)

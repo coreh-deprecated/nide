@@ -88,13 +88,13 @@
         $(actionsBar.renameButton).click(function(e) {
             var newName = prompt('New filename:', entry.name)
             if (newName) {
-                renameFile(entry.path, entry.path.replace(/\/[^\/]+$/, '/' + newName))
+                connection.renameFile(entry.path, entry.path.replace(/\/[^\/]+$/, '/' + newName))
             }
         })
         
         var loadVersionNumbered = function(i) {
             if (!versions[i].content) {
-                loadVersion(versions[i].uuid, function(err, contents) {
+                connection.loadVersion(versions[i].uuid, function(err, contents) {
                     if (err) {
                         contents = '<ERROR: Could not load file contents>'
                     }
@@ -255,7 +255,7 @@
         }
         
         $(actionsBar.versionsButton).click(function(e) {
-            loadVersions(entry.path, function(err, v) {
+            connection.loadVersions(entry.path, function(err, v) {
                 if (err) {
                     alert('Could not load versions: ' + err)
                 } else {
@@ -272,7 +272,7 @@
         editor.appendChild(actionsBar)
         editor.className = 'code-editor'
         
-        loadFile(entry.path, function(err, file) {
+        connection.loadFile(entry.path, function(err, file) {
             codeMirror = createCodeMirror(editor, file, entry.path, { onChange: function(editor) {
                 content = editor.getValue()
                 changed = true
@@ -288,7 +288,7 @@
                     saving = true;
                     var selected = $('.selected')
                     selected.addClass('syncing')
-                    saveFile(entry.path, content, function(err){
+                    connection.saveFile(entry.path, content, function(err){
                         if (!err) {
                             changed = false
                             done = true;
