@@ -352,6 +352,7 @@ exports.install = function(package, save) {
         if (err) {
             ee.emit('error', stderr);
         } else {
+            listCache = undefined
             ee.emit('success')
         }
     })
@@ -360,11 +361,11 @@ exports.install = function(package, save) {
 
 exports.uninstall = function(package, save) {
     var ee = new EventEmitter()
-    console.log(package)
     exec('npm uninstall' + (save ? ' --save' : '') + ' -- ' + package, function(err, stdout, stderr) {
         if (err) {
             ee.emit('error', stderr);
         } else {
+            listCache = undefined
             ee.emit('success')
         }
     })

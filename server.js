@@ -147,6 +147,10 @@ exports.listen = function(port) {
                 .on('success', function(packages) {
                     socket.emit('packages', packages)
                 })
+                project.list()
+                .on('success', function(list) {
+                    socket.emit('list', list)
+                })
             })
             .on('error', function(err) {
                 socket.emit('install-error', err)
@@ -158,6 +162,10 @@ exports.listen = function(port) {
                 project.packages()
                 .on('success', function(packages) {
                     socket.emit('packages', packages)
+                })
+                project.list()
+                .on('success', function(list) {
+                    socket.emit('list', list)
                 })
             })
             .on('error', function(err) {
