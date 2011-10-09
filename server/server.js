@@ -9,7 +9,7 @@ server.configure(function(){
     server.use(express.bodyParser());
     server.use(express.methodOverride());
     server.use(server.router);
-    server.use(express.static(__dirname + '/public'));
+    server.use(express.static(__dirname + '/../client'));
 });
 
 var io = sockeio.listen(server, { 'log level': 1 })

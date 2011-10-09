@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 
 var program = require('commander');
-var server = require('./server');
-var project = require('./project');
+var server = require('./server/server');
+var project = require('./server/project');
 var exec = require('child_process').exec
 
 var checkForDependencies = function(callback) {
