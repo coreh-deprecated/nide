@@ -15,11 +15,11 @@ var ServerConnection = function() {
     })
 
     socket.on('welcome', function() {
-        displayWelcomeScreen();
+        ui.displayWelcomeScreen();
     })
 
     socket.on('list', function (data) {
-        updateFileListing(data.children)
+        ui.updateFileListing(data.children)
     });
 
     this.renameFile = function(oldpath, newpath) {
@@ -27,54 +27,22 @@ var ServerConnection = function() {
     }
 
     socket.on('rename-success', function(data) {
-        selectFile({
+        ui.selectFile({
             type: 'file',
             path: data.path
-        }, fileHtmlElementByPath);
+        });
     })
 
-    this.removeFile = function() {
-        socket.emit('remove', currentFile.path)
+    this.removeFile = function(path) {
+        socket.emit('remove', path)
     }
 
-    this.addFolder = function(filename) {
-        var path;
-        if (!currentFile) {
-            path = '/'
-        } else {
-            switch(currentFile.type) {
-                case 'directory':
-                    path = currentFile.path + '/'
-                    break;
-                case 'file':
-                    path = currentFile.path.replace(/\/[^\/]+$/, '/')
-                    break;
-                default:
-                    path = '/'
-                    break;
-            }
-        }
-        socket.emit('add-folder', path + filename);
+    this.addFolder = function(path) {
+        socket.emit('add-folder', path);
     }
 
-    this.addFile = function(filename) {
-        var path;
-        if (!currentFile) {
-            path = '/'
-        } else {
-            switch(currentFile.type) {
-                case 'directory':
-                    path = currentFile.path + '/'
-                    break;
-                case 'file':
-                    path = currentFile.path.replace(/\/[^\/]+$/, '/')
-                    break;
-                default:
-                    path = '/'
-                    break;
-            }
-        }
-        socket.emit('add', path + filename);
+    this.addFile = function(path) {
+        socket.emit('add', path);
     }
 
     var loadFileCallbacks = {}

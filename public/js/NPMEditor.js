@@ -1,3 +1,6 @@
+var packages = []
+var updatePackages = function() {}
+
 var NPMEditor = function(entry) {
     var editor = document.createElement('div')
     var sidebarEntry = $('.selected')
