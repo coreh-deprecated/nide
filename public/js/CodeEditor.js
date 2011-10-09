@@ -44,8 +44,8 @@
             '<h1 class="then">Then</h1>' +
             '<button class="done">Done</button>' +
             '<button class="revert">Revert</button>' +
-            '<button class="backward" title="Go backward in time"><img src="img/backward.png"</button>' +
-            '<button class="forward" title="Go forward in time"><img src="img/forward.png"</button>' +
+            '<button class="backward" title="Go backward in time"><img src="img/backward.png" alt="Backward"></button>' +
+            '<button class="forward" title="Go forward in time"><img src="img/forward.png" alt="Forward"></button>' +
             '<div class="no-previous">There are no previous versions for this file.</div>';
 
         galaxyBackground.now = $(".now", galaxyBackground)[0];
