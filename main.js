@@ -4,6 +4,9 @@ var program = require('commander');
 var server = require('./server/server');
 var project = require('./server/project');
 var exec = require('child_process').exec
+var fs = require('fs')
+
+var packageJSON = JSON.parse(fs.readFileSync(__dirname + '/package.json', 'utf-8'))
 
 var checkForDependencies = function(callback) {
     exec('which npm', function(err, stdout, stderr) {
@@ -17,7 +20,7 @@ var checkForDependencies = function(callback) {
 }
 
 program
-    .version('0.1.4')
+    .version(packageJSON.version)
     .option('-p, --port <number>', 'use a custom http port')
  
 program
