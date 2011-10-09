@@ -144,6 +144,40 @@ $(function(){
             }
         }
     })
+    
+    var shouldDismissGearMenuOnMouseUp = false;
+    var hasJustDisplayedGearMenu = false;
+    $('#gear-menu').mousedown(function(e){
+        shouldDismissGearMenuOnMouseUp = false;
+        hasJustDisplayedGearMenu = true;
+        $('#gear-menu-popup').show()
+        setTimeout(function(){
+            shouldDismissGearMenuOnMouseUp = true;
+        }, 500)
+        setTimeout(function(){
+            hasJustDisplayedGearMenu = false;
+        }, 0)
+    })
+    
+    $('#gear-menu').mouseup(function(){
+        if (shouldDismissGearMenuOnMouseUp) {
+            $('#gear-menu-popup').fadeOut(200)
+        }
+    })
+    
+    $('#gear-menu-popup').mousedown(function(e) {
+        e.stopPropagation();
+    })
+    
+    $('#gear-menu-popup').mouseup(function(e) {
+        $('#gear-menu-popup').fadeOut(200);
+    })
+    
+    $(document.body).mousedown(function() {
+        if (!hasJustDisplayedGearMenu) {
+            $('#gear-menu-popup').fadeOut(200);
+        }
+    })
 })
 
 var updateFileListing = function(files) {

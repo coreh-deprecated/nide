@@ -29,6 +29,11 @@ body {
 	height: 26px;
 }
 
+#options button img, button.gradient img {
+	-webkit-user-drag: none;
+	-moz-user-drag: none;
+}
+
 #options button:active, button.gradient:active {
 	background: #ccc;
 }
@@ -402,4 +407,79 @@ body {
 .setup .actions {
 	text-align: right;
 	margin-top: 10px;
+}
+
+.popup-menu {
+	position: absolute;
+	margin: 0;
+	background: rgba(255,255,255,0.95);
+	border-radius: 4px;
+	padding: 4px 0;
+	box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 10px 15px rgba(0,0,0,0.25);
+	font-size: 10pt;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	cursor: default;
+	display: none;
+}
+
+.popup-menu li {
+	padding: 2px 15px 2px 20px;
+	list-style: none;
+}
+
+.popup-menu li.checkbox {
+	padding-left: 0;
+}
+
+.popup-menu li.checkbox input[type='checkbox'] {
+	margin-left: 5px;
+	position: absolute;
+	visibility: hidden;
+}
+
+.popup-menu li.checkbox input[type='checkbox']:checked + label::before {
+	content: '✓';
+	margin-left: 6px;
+	position: absolute;
+	left: 0;
+	opacity: 0.8;
+}
+
+.popup-menu li.separator {
+	padding: 1px;
+}
+
+.popup-menu li.separator:hover {
+	background: none;
+	box-shadow: none;
+}
+
+.popup-menu li.separator hr {
+	height: 1px;
+	border: none;
+	background: rgba(0,0,0,0.15);
+	margin: 4px 0;
+}
+
+.popup-menu li.checkbox label {
+	padding-left: 20px;
+}
+
+.popup-menu li:hover {
+	background: #3355f7;
+	box-shadow: 0 1px 0 #4b60ed inset, 0 -1px 0 #2b50ea inset, 0 10px 5px -5px #5569f7 inset;
+	color: white;
+}
+
+#gear-menu-popup {
+	bottom: 25px;
+	left: 225px;
+	z-index: 100;
+}
+
+.right {
+	float: right;
+	position: relative;
+	left: 1px;
 }

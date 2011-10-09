@@ -60,9 +60,12 @@
 	</div>
 	<div id="options">
 		<button id="add-file" title="New File"><img src="img/add.png"></button><button id="remove-file" title="Remove File"><img src="img/remove.png"></button><button id="add-folder" title="New Folder"><img src="img/create-folder.png"></button>
-		<label><input type="checkbox" id="show-hidden"> Show hidden files</label>
+		<button id="gear-menu" class="right" title="More Options"><img src="img/gear.png"></button>
 	</div>
 	<div id="content"></div>
+	<ul id="gear-menu-popup" class="popup-menu">
+		<li class="checkbox"><input type="checkbox" id="show-hidden"><label for="show-hidden">Show Hidden Files</label>
+	</ul>
 	<div id="lightbox">
 		<div class="setup">
 			<h1>Welcome to nide!</h1>
