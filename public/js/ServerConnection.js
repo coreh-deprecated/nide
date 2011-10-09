@@ -15,52 +15,11 @@ var ServerConnection = function() {
     })
 
     socket.on('welcome', function() {
-        $('#lightbox').fadeIn()
-        $('.setup form').bind('submit', function(e) {
-            var name = $(".setup input[name='name']")[0].value;
-            var description = $(".setup input[name='description']")[0].value;
-            var author = $(".setup input[name='author']")[0].value;
-            var version = $(".setup input[name='version']")[0].value;
-            if (!version.match(/^[0-9]+\.[0-9]+\.[0-9]+$/)) {
-                alert('Please enter the version number in the X.Y.Z format.')
-                e.preventDefault();
-                return;
-            }
-            e.preventDefault()
-            socket.emit('add', '/package.json')
-            socket.emit('save', { path: '/package.json', content: JSON.stringify({
-                name: name,
-                description: description,
-                version: version,
-                author: author,
-                dependencies: {},
-                devDependencies: {}
-            }, undefined, '    ')})
-            $('#lightbox').fadeOut()
-            socket.emit('skip-welcome')
-        })
-        $('.setup .skip').click(function(){
-            $('#lightbox').fadeOut()
-            socket.emit('skip-welcome')
-        })
+        displayWelcomeScreen();
     })
 
     socket.on('list', function (data) {
-        searchResultHtmlElementByPath = {}
-        fileHtmlElementByPath = {}
-        fileEntries = []
-        var ul = document.createElement("ul")
-        for (var childEntry in data.children) {
-            addHTMLElementForFileEntry(data.children[childEntry], ul, fileEntries, fileHtmlElementByPath)
-        }
-        document.getElementById('files').innerHTML = '';
-        document.getElementById('files').appendChild(ul);
-        ul = document.createElement("ul")
-        for (var i = 0; i < fileEntries.length; i++) {
-            addHTMLElementForFileEntry(fileEntries[i], ul, null, searchResultHtmlElementByPath, true)
-        }
-        document.getElementById('search-results').innerHTML = '';
-        document.getElementById('search-results').appendChild(ul);
+        updateFileListing(data.children)
     });
 
     this.renameFile = function(oldpath, newpath) {
@@ -224,5 +183,9 @@ var ServerConnection = function() {
     
     this.refreshPackages = function() {
         socket.emit('packages-refresh');
+    }
+    
+    this.skipWelcome = function() {
+        socket.emit('skip-welcome')
     }
 }
