@@ -126,6 +126,7 @@ exports.listen = function(port) {
             .on('success', function(file) {
                 listFilesAndUpdateClient()
                 listChangesAndUpdateClient()
+                socket.emit('rename-success', { path: data.newpath })
             })
             .on('error', function(err) {
                 socket.emit('rename-error', { path: data.oldpath, error: err })

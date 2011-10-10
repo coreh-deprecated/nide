@@ -57,6 +57,8 @@ exports.start = function() {
 
 exports.shouldDisplayWelcome = false
 
+exports.shouldUseGit = true
+
 exports.init = function() {
     try {
         fs.mkdirSync('.nide', '755')
@@ -227,15 +229,35 @@ exports.remove = function(path) {
             ee.emit('error', 'Invalid Path')
         })
     } else {
-        exec('rm -rf -- ' + process.cwd() + path, function(err) {
-            if (!err) {
-                // Invalidate file list cache
-                listCache = undefined
-                ee.emit('success')
-            } else {
-                ee.emit('err', err)
-            }
-        })
+        if (exports.shouldUseGit) {
+            exec('git rm -rf -- "' + process.cwd() + path + '"', function(err) {
+                if (!err) {
+                    // Invalidate file list cache
+                    listCache = undefined
+                    ee.emit('success')
+                } else {
+                    exec('rm -rf -- "' + process.cwd() + path + '"', function(err) {
+                        if (!err) {
+                            // Invalidate file list cache
+                            listCache = undefined
+                            ee.emit('success')
+                        } else {
+                            ee.emit('err', err)
+                        }
+                    })
+                }
+            })
+        } else {
+            exec('rm -rf -- "' + process.cwd() + path + '"', function(err) {
+                if (!err) {
+                    // Invalidate file list cache
+                    listCache = undefined
+                    ee.emit('success')
+                } else {
+                    ee.emit('err', err)
+                }
+            })
+        }
     }
     return ee;
 }
@@ -249,15 +271,35 @@ exports.rename = function(oldpath, newpath) {
             ee.emit('error', 'Invalid Path')
         })
     } else {
-        fs.rename(process.cwd() + oldpath, process.cwd() + newpath, function(err) {
-            if (!err) {
-                // Invalidate file list cache
-                listCache = undefined
-                ee.emit('success')
-            } else {
-                ee.emit('err', err)
-            }
-        })
+        if (exports.shouldUseGit) {
+            exec('git mv -- "' + process.cwd() + oldpath + '" "' + process.cwd() + newpath + '"', function(err) {
+                if (!err) {
+                    // Invalidate file list cache
+                    listCache = undefined
+                    ee.emit('success')
+                } else {
+                    fs.rename(process.cwd() + oldpath, process.cwd() + newpath, function(err) {
+                        if (!err) {
+                            // Invalidate file list cache
+                            listCache = undefined
+                            ee.emit('success')
+                        } else {
+                            ee.emit('err', err)
+                        }
+                    })
+                }
+            })
+        } else {
+            fs.rename(process.cwd() + oldpath, process.cwd() + newpath, function(err) {
+                if (!err) {
+                    // Invalidate file list cache
+                    listCache = undefined
+                    ee.emit('success')
+                } else {
+                    ee.emit('err', err)
+                }
+            })
+        }
     }
     return ee;
 }

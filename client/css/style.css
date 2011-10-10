@@ -397,12 +397,22 @@ body {
 	width: 100%;
 }
 
+#content .changes {
+	background: #eed;
+	padding: 0 0 10px;
+	margin: 30px 0;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.15) inset, 0 -1px 0 rgba(0,0,0,0.15) inset, 0 2px 20px -15px black, 0 15px 20px -10px white inset;
+	text-shadow: 0 1px rgba(255,255,255,0.8)
+}
+
 #content .change {
 	padding: 4px;
 	margin: 4px 8px;
-	background: #fafafa;
+	background: #fafaea;
 	border-radius: 4px;
 	box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 0 5px 15px white inset, 0 2px 4px rgba(0,0,0,0.05);
+	font-size: 110%;
+	color: #333311;
 }
 
 #content .change label {
@@ -419,16 +429,20 @@ body {
 
 #content .change-viewer form input[type='text'], #content .change-viewer form textarea {
 	display: block;
-	width: 99%;
-	max-width: 99%;
+	width: 98%;
+	max-width: 98%;
 	margin: 2px auto;
 	font-family: inherit;
 	font-size: 120%;
-	padding: 4px;
+	padding: 8px;
 	-webkit-box-sizing: content-box;
 	border: none;
 	box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset, 0 0 0 1px rgba(0,0,0,0.1) inset;
 	border-radius: 3px;
+}
+
+#content .change-viewer form textarea {
+	height: 100px;
 }
 
 
@@ -501,6 +515,10 @@ body {
 .setup .actions {
 	text-align: right;
 	margin-top: 10px;
+}
+
+.actions.right-aligned {
+	text-align: right;
 }
 
 .popup-menu {
@@ -576,4 +594,14 @@ body {
 	float: right;
 	position: relative;
 	left: 1px;
+}
+
+#changes {
+	display: none;
+}
+
+.clip {
+	position: absolute;
+	margin-top: -45px;
+	right: 0;
 }
