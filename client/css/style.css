@@ -135,6 +135,59 @@ body {
 	padding: 0;
 }
 
+#sidebar .badge {
+	background: rgba(0,0,0,0.8);
+	color: #fff;
+	font-size: 75%;
+	text-shadow: 0 1px black;
+	padding: 2px 8px;
+	border-radius: 20px;
+	font-weight: bold;
+	box-shadow: 0 2px 0 rgba(0,0,0,0.1), 0 0 0 1px rgba(255,255,255,0.1);
+	cursor: pointer;
+}
+
+#sidebar .badge.selected {
+	background: rgba(55,120,194,0.3);
+	box-shadow: 0 1px 2px rgba(0,0,0,0.2) inset, 0 1px 0 rgba(255,255,255,0.5);
+	color: #3d5979;
+	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+#sidebar .badge .short {
+	-webkit-transition: max-width 0.15s ease, opacity 0.15s ease;
+	display: inline-block;
+	max-width: 10px;
+	overflow: hidden;
+	opacity: 1;
+}
+
+#sidebar .badge:hover .short, #sidebar .badge.selected .short {
+	max-width: 0px;
+	opacity: 0;
+}
+
+#sidebar .badge .description {
+	-webkit-transition: max-width 0.5s ease, opacity 0.5s ease;
+	margin-left: 3px;
+	margin-right: -3px;
+	display: inline-block;
+	max-width: 0;
+	overflow: hidden;
+	opacity: 0;
+}
+
+#sidebar .badge:active {
+	background: rgba(0,0,0,0.5);
+}
+
+#sidebar .badge:hover .description, #sidebar .badge.selected .description {
+	max-width: 120px;
+	overflow: hidden;
+	margin-right: 0;
+	opacity: 1;
+}
+
 #content {
 	position: absolute;
 	left: 250px;
@@ -307,6 +360,12 @@ body {
 	background: url('../img/noise.png') #fff;
 }
 
+#content .change-viewer {
+	width: 100%;
+	height: 100%;
+	background: url('../img/noise.png') #eee;
+}
+
 #content .documentation-viewer iframe {
 	border: none;
 	position: absolute;
@@ -337,6 +396,41 @@ body {
 	overflow-x: auto;
 	width: 100%;
 }
+
+#content .change {
+	padding: 4px;
+	margin: 4px 8px;
+	background: #fafafa;
+	border-radius: 4px;
+	box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 0 5px 15px white inset, 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#content .change label {
+	display: block;
+}
+
+#content .change-viewer form {
+	padding: 4px;
+	margin: 4px 8px;
+	background: #fafafa;
+	border-radius: 4px;
+	box-shadow: 0 0 0 1px rgba(0,0,0,0.1), 0 5px 15px white inset, 0 2px 4px rgba(0,0,0,0.05);
+}
+
+#content .change-viewer form input[type='text'], #content .change-viewer form textarea {
+	display: block;
+	width: 99%;
+	max-width: 99%;
+	margin: 2px auto;
+	font-family: inherit;
+	font-size: 120%;
+	padding: 4px;
+	-webkit-box-sizing: content-box;
+	border: none;
+	box-shadow: 0 2px 3px rgba(0,0,0,0.2) inset, 0 0 0 1px rgba(0,0,0,0.1) inset;
+	border-radius: 3px;
+}
+
 
 #lightbox {
 	position: absolute;

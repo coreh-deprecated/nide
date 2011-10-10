@@ -108,6 +108,13 @@ var UserInterfaceController = function() {
             }, null, $('#docs')[0])
         }
     })
+    
+    $('#changes').click(function(e) {
+        _this.selectFile({
+            type: 'changes',
+            path: '/'
+        }, null, $('#changes')[0])
+    })
 
     $('#add-file').click(function(e) {
         var filename = prompt('Type in a filename for the new file:', 'untitled.js')
@@ -284,6 +291,9 @@ var UserInterfaceController = function() {
             break;
             case "npm":
                 editor = new NPMEditor(entry)
+            break;
+            case "changes":
+                editor = new ChangeViewer(entry)
             break;
         }
         

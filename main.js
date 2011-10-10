@@ -14,7 +14,14 @@ var checkForDependencies = function(callback) {
             console.error('Could not find `npm` command. Is npm installed?')
             process.exit(-1)
         } else {
-            callback()
+            exec('which git', function(err, stdout, stderr) {
+                if (err) {
+                    console.error('Could not find `git` command. Is git installed?')
+                    process.exit(-1)
+                } else {
+                    callback()
+                }
+            })
         }
     })
 }

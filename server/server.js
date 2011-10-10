@@ -42,14 +42,29 @@ exports.listen = function(port) {
     child_process.spawn(browser, [nideUrl]);
     
     io.sockets.on('connection', function(socket) {
-        project.list()
-        .on('success', function(data) {
-            socket.emit('list', data)
-        })
-        project.packages()
-        .on('success', function(packages) {
-            socket.emit('packages', packages)
-        })
+        var listFilesAndUpdateClient = function() {
+            project.list()
+            .on('success', function(data) {
+                socket.emit('list', data)
+            })
+        }
+        var listPackagesAndUpdateClient = function() {
+            project.packages()
+            .on('success', function(packages) {
+                socket.emit('packages', packages)
+            })
+        }
+        var listChangesAndUpdateClient = function() {
+            project.changes()
+            .on('success', function(changes) {
+                socket.emit('changes', changes)
+            })
+        }
+        
+        listFilesAndUpdateClient()
+        listPackagesAndUpdateClient()
+        listChangesAndUpdateClient()
+        
         if (project.shouldDisplayWelcome) {
             socket.emit('welcome')
         }
@@ -71,6 +86,7 @@ exports.listen = function(port) {
             project.save(data.path, data.content)
             .on('success', function(file) {
                 socket.emit('save-success', { path: data.path })
+                listChangesAndUpdateClient()
             })
             .on('error', function(err) {
                 socket.emit('save-error', { path: data.path, error: err })
@@ -79,10 +95,8 @@ exports.listen = function(port) {
         socket.on('add', function(path) {
             project.add(path)
             .on('success', function(file) {
-                project.list()
-                .on('success', function(data) {
-                    socket.emit('list', data)
-                })
+                listFilesAndUpdateClient()
+                listChangesAndUpdateClient()
             })
             .on('error', function(err) {
                 socket.emit('add-error', { path: path, error: err })
@@ -91,10 +105,7 @@ exports.listen = function(port) {
         socket.on('add-folder', function(path) {
             project.addFolder(path)
             .on('success', function(file) {
-                project.list()
-                .on('success', function(data) {
-                    socket.emit('list', data)
-                })
+                listFilesAndUpdateClient()
             })
             .on('error', function(err) {
                 socket.emit('add-folder-error', { path: path, error: err })
@@ -103,10 +114,8 @@ exports.listen = function(port) {
         socket.on('remove', function(path) {
             project.remove(path)
             .on('success', function(file) {
-                project.list()
-                .on('success', function(data) {
-                    socket.emit('list', data)
-                })
+                listFilesAndUpdateClient()
+                listChangesAndUpdateClient()
             })
             .on('error', function(err) {
                 socket.emit('remove-error', { path: path, error: err })
@@ -115,11 +124,8 @@ exports.listen = function(port) {
         socket.on('rename', function(data) {
             project.rename(data.oldpath, data.newpath)
             .on('success', function(file) {
-                project.list()
-                .on('success', function(list) {
-                    socket.emit('list', list)
-                    socket.emit('rename-success', { path: data.newpath })
-                })
+                listFilesAndUpdateClient()
+                listChangesAndUpdateClient()
             })
             .on('error', function(err) {
                 socket.emit('rename-error', { path: data.oldpath, error: err })
@@ -143,14 +149,8 @@ exports.listen = function(port) {
         socket.on('install', function(data) {
             project.install(data.package, data.save)
             .on('success', function() {
-                project.packages()
-                .on('success', function(packages) {
-                    socket.emit('packages', packages)
-                })
-                project.list()
-                .on('success', function(list) {
-                    socket.emit('list', list)
-                })
+                listPackagesAndUpdateClient()
+                listFilesAndUpdateClient()
             })
             .on('error', function(err) {
                 socket.emit('install-error', err)
@@ -159,24 +159,15 @@ exports.listen = function(port) {
         socket.on('uninstall', function(data) {
             project.uninstall(data.package, data.save)
             .on('success', function() {
-                project.packages()
-                .on('success', function(packages) {
-                    socket.emit('packages', packages)
-                })
-                project.list()
-                .on('success', function(list) {
-                    socket.emit('list', list)
-                })
+                listPackagesAndUpdateClient()
+                listFilesAndUpdateClient()
             })
             .on('error', function(err) {
                 socket.emit('uninstall-error', err)
             })
         })
         socket.on('packages-refresh', function(data) {
-            project.packages()
-            .on('success', function(packages) {
-                socket.emit('packages', packages)
-            })
+            listPackagesAndUpdateClient()
         })
     })
 

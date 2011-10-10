@@ -371,3 +371,29 @@ exports.uninstall = function(package, save) {
     })
     return ee;
 }
+
+exports.changes = function() {
+    var ee = new EventEmitter()
+    exec('git status --porcelain', function(err, stdout, stderr) {
+        if (err) {
+            ee.emit('error', stderr);
+        } else {
+            var lines = stdout.split('\n')
+            var changes = []
+            
+            for (var i = 0; i < lines.length; i++) {
+                var info = lines[i].match(/(.)(.)\ ("[^"]+"|[^\ "]+)(\ \-\>\ ("[^"]+"|[^\ "]+))?/);
+                if (info) {
+                    changes.push({
+                        index: info[1],
+                        workingTree: info[2],
+                        sourceFile: info[3],
+                        destinationFile: info[5]
+                    })
+                }
+            }
+            ee.emit('success', changes);
+        }
+    })
+    return ee;
+}

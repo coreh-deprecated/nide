@@ -13,6 +13,11 @@ var ServerConnection = function() {
         packages = reportedPackages
         updatePackages()
     })
+    
+    socket.on('changes', function(reportedChanges) {
+        changes = reportedChanges
+        updateChanges()
+    })
 
     socket.on('welcome', function() {
         ui.displayWelcomeScreen();
