@@ -273,36 +273,45 @@
         editor.className = 'code-editor'
         
         connection.loadFile(entry.path, function(err, file) {
-            codeMirror = createCodeMirror(editor, file, entry.path, { onChange: function(editor) {
-                content = editor.getValue()
-                changed = true
-            }})
+            if (err) {
+                var errorBar = document.createElement('div');
+                errorBar.className = 'error'
+                errorBar.innerHTML = '<b>Unable to open file:</b> ' + err;
+                editor.appendChild(errorBar);
+                $(errorBar).hide();
+                $(errorBar).fadeIn(250);
+            } else {
+                codeMirror = createCodeMirror(editor, file, entry.path, { onChange: function(editor) {
+                    content = editor.getValue()
+                    changed = true
+                }})
             
-            var content = file
-            var changed = false;
-            var saving = false;
+                var content = file
+                var changed = false;
+                var saving = false;
             
-            setInterval(function() {
-                if (changed && !saving) {
-                    var done = false;
-                    saving = true;
-                    var selected = $('.selected')
-                    selected.addClass('syncing')
-                    connection.saveFile(entry.path, content, function(err){
-                        if (!err) {
-                            changed = false
-                            done = true;
-                            selected.removeClass('syncing')
-                        }
-                        saving = false
-                    })
-                    setTimeout(function() {
-                        if (!done) {
+                setInterval(function() {
+                    if (changed && !saving) {
+                        var done = false;
+                        saving = true;
+                        var selected = $('.selected')
+                        selected.addClass('syncing')
+                        connection.saveFile(entry.path, content, function(err){
+                            if (!err) {
+                                changed = false
+                                done = true;
+                                selected.removeClass('syncing')
+                            }
                             saving = false
-                        }
-                    }, 8000)
-                }
-            }, 3000)
+                        })
+                        setTimeout(function() {
+                            if (!done) {
+                                saving = false
+                            }
+                        }, 8000)
+                    }
+                }, 3000)
+            }
         })
         
         galaxyBackground.appendChild(editor)

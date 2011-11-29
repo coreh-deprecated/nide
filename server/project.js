@@ -287,10 +287,16 @@ exports.load = function(path) {
             ee.emit('error', 'Invalid Path')
         })
     } else {
-        fs.readFile(process.cwd() + path, 'utf8', function(err, data) {
-            if (err) ee.emit('error', err);
+        fs.stat(process.cwd() + path, function(err, stats) {
+            if (err) ee.emit('error', 'File not found.');
+            else if (stats.size > 1024*1024) ee.emit('error', 'File larger than the maximum supported size.');
             else {
-                ee.emit('success', data);
+                fs.readFile(process.cwd() + path, 'utf8', function(err, data) {
+                    if (err) ee.emit('error', 'File could not be read.');
+                    else {
+                        ee.emit('success', data);
+                    }
+                })                
             }
         })
     }
