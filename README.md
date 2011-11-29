@@ -16,7 +16,7 @@ nide
 - Sleek interface reminiscent of TextMate
 - Node.JS Documentation browsing
 
-Planned features (post node knockout):
+Planned features:
 
 - Git integration
 - Simultaneous multi-user editing
