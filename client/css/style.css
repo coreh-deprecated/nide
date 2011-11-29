@@ -171,6 +171,13 @@ body {
 	border-radius: 8px;
 }
 
+.code-editor img.view {
+	background: white url('../img/checkerboard.png');
+	box-shadow: 0 0 1px black, 0 0 10px rgba(0,0,0,0.15);
+	display: block;
+	margin: 0 auto;
+}
+
 .galaxy-background {
 	position: absolute;
 	top: 0;

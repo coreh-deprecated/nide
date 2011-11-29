@@ -18,6 +18,10 @@
             default: return undefined;
         }
     }
+    
+    var makeViewPath = function(path) {
+        return document.location.protocol + "//" + document.location.hostname + ':' + ((parseInt(document.location.port) || 80) + 1) + path
+    }
 
     var createCodeMirror = function(parentNode, contents, path, options) {
         var mode = inferCodeMirrorModeFromPath(path);
@@ -99,7 +103,7 @@
         
         if (actionsBar.viewButton) {
             $(actionsBar.viewButton).click(function(e) {
-                var url = document.location.protocol + "//" + document.location.hostname + ':' + ((parseInt(document.location.port) || 80) + 1) + entry.path;
+                var url = makeViewPath(entry.path);
                 window.open(url, 'view-window');
             })
         }
@@ -284,47 +288,55 @@
         editor.appendChild(actionsBar)
         editor.className = 'code-editor'
         
-        connection.loadFile(entry.path, function(err, file) {
-            if (err) {
-                var errorBar = document.createElement('div');
-                errorBar.className = 'error'
-                errorBar.innerHTML = '<b>Unable to open file:</b> ' + err;
-                editor.appendChild(errorBar);
-                $(errorBar).hide();
-                $(errorBar).fadeIn(250);
-            } else {
-                codeMirror = createCodeMirror(editor, file, entry.path, { onChange: function(editor) {
-                    content = editor.getValue()
-                    changed = true
-                }})
+        if (entry.path.match(/\.(jpe?g|png|gif|bmp)$/)) {
+            var image = document.createElement('img')
+            image.src = makeViewPath(entry.path);
+            image.className = 'view'
+            editor.appendChild(image);
+            $(actionsBar.versionsButton).hide();
+        } else {
+            connection.loadFile(entry.path, function(err, file) {
+                if (err) {
+                    var errorBar = document.createElement('div');
+                    errorBar.className = 'error'
+                    errorBar.innerHTML = '<b>Unable to open file:</b> ' + err;
+                    editor.appendChild(errorBar);
+                    $(errorBar).hide();
+                    $(errorBar).fadeIn(250);
+                } else {
+                    codeMirror = createCodeMirror(editor, file, entry.path, { onChange: function(editor) {
+                        content = editor.getValue()
+                        changed = true
+                    }})
             
-                var content = file
-                var changed = false;
-                var saving = false;
+                    var content = file
+                    var changed = false;
+                    var saving = false;
             
-                setInterval(function() {
-                    if (changed && !saving) {
-                        var done = false;
-                        saving = true;
-                        var selected = $('.selected')
-                        selected.addClass('syncing')
-                        connection.saveFile(entry.path, content, function(err){
-                            if (!err) {
-                                changed = false
-                                done = true;
-                                selected.removeClass('syncing')
-                            }
-                            saving = false
-                        })
-                        setTimeout(function() {
-                            if (!done) {
+                    setInterval(function() {
+                        if (changed && !saving) {
+                            var done = false;
+                            saving = true;
+                            var selected = $('.selected')
+                            selected.addClass('syncing')
+                            connection.saveFile(entry.path, content, function(err){
+                                if (!err) {
+                                    changed = false
+                                    done = true;
+                                    selected.removeClass('syncing')
+                                }
                                 saving = false
-                            }
-                        }, 8000)
-                    }
-                }, 3000)
-            }
-        })
+                            })
+                            setTimeout(function() {
+                                if (!done) {
+                                    saving = false
+                                }
+                            }, 8000)
+                        }
+                    }, 3000)
+                }
+            })
+        }
         
         galaxyBackground.appendChild(editor)
         galaxyBackground.className = 'galaxy-background'
