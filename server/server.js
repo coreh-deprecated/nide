@@ -12,21 +12,30 @@ server.configure(function(){
     server.use(express.static(__dirname + '/../client'));
 });
 
+var staticServer = express.createServer();
+staticServer.configure(function(){
+    staticServer.use(express.bodyParser());
+    staticServer.use(express.methodOverride());
+    staticServer.use(server.router);
+    staticServer.use(express.static(process.cwd()));
+});
+
 var io = sockeio.listen(server, { 'log level': 1 })
 
 io.configure(function () {
     io.set('transports', ['flashsocket', 'htmlfile', 'xhr-polling', 'jsonp-polling']);
 });
 
-
 exports.listen = function(port) {
     
     server.listen(port, function() {
-        // if run as root, downgrade to the owner of this file
-        if (process.getuid() === 0)
-            require('fs').stat(__filename, function(err, stats) {
-            if (err) return console.log(err)
-            process.setuid(stats.uid);
+        staticServer.listen(port+1, function() {
+            // if run as root, downgrade to the owner of this file
+            if (process.getuid() === 0)
+                require('fs').stat(__filename, function(err, stats) {
+                if (err) return console.log(err)
+                process.setuid(stats.uid);
+            });
         });
     });
     

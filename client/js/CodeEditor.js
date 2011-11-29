@@ -72,6 +72,11 @@
         actionsBar.versionsButton.innerHTML = 'Versions'
         actionsBar.appendChild(actionsBar.versionsButton)
         
+        if (path.match(/\.(x?html?|svg)$/)) {
+            actionsBar.viewButton = document.createElement('button')
+            actionsBar.viewButton.innerHTML = 'View'
+            actionsBar.appendChild(actionsBar.viewButton)
+        }
         
         return actionsBar;
     }
@@ -91,6 +96,13 @@
                 connection.renameFile(entry.path, entry.path.replace(/\/[^\/]+$/, '/' + newName))
             }
         })
+        
+        if (actionsBar.viewButton) {
+            $(actionsBar.viewButton).click(function(e) {
+                var url = document.location.protocol + "//" + document.location.hostname + ':' + ((parseInt(document.location.port) || 80) + 1) + entry.path;
+                window.open(url, 'view-window');
+            })
+        }
         
         var loadVersionNumbered = function(i) {
             if (!versions[i].content) {
