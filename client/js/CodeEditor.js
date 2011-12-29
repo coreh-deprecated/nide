@@ -114,8 +114,10 @@
         var loadVersionNumbered = function(i) {
             if (!versions[i].content) {
                 connection.loadVersion(versions[i].uuid, function(err, contents) {
+                    galaxyBackground.revert.disabled = false;
                     if (err) {
-                        contents = '<ERROR: Could not load file contents>'
+                        contents = '<ERROR: Could not load file contents>';
+                        galaxyBackground.revert.disabled = true;
                     }
                     var codeMirror = createCodeMirror(versionEditors[i], contents, entry.path, { readOnly: true })
                     versions[i].content = contents;
