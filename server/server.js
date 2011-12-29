@@ -4,32 +4,59 @@ var project = require('./project.js')
 var child_process = require('child_process')
 
 var server = express.createServer();
-
-server.configure(function(){
-    server.use(express.bodyParser());
-    server.use(express.methodOverride());
-    server.use(server.router);
-    server.use(express.static(__dirname + '/../client'));
-});
-
 var staticServer = express.createServer();
-staticServer.configure(function(){
-    staticServer.use(express.bodyParser());
-    staticServer.use(express.methodOverride());
-    staticServer.use(server.router);
-    staticServer.use(express.static(process.cwd()));
-});
 
-var io = sockeio.listen(server, { 'log level': 1 })
-
-io.configure(function () {
-    io.set('transports', ['flashsocket', 'htmlfile', 'xhr-polling', 'jsonp-polling']);
-});
-
-exports.listen = function(port) {
+exports.listen = function(port, host, username, password) {
+    var authenticate
     
-    server.listen(port, function() {
-        staticServer.listen(port+1, function() {
+    if (typeof(username) !== 'undefined') {
+        if (typeof(password) !== 'undefined') {
+            authenticate = function(providedUsername, providedPassword){
+                return providedUsername == username && providedPassword == password
+            }
+        } else {
+            authenticate = function(providedUsername, providedPassword){
+                return providedUsername == username
+            }
+        }
+    } else {
+        if (typeof(password) !== 'undefined') {
+            authenticate = function(providedUsername, providedPassword){
+                return providedPassword == password
+            }
+        } else {
+            // no authentication
+        }
+    }
+        
+    server.configure(function(){
+        server.use(express.bodyParser());
+        server.use(express.methodOverride());
+        if (authenticate) {
+            server.use(express.basicAuth(authenticate))
+        }
+        server.use(server.router);
+        server.use(express.static(__dirname + '/../client'));
+    });
+    
+    staticServer.configure(function(){
+        staticServer.use(express.bodyParser());
+        staticServer.use(express.methodOverride());
+        if (authenticate) {
+            staticServer.use(express.basicAuth(authenticate))
+        }
+        staticServer.use(server.router);
+        staticServer.use(express.static(process.cwd()));
+    });
+    
+    var io = sockeio.listen(server, { 'log level': 1 })
+
+    io.configure(function () {
+        io.set('transports', ['flashsocket', 'htmlfile', 'xhr-polling', 'jsonp-polling']);
+    });
+    
+    server.listen(port, host, function() {
+        staticServer.listen(port+1, host, function() {
             // if run as root, downgrade to the owner of this file
             if (process.getuid() === 0)
                 require('fs').stat(__filename, function(err, stats) {
@@ -39,8 +66,23 @@ exports.listen = function(port) {
         });
     });
     
-    console.log("Nide running at http://localhost:" + port);
-    var nideUrl = "http://localhost:" + port;
+    var nideUrl
+    
+    if (typeof(host) !== 'undefined') {
+        if (port == 80) {
+            nideUrl = "http://" + host;
+        } else {
+            nideUrl = "http://" + host + ":" + port;
+        }
+    } else {
+        if (port == 80) {
+            nideUrl = "http://localhost";
+        } else {
+            nideUrl = "http://localhost:" + port;
+        }
+    }
+    
+    console.log("Nide running at " + nideUrl);
     var browser;
     switch (process.platform) {
       case "win32": browser = "start"; break;

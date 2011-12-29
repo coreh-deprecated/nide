@@ -21,25 +21,32 @@ var checkForDependencies = function(callback) {
 
 program
     .version(packageJSON.version)
+    .option('-h, --host <ip_address>', 'only accept traffic directed to a specific ip')
     .option('-p, --port <number>', 'use a custom http port')
+    .option('-u, --username <username>', 'require a username for authentication')
+    .option('-P, --password <password>', 'require a password for authentication')
  
 program
     .command('init [directory]')
     .description('Initialize a new project and listen for connections.')
     .action(function(dir){checkForDependencies(function(){
+        // Work around name collision caused by "password" function provided by commander
+        var password = program.password instanceof Function ? undefined : program.password
         project.chdir(dir)
         project.init()
         project.start()
-        server.listen(program.port || process.env.PORT || 8123)
+        server.listen(program.port || process.env.PORT || 8123, program.host, program.username, password)
     })})
   
 program
     .command('listen [directory]')
     .description('Listen for connections.')
     .action(function(dir){checkForDependencies(function(){
+        // Work around name collision caused by "password" function provided by commander
+        var password = program.password instanceof Function ? undefined : program.password
         project.chdir(dir)
         project.start()
-        server.listen(program.port || process.env.PORT || 8123)
+        server.listen(program.port || process.env.PORT || 8123, program.host, program.username, password)
     })})    
 
 if (process.argv.length > 2) {
