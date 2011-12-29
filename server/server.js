@@ -6,9 +6,9 @@ var child_process = require('child_process')
 var server = express.createServer();
 var staticServer = express.createServer();
 
-exports.listen = function(port, host, username, password) {
+exports.listen = function(port, host, username, password, downgrade) {
     var authenticate
-    
+
     if (typeof(username) !== 'undefined') {
         if (typeof(password) !== 'undefined') {
             authenticate = function(providedUsername, providedPassword){
@@ -28,7 +28,7 @@ exports.listen = function(port, host, username, password) {
             // no authentication
         }
     }
-        
+
     server.configure(function(){
         server.use(express.bodyParser());
         server.use(express.methodOverride());
@@ -38,7 +38,7 @@ exports.listen = function(port, host, username, password) {
         server.use(server.router);
         server.use(express.static(__dirname + '/../client'));
     });
-    
+
     staticServer.configure(function(){
         staticServer.use(express.bodyParser());
         staticServer.use(express.methodOverride());
@@ -48,26 +48,29 @@ exports.listen = function(port, host, username, password) {
         staticServer.use(server.router);
         staticServer.use(express.static(process.cwd()));
     });
-    
+
     var io = sockeio.listen(server, { 'log level': 1 })
 
     io.configure(function () {
         io.set('transports', ['flashsocket', 'htmlfile', 'xhr-polling', 'jsonp-polling']);
     });
-    
+
     server.listen(port, host, function() {
         staticServer.listen(port+1, host, function() {
             // if run as root, downgrade to the owner of this file
-            if (process.getuid() === 0)
-                require('fs').stat(__filename, function(err, stats) {
-                if (err) return console.log(err)
-                process.setuid(stats.uid);
-            });
+            if (process.getuid() === 0) {
+                if(downgrade == true){
+                    require('fs').stat(__filename, function(err, stats) {
+                    if (err) return console.log(err)
+                    process.setuid(stats.uid);
+                    });
+                }
+            }
         });
     });
-    
+
     var nideUrl
-    
+
     if (typeof(host) !== 'undefined') {
         if (port == 80) {
             nideUrl = "http://" + host;
@@ -81,7 +84,7 @@ exports.listen = function(port, host, username, password) {
             nideUrl = "http://localhost:" + port;
         }
     }
-    
+
     console.log("Nide running at " + nideUrl);
     var browser;
     switch (process.platform) {
@@ -91,7 +94,7 @@ exports.listen = function(port, host, username, password) {
     }
     // if this fails, it'll just exit with a non-zero code.
     child_process.spawn(browser, [nideUrl]);
-    
+
     io.sockets.on('connection', function(socket) {
         project.list()
         .on('success', function(data) {
