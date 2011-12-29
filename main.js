@@ -25,7 +25,8 @@ program
     .option('-p, --port <number>', 'use a custom http port')
     .option('-u, --username <username>', 'require a username for authentication')
     .option('-P, --password <password>', 'require a password for authentication')
- 
+    .option('-d, --no-downgrade', 'do not downgrade, force run as root (must already be root)')
+
 program
     .command('init [directory]')
     .description('Initialize a new project and listen for connections.')
@@ -35,9 +36,9 @@ program
         project.chdir(dir)
         project.init()
         project.start()
-        server.listen(program.port || process.env.PORT || 8123, program.host, program.username, password)
+        server.listen(program.port || process.env.PORT || 8123, program.host, program.username, password, program.downgrade)
     })})
-  
+
 program
     .command('listen [directory]')
     .description('Listen for connections.')
@@ -46,12 +47,12 @@ program
         var password = program.password instanceof Function ? undefined : program.password
         project.chdir(dir)
         project.start()
-        server.listen(program.port || process.env.PORT || 8123, program.host, program.username, password)
-    })})    
+        server.listen(program.port || process.env.PORT || 8123, program.host, program.username, password, program.downgrade)
+    })})
 
 if (process.argv.length > 2) {
     if (process.argv[2].charAt(0) == '-') {
-    	process.argv.splice(2, 0, 'listen')
+        process.argv.splice(2, 0, 'listen')
     }
     program.parse(process.argv);
 } else {
