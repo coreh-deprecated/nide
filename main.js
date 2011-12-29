@@ -21,7 +21,7 @@ var checkForDependencies = function(callback) {
 
 program
     .version(packageJSON.version)
-    .option('-h, --host <ip_address>', 'only accept traffic directed to a specific ip')
+    .option('-H, --host <ip_address>', 'only accept traffic directed to a specific ip')
     .option('-p, --port <number>', 'use a custom http port')
     .option('-u, --username <username>', 'require a username for authentication')
     .option('-P, --password <password>', 'require a password for authentication')
