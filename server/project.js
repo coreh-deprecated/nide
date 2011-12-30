@@ -220,6 +220,17 @@ exports.addFolder = function(path) {
     return ee;
 }
 
+exports.refresh = function() {
+    var ee = new EventEmitter()
+    listCache = undefined
+    if(typeof listCache === "undefined") {
+        ee.emit('success')
+    } else {
+        ee.emit('error', 'Unable to clear cache')
+    }
+    return ee
+}
+
 exports.remove = function(path) {
     var ee = new EventEmitter()
     if (path.charAt(0) != '/' || path.indexOf('..') != -1 || path == '/') {
@@ -239,7 +250,6 @@ exports.remove = function(path) {
     }
     return ee;
 }
-
 
 exports.rename = function(oldpath, newpath) {
     var ee = new EventEmitter()
