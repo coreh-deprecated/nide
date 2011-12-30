@@ -154,6 +154,13 @@ exports.listen = function(port, host, username, password, downgrade) {
                 socket.emit('add-folder-error', { path: path, error: err })
             })
         })
+        socket.on('refresh', function(data) {
+            project.refresh()
+            project.list()
+            .on('success', function(list) {
+                socket.emit('list', list)
+            })
+        })
         socket.on('remove', function(path) {
             project.remove(path)
             .on('success', function(file) {
