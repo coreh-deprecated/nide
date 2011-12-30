@@ -32,6 +32,10 @@ var ServerConnection = function() {
             path: data.path
         });
     })
+    
+    this.refreshFiles = function() {
+        socket.emit('refresh');
+    }
 
     this.removeFile = function(path) {
         socket.emit('remove', path)
