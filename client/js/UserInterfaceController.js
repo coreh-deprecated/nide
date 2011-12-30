@@ -155,6 +155,10 @@ var UserInterfaceController = function() {
             connection.addFolder(path + filename)
         }
     })
+    
+    $('#refresh-files').click(function(e) {
+        connection.refreshFiles()
+    })
 
     $('#remove-file').click(function(e) {
         if (currentFile) {

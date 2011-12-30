@@ -1,99 +1,99 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>nide</title>
-	
-	<link rel="stylesheet" href="css/style.css">
-	
-	<link rel="stylesheet" href="css/codemirror.css">
-	<link rel="stylesheet" href="css/codemirror-default.css">
+        <title>nide</title>
 
-	<!-- External Dependencies -->
-	<script src="socket.io/socket.io.js"></script>
-	<script src="js/external/jquery-1.6.2.min.js"></script>
-	<script src="js/external/modernizr-2.0.6.js"></script>
-	<script src="js/external/transformjs.1.0.beta.2.js"></script>
-	<script src="js/external/codemirror.js"></script>
-	
-	<!-- CodeMirror syntax highlighting modes -->
-	<script src="js/external/mode/javascript/javascript.js"></script>
-	<script src="js/external/mode/coffeescript/coffeescript.js"></script>
-	<script src="js/external/mode/htmlmixed/htmlmixed.js"></script>
-	<script src="js/external/mode/php/php.js"></script>
-	<script src="js/external/mode/python/python.js"></script>
-	<script src="js/external/mode/ruby/ruby.js"></script>
-	<script src="js/external/mode/lua/lua.js"></script>
-	<script src="js/external/mode/css/css.js"></script>        
-	<script src="js/external/mode/clike/clike.js"></script>        
-	<script src="js/external/mode/xml/xml.js"></script>
+        <link rel="stylesheet" href="css/style.css">
+
+        <link rel="stylesheet" href="css/codemirror.css">
+        <link rel="stylesheet" href="css/codemirror-default.css">
+
+        <!-- External Dependencies -->
+        <script src="socket.io/socket.io.js"></script>
+        <script src="js/external/jquery-1.6.2.min.js"></script>
+        <script src="js/external/modernizr-2.0.6.js"></script>
+        <script src="js/external/transformjs.1.0.beta.2.js"></script>
+        <script src="js/external/codemirror.js"></script>
+
+        <!-- CodeMirror syntax highlighting modes -->
+        <script src="js/external/mode/javascript/javascript.js"></script>
+        <script src="js/external/mode/coffeescript/coffeescript.js"></script>
+        <script src="js/external/mode/htmlmixed/htmlmixed.js"></script>
+        <script src="js/external/mode/php/php.js"></script>
+        <script src="js/external/mode/python/python.js"></script>
+        <script src="js/external/mode/ruby/ruby.js"></script>
+        <script src="js/external/mode/lua/lua.js"></script>
+        <script src="js/external/mode/css/css.js"></script>
+        <script src="js/external/mode/clike/clike.js"></script>
+        <script src="js/external/mode/xml/xml.js"></script>
         <script src="js/external/mode/htmlembedded/htmlembedded.js"></script>
-	
-	<script src="js/ServerConnection.js"></script>
-	<script src="js/UserInterfaceController.js"></script>
-	<script src="js/nide.js"></script>
-	<script src="js/CodeEditor.js"></script>
-	<script src="js/DirectoryEditor.js"></script>
-	<script src="js/DocumentationViewer.js"></script>
-	<script src="js/NPMEditor.js"></script>
+
+        <script src="js/ServerConnection.js"></script>
+        <script src="js/UserInterfaceController.js"></script>
+        <script src="js/nide.js"></script>
+        <script src="js/CodeEditor.js"></script>
+        <script src="js/DirectoryEditor.js"></script>
+        <script src="js/DocumentationViewer.js"></script>
+        <script src="js/NPMEditor.js"></script>
 </head>
 <body>
-	<div id="sidebar">
-		<input type="search" id="search-field" placeholder="Filter Files by Name">
-		<ul>
-			<li class="root" id="project"><img src="img/project.png">Project
-			<div id="files">
-				<ul>
-					<li><img src="img/ajax-loader.gif">Loading project...
-				</ul>
-			</div>
-		</ul>
-		<ul>
-			<li class="root" id="search"><img src="img/search.png">Results
-			<div id="search-results">
-			
-			</div>
-		</ul>
-		<ul>
-			<li class="root" id="npm"><img src="img/npm.png">NPM</li>
-		</ul>
-		<ul>
-			<li class="root" id="docs"><img src="img/documentation.png">Node.JS Documentation</li>
-		</ul>
-	</div>
-	<div id="options">
-		<button id="add-file" title="New File"><img src="img/add.png"></button><button id="remove-file" title="Remove File"><img src="img/remove.png"></button><button id="add-folder" title="New Folder"><img src="img/create-folder.png"></button>
-		<button id="gear-menu" class="right" title="More Options"><img src="img/gear.png"></button>
-	</div>
-	<div id="content"></div>
-	<ul id="gear-menu-popup" class="popup-menu">
-		<li class="checkbox"><input type="checkbox" id="show-hidden"><label for="show-hidden">Show Hidden Files</label>
-	</ul>
-	<div id="lightbox">
-		<div class="setup">
-			<h1>Welcome to nide!</h1>
-			<div class="content">
-				<p>
-					It seems this is the first time you open this project in nide.
-					This screen will help you set up your <code>package.json</code> file.
-				</p>
-				<form action="">
-				<table>
-					<tr>
-						<td>Project Name:<small>To be used via NPM</small></td><td><input type="text" name="name" placeholder="e.g: my-project"></td>
-					</tr><tr>
-						<td>Project Description:</td><td><input type="text" name="description" placeholder="e.g: Secret Node.JS Project"></td>
-					</tr><tr>
-						<td>Author Name:</td><td><input name="author" type="text"></td>
-					</tr><tr>
-						<td>Version:<small>(in X.Y.Z format)</small></td><td><input type="text" name="version" value="0.1.0"></td>
-					</tr>
-				</table>
-				<div class="actions">
-					<button>Skip this step</button> <input type="submit" class="default" value="Create package.json">
-				</div>
-				</form>
-			</div>
-		</div>
-	</div>
+        <div id="sidebar">
+                <input type="search" id="search-field" placeholder="Filter Files by Name">
+                <ul>
+                        <li class="root" id="project"><img src="img/project.png">Project
+                        <div id="files">
+                                <ul>
+                                        <li><img src="img/ajax-loader.gif">Loading project...
+                                </ul>
+                        </div>
+                </ul>
+                <ul>
+                        <li class="root" id="search"><img src="img/search.png">Results
+                        <div id="search-results">
+
+                        </div>
+                </ul>
+                <ul>
+                        <li class="root" id="npm"><img src="img/npm.png">NPM</li>
+                </ul>
+                <ul>
+                        <li class="root" id="docs"><img src="img/documentation.png">Node.JS Documentation</li>
+                </ul>
+        </div>
+        <div id="options">
+                <button id="add-file" title="New File"><img src="img/add.png"></button><button id="remove-file" title="Remove File"><img src="img/remove.png"></button><button id="refresh-files" title="Refresh Files"><img src="img/refresh-files.png"></button><button id="add-folder" title="New Folder"><img src="img/create-folder.png"></button>
+                <button id="gear-menu" class="right" title="More Options"><img src="img/gear.png"></button>
+        </div>
+        <div id="content"></div>
+        <ul id="gear-menu-popup" class="popup-menu">
+                <li class="checkbox"><input type="checkbox" id="show-hidden"><label for="show-hidden">Show Hidden Files</label>
+        </ul>
+        <div id="lightbox">
+                <div class="setup">
+                        <h1>Welcome to nide!</h1>
+                        <div class="content">
+                                <p>
+                                        It seems this is the first time you open this project in nide.
+                                        This screen will help you set up your <code>package.json</code> file.
+                                </p>
+                                <form action="">
+                                <table>
+                                        <tr>
+                                                <td>Project Name:<small>To be used via NPM</small></td><td><input type="text" name="name" placeholder="e.g: my-project"></td>
+                                        </tr><tr>
+                                                <td>Project Description:</td><td><input type="text" name="description" placeholder="e.g: Secret Node.JS Project"></td>
+                                        </tr><tr>
+                                                <td>Author Name:</td><td><input name="author" type="text"></td>
+                                        </tr><tr>
+                                                <td>Version:<small>(in X.Y.Z format)</small></td><td><input type="text" name="version" value="0.1.0"></td>
+                                        </tr>
+                                </table>
+                                <div class="actions">
+                                        <button>Skip this step</button> <input type="submit" class="default" value="Create package.json">
+                                </div>
+                                </form>
+                        </div>
+                </div>
+        </div>
 </body>
 </html>
