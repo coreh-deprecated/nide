@@ -140,9 +140,9 @@ var addToListCache = function(path) {
         }
     }
 }
-exports.list = function() {
+exports.list = function(noCache) {
     var ee = new EventEmitter();
-    if (!listCache) {
+    if (noCache || !listCache) {
         listCache = {
             name: "",
             type: "directory",

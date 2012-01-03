@@ -172,6 +172,10 @@ var UserInterfaceController = function() {
         }
     })
 
+    $('#project-refresh').click(function(e) {
+        connection.list()
+    })
+
     var shouldDismissGearMenuOnMouseUp = false;
     var hasJustDisplayedGearMenu = false;
     $('#gear-menu').mousedown(function(e){
@@ -204,6 +208,10 @@ var UserInterfaceController = function() {
         if (!hasJustDisplayedGearMenu) {
             $('#gear-menu-popup').fadeOut(200);
         }
+    })
+    
+    $(window).bind('blur resize', function() {
+        $('#gear-menu-popup').fadeOut(200);
     })
 
     this.updateFileListing = function(files) {

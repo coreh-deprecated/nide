@@ -156,4 +156,8 @@ var ServerConnection = function() {
     this.skipWelcome = function() {
         socket.emit('skip-welcome')
     }
+    
+    this.list = function() {
+        socket.emit('list')
+    }
 }

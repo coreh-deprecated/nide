@@ -232,6 +232,12 @@ exports.listen = function(port, host, username, password, downgrade) {
                 socket.emit('packages', packages)
             })
         })
+        socket.on('list', function(data) {
+            project.list(true)
+            .on('success', function(list) {
+                socket.emit('list', list)
+            })
+        })
     })
 
 }
