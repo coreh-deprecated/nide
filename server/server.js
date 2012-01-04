@@ -6,7 +6,7 @@ var child_process = require('child_process')
 var server = express.createServer();
 var staticServer = express.createServer();
 
-exports.listen = function(port, host, username, password, downgrade) {
+exports.listen = function(port, host, username, password, downgrade, launchBrowser) {
     var authenticate
 
     if (typeof(username) !== 'undefined') {
@@ -86,14 +86,17 @@ exports.listen = function(port, host, username, password, downgrade) {
     }
 
     console.log("Nide running at " + nideUrl);
-    var browser;
-    switch (process.platform) {
-      case "win32": browser = "start"; break;
-      case "darwin": browser = "open"; break;
-      default: browser = "xdg-open"; break;
+    
+    if (launchBrowser) {
+        var browser;
+        switch (process.platform) {
+          case "win32": browser = "start"; break;
+          case "darwin": browser = "open"; break;
+          default: browser = "xdg-open"; break;
+        }
+        // if this fails, it'll just exit with a non-zero code.
+        child_process.spawn(browser, [nideUrl]);
     }
-    // if this fails, it'll just exit with a non-zero code.
-    child_process.spawn(browser, [nideUrl]);
 
     io.sockets.on('connection', function(socket) {
         project.list()

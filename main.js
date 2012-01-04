@@ -26,7 +26,7 @@ program
     .option('-u, --username <username>', 'require a username for authentication')
     .option('-P, --password <password>', 'require a password for authentication')
     .option('-d, --no-downgrade', 'do not downgrade, force run as root (must already be root)')
-
+    .option('-b, --no-browser', 'do not attempt to launch the default browser')
 program
     .command('init [directory]')
     .description('Initialize a new project and listen for connections.')
@@ -36,7 +36,7 @@ program
         project.chdir(dir)
         project.init()
         project.start()
-        server.listen(program.port || process.env.PORT || 8123, program.host, program.username, password, program.downgrade)
+        server.listen(program.port || process.env.PORT || 8123, program.host, program.username, password, program.downgrade, program.browser)
     })})
 
 program
@@ -47,7 +47,7 @@ program
         var password = program.password instanceof Function ? undefined : program.password
         project.chdir(dir)
         project.start()
-        server.listen(program.port || process.env.PORT || 8123, program.host, program.username, password, program.downgrade)
+        server.listen(program.port || process.env.PORT || 8123, program.host, program.username, password, program.downgrade, program.browser)
     })})
 
 if (process.argv.length > 2) {
