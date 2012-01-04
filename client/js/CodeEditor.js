@@ -18,7 +18,7 @@
             case !!path.match(/\.ejs$/): return 'application/x-ejs'
             case !!path.match(/\.jsp$/): return 'application/x-jsp'
             case !!path.match(/\.aspx$/): return 'application/x-aspx'
-            default: return undefined;
+            default: return 'text/plain';
         }
     }
     
@@ -313,6 +313,7 @@
                         content = editor.getValue()
                         changed = true
                     }})
+                    codeMirror.focus()
             
                     var content = file
                     var changed = false;
@@ -345,6 +346,12 @@
         
         galaxyBackground.appendChild(editor)
         galaxyBackground.className = 'galaxy-background'
+        
+        galaxyBackground.focus = function() {
+            if (codeMirror) {
+                codeMirror.focus()
+            }
+        }
         
         return galaxyBackground
     }

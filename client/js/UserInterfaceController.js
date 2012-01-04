@@ -232,10 +232,18 @@ var UserInterfaceController = function() {
         document.getElementById('search-results').innerHTML = '';
         document.getElementById('search-results').appendChild(ul);
     }
+    
+    var editorPool = new EditorPool();
 
     var setCurrentEditor = function(editor) {
-        $('#content')[0].innerHTML = ''
-        $('#content').append(editor)
+        var children = $('#content').children()
+        children.css({ visibility: 'hidden', zIndex: -1 });
+        if ($.inArray(editor, children) >= 0) {
+            $(editor).css({ visibility: 'visible', zIndex: 1 })
+        } else {
+            $('#content').append(editor)
+        }
+        editor.focus()
     }
 
     this.displayWelcomeScreen = function() {
@@ -279,21 +287,9 @@ var UserInterfaceController = function() {
         currentFile = entry
         $(htmlElement || htmlElementByPathTable[currentFile.path]).addClass('selected')
     
-        var editor;
-        switch(entry.type) {
-            case "file":
-                editor = new CodeEditor(entry)
-            break;
-            case "directory":
-                editor = new DirectoryEditor(entry)
-            break;
-            case "documentation":
-                editor = new DocumentationViewer(entry)
-            break;
-            case "npm":
-                editor = new NPMEditor(entry)
-            break;
-        }
+        var editor = editorPool.editorForEntry(entry, function(discarted){
+            $(discarted).remove()
+        })
         
         setCurrentEditor(editor)
     }
