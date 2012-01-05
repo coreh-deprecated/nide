@@ -1,0 +1,339 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F52B613214B568F400031F38 /* nide.icns in Resources */ = {isa = PBXBuildFile; fileRef = F52B613114B568F400031F38 /* nide.icns */; };
+		F5B0128914B482BA00145F5E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B0128814B482BA00145F5E /* Cocoa.framework */; };
+		F5B0129314B482BA00145F5E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5B0129114B482BA00145F5E /* InfoPlist.strings */; };
+		F5B0129514B482BA00145F5E /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B0129414B482BA00145F5E /* main.m */; };
+		F5B0129914B482BA00145F5E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F5B0129714B482BA00145F5E /* Credits.rtf */; };
+		F5B0129C14B482BA00145F5E /* NDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B0129B14B482BA00145F5E /* NDAppDelegate.m */; };
+		F5B0129F14B482BA00145F5E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5B0129D14B482BA00145F5E /* MainMenu.xib */; };
+		F5B012BD14B485CA00145F5E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B012BC14B485CA00145F5E /* WebKit.framework */; };
+		F5B012BF14B48A3A00145F5E /* ProjectWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5B012BE14B48A3A00145F5E /* ProjectWindow.xib */; };
+		F5B012C214B48C0600145F5E /* NDProjectWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B012C114B48C0600145F5E /* NDProjectWindowController.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F52B613114B568F400031F38 /* nide.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = nide.icns; path = ../nide.icns; sourceTree = "<group>"; };
+		F5B0128414B482BA00145F5E /* Nide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nide.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F5B0128814B482BA00145F5E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		F5B0128B14B482BA00145F5E /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
+		F5B0128C14B482BA00145F5E /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		F5B0128D14B482BA00145F5E /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F5B0129014B482BA00145F5E /* Nide-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Nide-Info.plist"; sourceTree = "<group>"; };
+		F5B0129214B482BA00145F5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F5B0129414B482BA00145F5E /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F5B0129614B482BA00145F5E /* Nide-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Nide-Prefix.pch"; sourceTree = "<group>"; };
+		F5B0129814B482BA00145F5E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; name = en; path = en.lproj/Credits.rtf; sourceTree = "<group>"; };
+		F5B0129A14B482BA00145F5E /* NDAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NDAppDelegate.h; sourceTree = "<group>"; };
+		F5B0129B14B482BA00145F5E /* NDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDAppDelegate.m; sourceTree = "<group>"; };
+		F5B0129E14B482BA00145F5E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		F5B012A614B482BB00145F5E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		F5B012BC14B485CA00145F5E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
+		F5B012BE14B48A3A00145F5E /* ProjectWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectWindow.xib; sourceTree = "<group>"; };
+		F5B012C014B48C0600145F5E /* NDProjectWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDProjectWindowController.h; sourceTree = "<group>"; };
+		F5B012C114B48C0600145F5E /* NDProjectWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDProjectWindowController.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F5B0128114B482BA00145F5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5B012BD14B485CA00145F5E /* WebKit.framework in Frameworks */,
+				F5B0128914B482BA00145F5E /* Cocoa.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F5B0127914B482B900145F5E = {
+			isa = PBXGroup;
+			children = (
+				F5B0128E14B482BA00145F5E /* Nide */,
+				F5B0128714B482BA00145F5E /* Frameworks */,
+				F5B0128514B482BA00145F5E /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F5B0128514B482BA00145F5E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F5B0128414B482BA00145F5E /* Nide.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F5B0128714B482BA00145F5E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F5B012BC14B485CA00145F5E /* WebKit.framework */,
+				F5B0128814B482BA00145F5E /* Cocoa.framework */,
+				F5B012A614B482BB00145F5E /* SenTestingKit.framework */,
+				F5B0128A14B482BA00145F5E /* Other Frameworks */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F5B0128A14B482BA00145F5E /* Other Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F5B0128B14B482BA00145F5E /* AppKit.framework */,
+				F5B0128C14B482BA00145F5E /* CoreData.framework */,
+				F5B0128D14B482BA00145F5E /* Foundation.framework */,
+			);
+			name = "Other Frameworks";
+			sourceTree = "<group>";
+		};
+		F5B0128E14B482BA00145F5E /* Nide */ = {
+			isa = PBXGroup;
+			children = (
+				F52B613114B568F400031F38 /* nide.icns */,
+				F5B0129A14B482BA00145F5E /* NDAppDelegate.h */,
+				F5B0129B14B482BA00145F5E /* NDAppDelegate.m */,
+				F5B0129D14B482BA00145F5E /* MainMenu.xib */,
+				F5B012BE14B48A3A00145F5E /* ProjectWindow.xib */,
+				F5B0128F14B482BA00145F5E /* Supporting Files */,
+				F5B012C014B48C0600145F5E /* NDProjectWindowController.h */,
+				F5B012C114B48C0600145F5E /* NDProjectWindowController.m */,
+			);
+			path = Nide;
+			sourceTree = "<group>";
+		};
+		F5B0128F14B482BA00145F5E /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F5B0129014B482BA00145F5E /* Nide-Info.plist */,
+				F5B0129114B482BA00145F5E /* InfoPlist.strings */,
+				F5B0129414B482BA00145F5E /* main.m */,
+				F5B0129614B482BA00145F5E /* Nide-Prefix.pch */,
+				F5B0129714B482BA00145F5E /* Credits.rtf */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F5B0128314B482BA00145F5E /* Nide */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F5B012B614B482BB00145F5E /* Build configuration list for PBXNativeTarget "Nide" */;
+			buildPhases = (
+				F5B0128014B482BA00145F5E /* Sources */,
+				F5B0128114B482BA00145F5E /* Frameworks */,
+				F5B0128214B482BA00145F5E /* Resources */,
+				F5B01A7814B5467000145F5E /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Nide;
+			productName = Nide;
+			productReference = F5B0128414B482BA00145F5E /* Nide.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F5B0127B14B482B900145F5E /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
+			buildConfigurationList = F5B0127E14B482B900145F5E /* Build configuration list for PBXProject "Nide" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F5B0127914B482B900145F5E;
+			productRefGroup = F5B0128514B482BA00145F5E /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F5B0128314B482BA00145F5E /* Nide */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F5B0128214B482BA00145F5E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5B0129314B482BA00145F5E /* InfoPlist.strings in Resources */,
+				F5B0129914B482BA00145F5E /* Credits.rtf in Resources */,
+				F5B0129F14B482BA00145F5E /* MainMenu.xib in Resources */,
+				F5B012BF14B48A3A00145F5E /* ProjectWindow.xib in Resources */,
+				F52B613214B568F400031F38 /* nide.icns in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		F5B01A7814B5467000145F5E /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "cp -R \"$PROJECT_DIR/../client\" \"$TARGET_BUILD_DIR/$EXECUTABLE_NAME.app/Contents/Resources/\"\ncp -R \"$PROJECT_DIR/../server\" \"$TARGET_BUILD_DIR/$EXECUTABLE_NAME.app/Contents/Resources/\"\ncp \"$PROJECT_DIR/../main.js\" \"$TARGET_BUILD_DIR/$EXECUTABLE_NAME.app/Contents/Resources/\"\ncp \"$PROJECT_DIR/../package.json\" \"$TARGET_BUILD_DIR/$EXECUTABLE_NAME.app/Contents/Resources/\"\ncd \"$TARGET_BUILD_DIR/$EXECUTABLE_NAME.app/Contents/Resources/\"\n/usr/local/bin/node /usr/local/bin/npm install";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F5B0128014B482BA00145F5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F5B0129514B482BA00145F5E /* main.m in Sources */,
+				F5B0129C14B482BA00145F5E /* NDAppDelegate.m in Sources */,
+				F5B012C214B48C0600145F5E /* NDProjectWindowController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F5B0129114B482BA00145F5E /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5B0129214B482BA00145F5E /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F5B0129714B482BA00145F5E /* Credits.rtf */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5B0129814B482BA00145F5E /* en */,
+			);
+			name = Credits.rtf;
+			sourceTree = "<group>";
+		};
+		F5B0129D14B482BA00145F5E /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F5B0129E14B482BA00145F5E /* en */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F5B012B414B482BB00145F5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+			};
+			name = Debug;
+		};
+		F5B012B514B482BB00145F5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				COPY_PHASE_STRIP = YES;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		F5B012B714B482BB00145F5E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Nide/Nide-Prefix.pch";
+				INFOPLIST_FILE = "Nide/Nide-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.6;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F5B012B814B482BB00145F5E /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Nide/Nide-Prefix.pch";
+				INFOPLIST_FILE = "Nide/Nide-Info.plist";
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx10.6;
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F5B0127E14B482B900145F5E /* Build configuration list for PBXProject "Nide" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5B012B414B482BB00145F5E /* Debug */,
+				F5B012B514B482BB00145F5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F5B012B614B482BB00145F5E /* Build configuration list for PBXNativeTarget "Nide" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F5B012B714B482BB00145F5E /* Debug */,
+				F5B012B814B482BB00145F5E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F5B0127B14B482B900145F5E /* Project object */;
+}
