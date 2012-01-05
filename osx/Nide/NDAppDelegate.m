@@ -25,9 +25,35 @@
     savePanel.title = @"Select a project name and location";
     
     if ([savePanel runModal] == NSOKButton) {
-        NDProjectWindowController *windowController = [[NDProjectWindowController alloc] initWithWindowNibName:@"ProjectWindow" path:[[savePanel URL] path] port:port];
+        NDProjectWindowController *windowController = [[NDProjectWindowController alloc] initWithWindowNibName:@"ProjectWindow" path:[[savePanel URL] path] port:port init:YES];
         [windowController showWindow:self];
         port += 2;
+    }
+}
+
+- (IBAction)openDocument:(id)sender {
+    NSOpenPanel *openPanel = [NSOpenPanel openPanel];
+    
+    openPanel.canChooseDirectories = YES;
+    openPanel.canChooseFiles = NO;
+    openPanel.title = @"Select a project folder";
+    openPanel.delegate = self;
+    
+    if ([openPanel runModal] == NSOKButton) {
+        NDProjectWindowController *windowController = [[NDProjectWindowController alloc] initWithWindowNibName:@"ProjectWindow" path:[[openPanel URL] path] port:port init:NO];
+        [windowController showWindow:self];
+        port += 2;
+    }
+    
+    openPanel.delegate = nil;
+}
+
+- (BOOL)panel:(id)sender shouldEnableURL:(NSURL *)url {
+    BOOL isDirectory;
+    if ([[NSFileManager defaultManager] fileExistsAtPath:[NSString stringWithFormat:@"%@/.nide", [url path]] isDirectory:&isDirectory]) {
+        return isDirectory;
+    } else {
+        return NO;
     }
 }
 

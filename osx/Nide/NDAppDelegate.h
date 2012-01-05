@@ -8,7 +8,7 @@
 
 #import <Cocoa/Cocoa.h>
 
-@interface NDAppDelegate : NSObject <NSApplicationDelegate> {
+@interface NDAppDelegate : NSObject <NSApplicationDelegate, NSOpenSavePanelDelegate> {
     int port;
 }
 

@@ -12,10 +12,15 @@
 @interface NDProjectWindowController : NSWindowController<NSWindowDelegate> {
     NSString *projectPath;
     int port;
+    BOOL shouldInit;
+    NSTimer *checkTimer;
+    NSTask *task;
+    NSPipe *output;
+    NSPipe *error;
     IBOutlet NSWindow *window;
     IBOutlet WebView *webView;
 }
 
-- (id)initWithWindowNibName:(NSString *)windowNibName path:(NSString *)aProjectPath port:(int)port;
+- (id)initWithWindowNibName:(NSString *)windowNibName path:(NSString *)aProjectPath port:(int)aPort init:(BOOL)init;
 
 @end
