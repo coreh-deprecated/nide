@@ -4,6 +4,7 @@ var program = require('commander');
 var server = require('./server/server');
 var project = require('./server/project');
 var exec = require('child_process').exec
+var path = require('path')
 var fs = require('fs')
 
 var packageJSON = JSON.parse(fs.readFileSync(__dirname + '/package.json', 'utf-8'))
@@ -33,6 +34,10 @@ program
     .action(function(dir){checkForDependencies(function(){
         // Work around name collision caused by "password" function provided by commander
         var password = program.password instanceof Function ? undefined : program.password
+        if (dir && !path.existsSync(dir)) {
+            console.log('Created `' + dir + '` directory.')
+            fs.mkdirSync(dir)
+        }
         project.chdir(dir)
         project.init()
         project.start()

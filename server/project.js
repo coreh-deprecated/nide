@@ -64,7 +64,7 @@ exports.init = function() {
         console.error('Error: Cannot create new project. `.nide` already exists.')
         process.exit(-1)
     }
-    console.log('Created project directory')
+    console.log('Created `.nide` directory')
     var gitignore = ''
     try {
         gitignore = fs.readFileSync('.gitignore', 'utf8')
@@ -78,7 +78,7 @@ exports.init = function() {
         }
         fs.writeFileSync('.gitignore', gitignoreLines.join('\n') + '\n', 'utf8')
     }
-    console.log('Added project directory to .gitignore')
+    console.log('Added `.nide` directory to .gitignore')
     var npmignore = ''
     try {
         npmignore = fs.readFileSync('.npmignore', 'utf8')
@@ -92,7 +92,7 @@ exports.init = function() {
         }
         fs.writeFileSync('.npmignore', npmignoreLines.join('\n') + '\n', 'utf8')
     }
-    console.log('Added project directory to .npmignore')
+    console.log('Added `.nide` directory to .npmignore')
     try {
         packageJson = fs.readFileSync('package.json', 'utf8')
     } catch (e) {
