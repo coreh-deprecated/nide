@@ -150,22 +150,29 @@ exports.list = function(noCache) {
             children: {}
         }
         dive(process.cwd(), { recursive: true, all: true, directories: true },
-            function(err, path) {
-          if (err) throw err
+        function(err, path) {
+            if (err) {
+                console.warn(err);
+                return
+            }
 
-          fs.stat(path, function(err, stats) {
-            if (err) throw err
+            fs.stat(path, function(err, stats) {
+                if (err) {
+                    console.warn(err)
+                    return
+                }
 
-            if (stats.isFile())
-              addToListCache(path)
-            else
-              addToListCache(path + "/.")
-          })
+                if (stats.isFile()) {
+                    addToListCache(path)
+                } else {
+                    addToListCache(path + "/.")
+                }
+            })
         }, function() {
-          ee.emit('success', listCache)
+            ee.emit('success', listCache)
         })
     } else {
-    	process.nextTick(function() {
+        process.nextTick(function() {
             ee.emit('success', listCache)
         })
     }
