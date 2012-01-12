@@ -13,7 +13,7 @@
 
 @synthesize window = _window;
 
-- (void)applicationDidFinishLaunching:(NSNotification *)aNotification
+- (void)applicationWillFinishLaunching:(NSNotification *)aNotification
 {
     port = 8123;
 }
@@ -26,7 +26,7 @@
     
     if ([savePanel runModal] == NSOKButton) {
         NDProjectWindowController *windowController = [[NDProjectWindowController alloc] initWithWindowNibName:@"ProjectWindow" path:[[savePanel URL] path] port:port init:YES];
-        [windowController showWindow:self];
+        [windowController window];
         port += 2;
     }
 }
@@ -41,7 +41,7 @@
     
     if ([openPanel runModal] == NSOKButton) {
         NDProjectWindowController *windowController = [[NDProjectWindowController alloc] initWithWindowNibName:@"ProjectWindow" path:[[openPanel URL] path] port:port init:NO];
-        [windowController showWindow:self];
+        [windowController window];
         port += 2;
     }
     
@@ -56,5 +56,15 @@
         return NO;
     }
 }
+
+- (BOOL)application:(NSApplication *)theApplication openFile:(NSString *)filename {
+    NDProjectWindowController *windowController = [[NDProjectWindowController alloc] initWithWindowNibName:@"ProjectWindow" path:filename port:port init:NO];
+    [windowController window];
+    port += 2;
+    
+    return YES;
+}
+
+
 
 @end

@@ -13,11 +13,11 @@
     NSString *projectPath;
     int port;
     BOOL shouldInit;
+    BOOL loaded;
     NSTimer *checkTimer;
     NSTask *task;
     NSPipe *output;
     NSPipe *error;
-    IBOutlet NSWindow *window;
     IBOutlet WebView *webView;
 }
 

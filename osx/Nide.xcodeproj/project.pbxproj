@@ -17,6 +17,7 @@
 		F5B012BD14B485CA00145F5E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B012BC14B485CA00145F5E /* WebKit.framework */; };
 		F5B012BF14B48A3A00145F5E /* ProjectWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5B012BE14B48A3A00145F5E /* ProjectWindow.xib */; };
 		F5B012C214B48C0600145F5E /* NDProjectWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B012C114B48C0600145F5E /* NDProjectWindowController.m */; };
+		F5B0CCD614BE82D6007CD4A6 /* nide-project.icns in Resources */ = {isa = PBXBuildFile; fileRef = F5B0CCD514BE82D6007CD4A6 /* nide-project.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +40,7 @@
 		F5B012BE14B48A3A00145F5E /* ProjectWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectWindow.xib; sourceTree = "<group>"; };
 		F5B012C014B48C0600145F5E /* NDProjectWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDProjectWindowController.h; sourceTree = "<group>"; };
 		F5B012C114B48C0600145F5E /* NDProjectWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDProjectWindowController.m; sourceTree = "<group>"; };
+		F5B0CCD514BE82D6007CD4A6 /* nide-project.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = "nide-project.icns"; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -95,6 +97,7 @@
 		F5B0128E14B482BA00145F5E /* Nide */ = {
 			isa = PBXGroup;
 			children = (
+				F5B0CCD514BE82D6007CD4A6 /* nide-project.icns */,
 				F52B613114B568F400031F38 /* nide.icns */,
 				F5B0129A14B482BA00145F5E /* NDAppDelegate.h */,
 				F5B0129B14B482BA00145F5E /* NDAppDelegate.m */,
@@ -175,6 +178,7 @@
 				F5B0129F14B482BA00145F5E /* MainMenu.xib in Resources */,
 				F5B012BF14B48A3A00145F5E /* ProjectWindow.xib in Resources */,
 				F52B613214B568F400031F38 /* nide.icns in Resources */,
+				F5B0CCD614BE82D6007CD4A6 /* nide-project.icns in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
