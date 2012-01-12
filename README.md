@@ -8,18 +8,41 @@ nide
 
 - Project tree display
 - File operations (create/delete/rename files and folders, hide/show hidden files)
-- Syntax highlighted code editing
+- Syntax highlighted code editing for multiple programming languages
 - OS X Lion-style automatic save
 - OS X Lion-style version management with revert and side-by-side editing features
 - Real time project tree filtering (using regular expressions)
-- NPM integration (display currently installed packages, add/remove packages)
+- NPM integration (display currently installed packages, add/remove packages, automatically update package.json)
+- Image previewing.
+- HTML previewing.
+- HTTP authentication (for running Nide on a public server)
+- Optionally run nide as a native Mac application.
 - Sleek interface reminiscent of TextMate
 - Node.JS Documentation browsing
 
-Planned features:
+What's new in Nide 0.2.0:
+=========================
 
-- Git integration
-- Simultaneous multi-user editing
+- You can now refresh the directory listing manually, through the gear menu.
+- You can now specify a host IP for listening via a command line option.
+- You can now specify a username and password for HTTP authentication.
+- Editor state (caret position, selection, scroll) is now preserved when switching between multiple files.
+- Nide is now available as a native Mac application. The Mac app is still on a very early stage of development,
+so expect some hiccups.
+- Numerous bug fixes.
+
+What's new in Nide since 0.1.0 was released:
+============================================
+
+- Nide now supports syntax highlighting for filetypes other than JavaScript.
+- A simple cache mechanism is now present to avoid unnecessary directory listings.
+- Directory listing is now much faster and more reliable.
+- Nide is now able to launch the user's default browser from the command line
+- The client code has been almost completely refactored so it's now easier to mantain.
+- Nide will now check for file size before opening a file.
+- HTML files can now be previewed directly from Nide.
+- Image files can now be viewed directly from Nide.
+- Lots of bugfixes.
 
 Instructions
 ============

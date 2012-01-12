@@ -3,7 +3,7 @@
   "name": "nide",
   "keywords": ["ide", "integrated", "development", "environment", "editor", "coding", "tool"],
   "description": "Beautiful IDE for Node.js",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "repository": "http://github.com/Coreh/nide.git",
   "homepage": "http://coreh.github.com/nide/",
   "engines": {
