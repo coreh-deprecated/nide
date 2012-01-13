@@ -1,0 +1,83 @@
+/* Foundation v2.1.4 http://foundation.zurb.com */
+/* Artfully masterminded by ZURB  */
+
+/* -------------------------------------------------- 
+   Table of Contents
+-----------------------------------------------------
+:: Shared Styles
+:: Page Name 1
+:: Page Name 2
+*/
+
+
+/* -----------------------------------------
+   Shared Styles
+----------------------------------------- */
+
+@import url(http://fonts.googleapis.com/css?family=Dynalight);
+
+h1 {
+	font-family: 'Dynalight';
+	font-size: 1200%;
+	text-shadow: 0 2px 1px white;
+	text-align: center;
+}
+
+h2 {
+	margin-top: 30px;
+	font-size: 200%;
+	color: #46483E;
+}
+
+h3 {
+	font-size: 120%;
+	color: #46483E;
+}
+
+body {
+	color: #46483E;
+	background: #EEE;
+}
+
+.nav-bar {
+	background: #F9F9F9;
+	border-radius: 4px;
+}
+
+.bash {
+	font-family: 'Monaco', 'Consolas', monospace;
+}
+
+img.icon {
+	vertical-align: middle;
+}
+
+code {
+	background: black;
+	color: white;
+	font-family: 'Monaco', 'Consolas', monospace;
+	padding: 1px 4px;
+	border-radius:1px;
+}
+
+li {
+	list-style: circle;
+	margin-left: 20px;
+}
+
+.center {
+	text-align: center;
+}
+
+/* -----------------------------------------
+   Page Name 1
+----------------------------------------- */
+
+
+
+
+/* -----------------------------------------
+   Page Name 2
+----------------------------------------- */
+
+

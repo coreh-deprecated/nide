@@ -1,444 +1,175 @@
-<DOCTYPE html>
+<!DOCTYPE html>
 <html>
-<head>
-	<meta charset="utf-8">
-	<title>nide - Beautiful IDE for Node.JS</title>
-	<style>
-	html {
-		background: #fafafa;
-	}
-	
-	body {
-		font-family: 'Lucida Grande', 'Segoe UI', 'Ubuntu', sans-serif;
-		text-align: center;
-		width: 968px;
-		margin: 0 auto;
-		padding: 0;
-		text-shadow: 0 1px 0 white;
-		position: relative;
-		color: #111;
-	}
-	
-	h1 {
-		font-family: 'Myriad Pro', 'Lucida Grande', 'Segoe UI', 'Ubuntu', sans-serif;
-		font-size: 200px;
-		margin: 150px 0 0 100px;
-		padding: 0;
-		line-height: 0.8em;
-	}
-	h1.fit {
-		font-size:150px;
-	}
-	
-	h2 {
-		margin: 0 100px 0 100px;
-		padding: 0;
-	}
-	
-	h2.top {
-		margin-top: 75px;
-	}
-	
-	h2.left {
-		margin-left: 0;
-	}
-	
-	.description {
-		margin: 0 0 0 100px;
-		width: 400px;
-	}
-	
-	.description.wide {
-		width: 800px;
-	}
-	
-	a {
-		color: #12c;
-	}
-	
-	p.center {
-		text-align: center;
-	}
+    <head>
+        <title>Nide - Beautiful IDE for Node.JS</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="stylesheets/foundation.css">
+        <link rel="stylesheet" href="stylesheets/app.css">
+    </head>
+    <body>
+        <a href="http://github.com/coreh/nide"><img style="position: absolute; top: 0; right: 0; border: 0; z-index: 1" src="https://a248.e.akamai.net/assets.github.com/img/e6bef7a091f5f3138b8cd40bc3e114258dd68ddf/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f72696768745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
+        <div class="container">
+            <div class="row">
+                <ul class="nav-bar">
+                    <li><a href="#installation">Installation</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#release-notes">Release Notes</a></li>
+                    <li><a href="#screenshots">Screenshots</a></li>
+                    <li><a href="#donate">Donate</a></li>
+                </ul>
+            </div>
+            <div class="row">
+                <div class="five columns">
+                    <div class="panel">
+                    <h1>Nide</h1>
+                    <p><b>Nide</b> is a web-based IDE for Node.JS, designed with simplicity and ease-of-use in mind.</p>
+                    </div>
+                    <div class="center">
+                    <script type="text/javascript"><!--
+                    google_ad_client = "ca-pub-5744576567534974";
+                    /* Nide */
+                    google_ad_slot = "7411930058";
+                    google_ad_width = 300;
+                    google_ad_height = 250;
+                    //-->
+                    </script>
+                    <script type="text/javascript"
+                    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                    </script>
+                    </div>
+                </div>
+                <div class="seven columns">
+                    <h2 id="installation">Installation</h2>
+                    <p>The Nide IDE is available both as a <b>command-line tool</b> and as a <b>standalone Mac app</b>. Please note that currently Windows is unsupported. (We're working on that)</p>
+                    <h3>Command-line tool</h3>
+                    <p>To install Nide as a command-line tool, you'll need both Node.JS and NPM installed. (NPM is included by default with Node.JS, starting with version 0.6.3). You can grab Node.JS <a href="http://nodejs.org/">here</a>.</p>
+                    <p>With Node.JS installed, open a terminal and run:</p>
+                    <div class="panel">
+                        <p class="bash">sudo npm install -g nide</p>
+                    </div>
+                    <p>If everything works as expected, you'll now have a new command line tool called <code>nide</code>. To create a new project, go to an existing folder and run:</p>
+                    <div class="panel">
+                        <p class="bash">nide init</p>
+                    </div>
+                    <p>Nide will start listening on port 8123 (the default port), and will launch your Web browser. To learn more about nide's command line options, run <code>nide help</code>.</p>
+                    <h3>Mac application</h3>
+                    <p>To install nide as a Mac application, download and open the following disk image, and follow the instructions on screen. (Node.JS v0.6.7 is included)</p>
+                    <div class="panel">
+                    <p><img src="images/dmg.png" class="icon"> <a href="https://github.com/downloads/Coreh/nide/nide-v0.2.0.dmg">nide-v0.2.0.dmg</a> (9.7 MB)</p>
+                    </div>
+                    <p>The Mac app is still in an early development stage, so there might still be some hard edges.</p>
+                    <h2>Spread the word about Nide</h2>
+                    <p><iframe src="http://www.facebook.com/plugins/like.php?href=http://coreh.github.com/nide&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=false&amp;action=recommend&amp;colorscheme=light&amp;font=lucida+grande&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:35px;" allowTransparency="true"></iframe></p>
+                    <p><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script></p>
+                    <p><div class="g-plusone" data-annotation="inline"></div></p>
+                    <script type="text/javascript">
+                      (function() {
+                        var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+                        po.src = 'https://apis.google.com/js/plusone.js';
+                        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+                      })();
+                    </script>
+                </div>
+            </div>
+            <div class="row">
+                <div class="five columns">
+                    <img src="images/icon.png">
+                    <div class="center">
+                    <script type="text/javascript"><!--
+                    google_ad_client = "ca-pub-5744576567534974";
+                    /* Nide */
+                    google_ad_slot = "7411930058";
+                    google_ad_width = 300;
+                    google_ad_height = 250;
+                    //-->
+                    </script>
+                    <script type="text/javascript"
+                    src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+                    </script>
+                    </div>
+                </div>
+                <div class="seven columns">
+                    <h2 id="features">Features</h2>
+                    <div class="panel">
+                    <ul>
+                        <li>Project tree display
+                        <li>File operations (create/delete/rename files and folders, hide/show hidden files)
+                        <li>Syntax highlighted code editing for multiple programming languages
+                        <li>OS X Lion-style automatic save
+                        <li>OS X Lion-style version management with revert and side-by-side editing features
+                        <li>Real time project tree filtering (using regular expressions)
+                        <li>NPM integration (display currently installed packages, add/remove packages, automatically update package.json)
+                        <li>Image previewing.
+                        <li>HTML previewing.
+                        <li>HTTP authentication (for running Nide on a public server)
+                        <li>Ability to run as a native Mac application.
+                        <li>Sleek interface reminiscent of TextMate
+                        <li>Node.JS Documentation browsing
+                    </ul>
+                    </div>
+                    <h2 id="release-notes">Release Notes</h2>
+                    <div class="panel">
+                    <h3>What's new in Nide 0.2.0</h3>
+                    <ul>
+                        <li>You can now refresh the directory listing manually, through the gear menu.
+                        <li>You can now specify a host IP for listening via a command line option.
+                        <li>You can now specify a username and password for HTTP authentication.
+                        <li>Editor state (caret position, selection, scroll) is now preserved when switching between multiple files.
+                        <li>Nide is now available as a native Mac application. The Mac app is still on a very early stage of development, so expect some hiccups.
+                        <li>Numerous bug fixes.
+                    </ul>
+                    </div>
+                    <div class="panel">
+                    <h3>What's new in Nide since 0.1.0</h3>
+                    <ul>
+                        <li>Nide now supports syntax highlighting for filetypes other than JavaScript.
+                        <li>A simple cache mechanism is now present to avoid unnecessary directory listings.
+                        <li>Directory listing is now much faster and more reliable.
+                        <li>Nide is now able to launch the user's default browser from the command line
+                        <li>The client code has been almost completely refactored so it's now easier to mantain.
+                        <li>Nide will now check for file size before opening a file.
+                        <li>HTML files can now be previewed directly from Nide.
+                        <li>Image files can now be viewed directly from Nide.
+                        <li>Lots of bugfixes.
+                    </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <h2 id="screenshots">Screenshots</h2>
+                <h3>Main Interface</h3>
+                <div class="panel center">
+                <a href="images/screenshot1.png"><img src="images/screenshot1.png"></a>
+                </div>
+                <h3>Versions</h3>
+                <div class="panel center">
+                <a href="images/screenshot2.png"><img src="images/screenshot2.png"></a>
+                </div>
+                <h3>NPM</h3>
+                <div class="panel center">
+                <a href="images/screenshot3.png"><img src="images/screenshot3.png"></a>
+                </div>
+            </div>
+            <div class="row">
+                <div class="five columns">
+                    <div class="panel">
+                        <img src="images/photo.jpg">
+                        <p></p>
+                    </div>
+                </div>
+                <div class="seven columns">
+                    <h2 id="donate">Donate</h2>
+                    <p>Nide is an Open Source project developed on my free time.</p>
+                    <p>If you find it useful or interesting, you can make a donation to support its continuous development.</p>
+                    <form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+                    <input type="hidden" name="cmd" value="_s-xclick">
+                    <input type="hidden" name="hosted_button_id" value="D26DPZQP2WV2U">
+                    <input type="submit" class="button" name="submit" value="Donate (via Paypal)">
+                    <img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
+                    </form>
+                </div>
+            </div>
+        </div>
 
-	/* Gallery styles */
-
-	#gallery{
-
-		/* CSS3 Rounded Corners */
-
-		-moz-border-radius-bottomleft:4px;
-		-webkit-border-bottom-left-radius:4px;
-		border-bottom-left-radius:4px;
-
-		-moz-border-radius-bottomright:4px;
-		-webkit-border-bottom-right-radius:4px;
-		border-bottom-right-radius:4px;
-
-		/* The width of the gallery */
-		width:968px;
-		overflow:hidden;
-	}
-
-	#slides{
-		/* This is the slide area */
-		height:1360px;
-
-		/* jQuery changes the width later on to the sum of the widths of all the slides. */
-		width:968px;
-		overflow:hidden;
-	}
-	
-	#wrapper {
-		background: white;
-		border-radius: 5px;
-	}
-
-	.slide{
-		float:left;
-		min-height: 600px;
-		width: 968px;
-		text-align: left;
-		position: relative;
-	}
-
-
-	ul.menu{
-		margin: 20px 0 20px;
-		padding: 0;
-		background: #ddd;
-		box-shadow: 0 1px 3px rgba(0,0,0,0.5), 0 -30px 20px -10px rgba(0,0,0,0.1) inset;
-		border-radius: 3px;
-	}
-
-	ul.menu li{
-		/* Every thumbnail is a li element */
-		width:120px;
-		display:inline-block;
-		list-style:none;
-		overflow:hidden;
-		padding: 8px;
-		margin: 0;
-	}
-
-	ul.menu li.inact:hover{
-	}
-
-	ul.menu li.act,li.act:hover{
-		background: rgba(0,0,0,0.35);
-		color: #eee;
-		text-shadow: 0 1px 1px black;
-		box-shadow: 0 1px 2px rgba(0,0,0,0.5) inset;
-	}
-
-	ul.menu li.act a{
-		cursor:default;
-	}
-
-	li a{
-		display:block;
-		text-decoration: none;
-		padding: 4px;
-		color: inherit;
-	}
-
-	a img{
-		border:none;
-	}
-
-	.initial {
-		background: url('initial.jpg') right top no-repeat;
-	}
-	
-	.highlight {
-		position: absolute;
-		width: 10px;
-		height: 10px;
-		background: #e11;
-		border-radius: 100px;
-		border: 5px solid white;
-		box-shadow: 0 0 2px 2px rgba(240, 18, 18, 0.5);
-		overflow: hidden;
-		cursor: pointer;
-	}
-	
-	.highlight:hover {
-		overflow: visible;
-		opacity: 1 !important;
-		z-index: 1;
-	}
-	
-	.highlight .highlight-content {
-		position: absolute;
-		left: -25px;
-		top: 10px;
-		padding: 8px;
-		background: rgba(0,0,0,0.8);
-		border-radius: 4px;
-		opacity: 0;
-		color: white;
-		text-shadow: 0 1px black;
-		min-width: 250px;
-		font-size: 90%;
-	}
-	
-	.highlight .highlight-content.right {
-		left: -200px;
-	}
-	
-	.highlight:hover .highlight-content {
-		opacity: 1;
-		-webkit-transition: 1s ease opacity;
-		-moz-transition: 1s ease opacity;
-		-ms-transition: 1s ease opacity;
-		-o-transition: 1s ease opacity;
-		transition: 1s ease opacity;
-	}
-	
-	.description li {
-		margin: 10px 0
-	}
-	
-	#vote {
-		position: absolute;
-		right: 0;
-		top: 10px;
-		margin-right: 10px;
-	}
-	
-	#donate {
-		position: absolute;
-		right: 0;
-		top: 850px;
-		width: 300px;
-		margin-right: 30px;
-	}
-	
-	#donate input {
-		border: 1px solid #ca7c00;
-		background: #ffc555;
-		font-family: inherit;
-		font-size: inherit;
-		padding: 8px 18px;
-		border-radius: 5px;
-		box-shadow: 0 1px 1px white inset, 0 -10px 20px -10px #ca7c00 inset;
-		color: #333;
-		text-shadow: 0 1px rgba(255,255,255,0.5);
-	}
-	
-	#donate input:hover {
-		background: #ffd566;
-	}
-	
-	#donate input:active {
-		background: #ffc555;
-		box-shadow: 0 10px 20px -10px #ca7c00 inset;
-		padding: 9px 18px 7px;
-	}
-	
-	</style>
-	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-	<script type="text/javascript" src="script.js"></script>
-	<script>
-	setInterval(function(){
-		$('.highlight').animate({
-			opacity: 0.5
-		}, 500).animate({
-			opacity: 1
-		}, 500)
-	},1000)
-	</script>
-</head>
-<body>
-	<a href="http://github.com/coreh/nide"><img style="position: absolute; top: 0; left: 0; border: 0; z-index: 1" src="https://a248.e.akamai.net/assets.github.com/img/5d21241b64dc708fcbb701f68f72f41e9f1fadd6/687474703a2f2f73332e616d617a6f6e6177732e636f6d2f6769746875622f726962626f6e732f666f726b6d655f6c6566745f7265645f6161303030302e706e67" alt="Fork me on GitHub"></a>
-  <div id="gallery">
-    <div id="menu">
-	<ul class="menu">
-		<li class="menuItem"><a href="">About</a></li>
-		<li class="menuItem"><a href="">The Interface</a></li>
-		<li class="menuItem"><a href="">The Features</a></li>
-		<li class="menuItem"><a href="">Support Nide</a></li>
-    </ul>
-	</div>
-	<div id="wrapper">
-    <div id="slides">
-    <div class="slide initial">
-		<div id="donate">
-			<h2 class="left">Buy me a Drink</h2>
-			<p>Nide is an Open Source project developed on my free time.</p>
-			<p>If you find it useful or interesting, you can make a donation to support its continuous development.</p>
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-			<input type="hidden" name="cmd" value="_s-xclick">
-			<input type="hidden" name="hosted_button_id" value="D26DPZQP2WV2U">
-			<input type="submit" name="submit" value="Donate (via Paypal)">
-			<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
-			</form>
-		</div>
-		<h1>nide</h1>
-		<h2>Beautiful IDE for Node.JS</h2>
-		<div class="description">
-			<p><code>nide</code> is a web-based IDE for Node.js, designed with simplicity and ease-of-use in mind.</p>
-		 	<p>The original version of nide was designed and developed at the Node.js KO coding competition.</p>
-		</div>
-		<br>
-		<h2>Try it out!</h2>
-		<div class="description">
-			<p>You can install nide locally by using the following command (requires Node.js and NPM):</p>
-			<pre>    sudo npm install -g nide</pre>
-			<p>After that, you can create a new project steping into an empty folder and typing:<p>
-			<pre>    nide init</pre>
-			<p>Nide will create the project and listen on port <code>8123</code>. Fire your web browser to <code>http://localhost:8123</code> and you're set.</p>
-		</div>
-		<br>
-		<br>
-		<h2>Spread the word</h2>
-		<div class="description wide">
-			<p>Spread the word about Nide on Facebook, Twitter or Google+:</p>
-			<p><iframe src="http://www.facebook.com/plugins/like.php?href=http://coreh.github.com/nide&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=false&amp;action=recommend&amp;colorscheme=light&amp;font=lucida+grande&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:35px;" allowTransparency="true"></iframe></p>
-			<p><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-			<p><div class="g-plusone" data-annotation="inline"></div></p>
-				<script type="text/javascript">
-				  (function() {
-				    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-				    po.src = 'https://apis.google.com/js/plusone.js';
-				    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-				  })();
-				</script>
-			</p>
-		</div>
-
-	</div>
-    <div class="slide">
-		<div class="highlight" style="left: 400px; top: 58px">
-			<div class="highlight-content">
-				<b>Code in your browser.</b>
-				<p>
-					You can access your project from any environment: Local, intranet or Internet.
-				</p>
-			</div>
-		</div>
-		<div class="highlight" style="left: 47px; top: 128px">
-			<div class="highlight-content">
-				<b>The whole world at a glance.</b>
-				<p>
-					The project tree shows all the files and folders in your current project, for instant navigation.
-				</p>
-			</div>
-		</div>
-		<div class="highlight" style="left: 47px; top: 232px">
-			<div class="highlight-content">
-				<b>Package Management.</b>
-				<p>
-					Nide integrates tightly with NPM, so you can install and uninstall packages
-					without ever leaving the IDE.
-				</p>
-				<p>
-					Nide can also instruct NPM to automatically update your <code>package.json</code> file with 
-					the new dependencies.
-				</p>
-			</div>
-		</div>
-		<div class="highlight" style="left: 237px; top: 263px">
-			<div class="highlight-content">
-				<b>Documentation</b>
-				<p>
-					Nide sports a built-in documentation browser that automatically figures which node version
-					you're using and fetches the right documentation for you.
-				</p>
-			</div>
-		</div>
-		<div class="highlight" style="left: 300px; top: 132px">
-			<div class="highlight-content">
-				<b>Minimalistic editing environment</b>
-				<p>
-					Nide integrates with CodeMirror to provide a desktop-class editing experience,
-					without annoyances or distractions.
-				</p>
-			</div>
-		</div>
-		<div class="highlight" style="left: 330px; top: 132px">
-			<div class="highlight-content">
-				<b>Auto Save</b>
-				<p>
-					The contents of the current file are automatically synchronized with the backend,
-					as you type.
-				</p>
-			</div>
-		</div>
-		<div class="highlight" style="left: 640px; top: 97px">
-			<div class="highlight-content right">
-				<b>Go Back</b>
-				<p>
-					With just one click you can get access to the full editing history. Mac-style. <i>Roar</i>.
-				</p>
-				<img src="versions-small.png">
-			</div>
-		</div>
-		<img src="editing.png" class="fade" alt="side" />
-	</div>
-    <div class="slide">
-		<h2 class="top">Features</h2>
-    	<div class="description">
-			<ul>
-			<li>Project tree display
-			<li>File operations (create/delete/rename files and folders, hide/show hidden files)
-			<li>Syntax highlighted code editing
-			<li>OS X Lion-style automatic save
-			<li>OS X Lion-style version management with revert and side-by-side editing features
-			<li>Real time project tree filtering (using regular expressions)
-			<li>NPM integration (display currently installed packages, add/remove packages)
-			<li>Sleek interface reminiscent of TextMate
-			<li>Node.JS Documentation browsing
-			</ul>
-	    </div>
-		<h2>License</h2>
-		<div class="description">
-			<p>Nide is distributed under the MIT license.</p>
-		</div>
-    </div>
-    <div class="slide">
-		<h1 class="fit">Support Nide</h1>
-    	<div class="description">
-			&nbsp;
-	    </div>
-		<h2>Spread the word</h2>
-		<div class="description wide">
-			<p>You can spread the word about Nide on Facebook, Twitter or Google+:</p>
-			<p><iframe src="http://www.facebook.com/plugins/like.php?href=http://coreh.github.com/nide&amp;send=false&amp;layout=standard&amp;width=450&amp;show_faces=false&amp;action=recommend&amp;colorscheme=light&amp;font=lucida+grande&amp;height=35" scrolling="no" frameborder="0" style="border:none; overflow:hidden; width:450px; height:35px;" allowTransparency="true"></iframe></p>
-			<p><a href="http://twitter.com/share" class="twitter-share-button" data-count="horizontal">Tweet</a><script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
-			<p><div class="g-plusone" data-annotation="inline"></div></p>
-				<script type="text/javascript">
-				  (function() {
-				    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
-				    po.src = 'https://apis.google.com/js/plusone.js';
-				    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
-				  })();
-				</script>
-			</p>
-			<h2 class="left">Donate</h2>
-			<p>Nide is an Open Source project developed on my free time.</p>
-			<p>If you find it useful or interesting, you can make a donation to support its continuous development.</p>
-			<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
-			<input type="hidden" name="cmd" value="_s-xclick">
-			<input type="hidden" name="hosted_button_id" value="D26DPZQP2WV2U">
-			<input type="submit" name="submit" value="Donate (via Paypal)">
-			<img alt="" border="0" src="https://www.paypalobjects.com/pt_BR/i/scr/pixel.gif" width="1" height="1">
-			</form>
-		</div>
-    </div>
-	</div>
-	<script type="text/javascript">
-
-	  var _gaq = _gaq || [];
-	  _gaq.push(['_setAccount', 'UA-25417303-1']);
-	  _gaq.push(['_trackPageview']);
-
-	  (function() {
-	    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-	    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-	    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-	  })();
-
-	</script>
-  </div>
-</body>
+    </body>
 </html>
