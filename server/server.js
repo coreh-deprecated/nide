@@ -2,6 +2,7 @@ var express = require('express');
 var sockeio = require('socket.io')
 var project = require('./project.js')
 var child_process = require('child_process')
+var os = require('os')
 
 var server = express.createServer();
 var staticServer = express.createServer();
@@ -58,11 +59,11 @@ exports.listen = function(port, host, username, password, downgrade, launchBrows
     server.listen(port, host, function() {
         staticServer.listen(port+1, host, function() {
             // if run as root, downgrade to the owner of this file
-            if (process.getuid() === 0) {
+            if (os.platform() != 'win32' && process.getuid() === 0) {
                 if(downgrade == true){
                     require('fs').stat(__filename, function(err, stats) {
-                    if (err) return console.log(err)
-                    process.setuid(stats.uid);
+                        if (err) return console.log(err)
+                        process.setuid(stats.uid);
                     });
                 }
             }

@@ -6,11 +6,18 @@ var project = require('./server/project');
 var exec = require('child_process').exec
 var path = require('path')
 var fs = require('fs')
+var os = require('os')
 
 var packageJSON = JSON.parse(fs.readFileSync(__dirname + '/package.json', 'utf-8'))
 
 var checkForDependencies = function(callback) {
-    exec('which npm', function(err, stdout, stderr) {
+    var command
+    if (os.platform() == 'win32') {
+        command = 'where npm'
+    } else {
+        command = 'which npm'
+    }
+    exec(command, function(err, stdout, stderr) {
         if (err) {
             console.error('Could not find `npm` command. Is npm installed?')
             process.exit(-1)

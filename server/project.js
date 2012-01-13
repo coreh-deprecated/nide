@@ -3,18 +3,26 @@ var EventEmitter = require('events').EventEmitter
 var dive = require('dive')
 var exec = require('child_process').exec
 var uuid = require('node-uuid')
+var os = require('os')
 
 var fileStates = {}
 var versionHistory = {}
 
+var PATH_SEPARATOR
+if (os.platform() == 'win32') {
+    PATH_SEPARATOR = '\\'
+} else {
+    PATH_SEPARATOR = '/'
+}
+
 var saveVersionHistory = function() {
     var contents = JSON.stringify(versionHistory)
-    fs.writeFile(process.cwd() + '/.nide/versions.json', contents)
+    fs.writeFile(process.cwd() + PATH_SEPARATOR + '.nide' + PATH_SEPARATOR + 'versions.json', contents)
 }
 
 var loadVersionHistory = function() {
     try {
-        versionHistory = JSON.parse(fs.readFileSync(process.cwd() + '/.nide/versions.json'))
+        versionHistory = JSON.parse(fs.readFileSync(process.cwd() + PATH_SEPARATOR + '.nide' + PATH_SEPARATOR + 'versions.json'))
     } catch (e) {
 
     }
@@ -117,9 +125,9 @@ var addToListCache = function(path) {
     var cwd_length = cwd.length + 1;
     var current = listCache
     var composite_path = ""
-    var components = path.substr(cwd_length).split('/')
+    var components = path.substr(cwd_length).split(PATH_SEPARATOR)
     for (var i = 0; i < components.length - 1; i++) {
-        composite_path = composite_path + "/" + components[i]
+        composite_path = composite_path + PATH_SEPARATOR + components[i]
         if (!current.children[components[i]]) {
             current.children[components[i]] = {
                 name: components[i],
@@ -131,7 +139,7 @@ var addToListCache = function(path) {
         current = current.children[components[i]]
     }
     if (components[i] != '.') {
-        composite_path = composite_path + "/" + components[i]
+        composite_path = composite_path + PATH_SEPARATOR + components[i]
         current.children[components[i]] = {
             name: components[i],
             type: "file",
@@ -165,7 +173,7 @@ exports.list = function(noCache) {
                 if (stats.isFile()) {
                     addToListCache(path)
                 } else {
-                    addToListCache(path + "/.")
+                    addToListCache(path + PATH_SEPARATOR + ".")
                 }
             })
         }, function() {
@@ -181,7 +189,7 @@ exports.list = function(noCache) {
 
 exports.add = function(path) {
     var ee = new EventEmitter()
-    if (path.charAt(0) != '/' || path.indexOf('..') != -1) {
+    if (path.charAt(0) != PATH_SEPARATOR || path.indexOf('..') != -1) {
         process.nextTick(function() {
             ee.emit('error', 'Invalid Path')
         })
@@ -205,7 +213,7 @@ exports.add = function(path) {
 
 exports.addFolder = function(path) {
     var ee = new EventEmitter()
-    if (path.charAt(0) != '/' || path.indexOf('..') != -1) {
+    if (path.charAt(0) != PATH_SEPARATOR || path.indexOf('..') != -1) {
         process.nextTick(function() {
             ee.emit('error', 'Invalid Path')
         })
@@ -217,7 +225,7 @@ exports.addFolder = function(path) {
                 fs.mkdir(process.cwd() + path, '755', function(err) {
                     if (err) ee.emit('error', err);
                     else {
-                        addToListCache(process.cwd() + path + '/.')
+                        addToListCache(process.cwd() + path + PATH_SEPARATOR + '.')
                         ee.emit('success');
                     }
                 })
@@ -229,7 +237,7 @@ exports.addFolder = function(path) {
 
 exports.remove = function(path) {
     var ee = new EventEmitter()
-    if (path.charAt(0) != '/' || path.indexOf('..') != -1 || path == '/') {
+    if (path.charAt(0) != PATH_SEPARATOR || path.indexOf('..') != -1 || path == PATH_SEPARATOR) {
         process.nextTick(function() {
             ee.emit('error', 'Invalid Path')
         })
@@ -250,8 +258,8 @@ exports.remove = function(path) {
 
 exports.rename = function(oldpath, newpath) {
     var ee = new EventEmitter()
-    if (oldpath.charAt(0) != '/' || oldpath.indexOf('..') != -1 || oldpath == '/' ||
-        newpath.charAt(0) != '/' || newpath.indexOf('..') != -1 || newpath == '/') {
+    if (oldpath.charAt(0) != PATH_SEPARATOR || oldpath.indexOf('..') != -1 || oldpath == PATH_SEPARATOR ||
+        newpath.charAt(0) != PATH_SEPARATOR || newpath.indexOf('..') != -1 || newpath == PATH_SEPARATOR) {
         process.nextTick(function() {
             ee.emit('error', 'Invalid Path')
         })
@@ -271,7 +279,7 @@ exports.rename = function(oldpath, newpath) {
 
 exports.save = function(path, contents) {
     var ee = new EventEmitter()
-    if (path.charAt(0) != '/' || path.indexOf('..') != -1) {
+    if (path.charAt(0) != PATH_SEPARATOR || path.indexOf('..') != -1) {
         process.nextTick(function() {
             ee.emit('error', 'Invalid Path')
         })
@@ -289,7 +297,7 @@ exports.save = function(path, contents) {
 
 exports.load = function(path) {
     var ee = new EventEmitter()
-    if (path.charAt(0) != '/' || path.indexOf('..') != -1) {
+    if (path.charAt(0) != PATH_SEPARATOR || path.indexOf('..') != -1) {
         process.nextTick(function() {
             ee.emit('error', 'Invalid Path')
         })
@@ -329,7 +337,7 @@ exports.version = function(versionUuid) {
             ee.emit('error', 'Invalid version uuid')
         })
     } else {
-        fs.readFile(process.cwd() + '/.nide/' + versionUuid, 'utf8', function(err, data) {
+        fs.readFile(process.cwd() + PATH_SEPARATOR + '.nide' + PATH_SEPARATOR + versionUuid, 'utf8', function(err, data) {
             if (err) ee.emit('error', err);
             else {
                 ee.emit('success', data);
