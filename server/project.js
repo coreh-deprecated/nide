@@ -242,15 +242,28 @@ exports.remove = function(path) {
             ee.emit('error', 'Invalid Path')
         })
     } else {
-        exec('rm -rf -- ' + process.cwd() + path, function(err) {
+        var afterRm = function(err) {
             if (!err) {
                 // Invalidate file list cache
                 listCache = undefined
                 ee.emit('success')
             } else {
-                ee.emit('err', err)
+                ee.emit('error', err)
             }
-        })
+        }
+        if (os.platform() == 'win32') {
+            fs.stat(process.cwd() + path, function(err, stats) {
+                if (err) {
+                    afterRm(err)
+                } else if (stats.isDirectory()) {
+                    exec('rmdir /S /Q ' + process.cwd() + path, afterRm)
+                } else {
+                    exec('del /F /Q ' + process.cwd() + path, afterRm)
+                }
+            })
+        } else {
+            exec('rm -rf -- ' + process.cwd() + path, afterRm)
+        }
     }
     return ee;
 }
