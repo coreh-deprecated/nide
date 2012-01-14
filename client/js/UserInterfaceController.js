@@ -121,7 +121,7 @@ var UserInterfaceController = function() {
                         path = currentFile.path + '/'
                         break;
                     case 'file':
-                        path = currentFile.path.replace(/\/[^\/]+$/, '/')
+                        path = currentFile.path.substr(0, currentFile.path.length - currentFile.name.length)
                         break;
                     default:
                         path = '/'
@@ -145,7 +145,7 @@ var UserInterfaceController = function() {
                         path = currentFile.path + '/'
                         break;
                     case 'file':
-                        path = currentFile.path.replace(/\/[^\/]+$/, '/')
+                        path = currentFile.path.substr(0, currentFile.path.length - currentFile.name.length)
                         break;
                     default:
                         path = '/'
