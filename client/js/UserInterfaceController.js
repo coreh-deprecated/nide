@@ -10,6 +10,10 @@ var UserInterfaceController = function() {
     var ignore = ['.git', '.nide', '.DS_Store']
     var limitRecursion = ['node_modules']
     
+    if (UserInterfaceController.windows) {
+        $("#npm img")[0].src = 'img/npm-windows.png'
+    }
+
     var addHTMLElementForFileEntry = function(entry, parentElement, fileEntriesArray, htmlElementByPathTable, ownContext, doLimitRecursion) {
     
         if (ignore.indexOf(entry.name) != -1) {
@@ -28,7 +32,8 @@ var UserInterfaceController = function() {
             if (stateByPath[entry.path] == 'open') {
                 thisElement.className += ' open'
             }
-            thisElement.innerHTML = '<img src="img/folder.png">' + entry.name + (ownContext ? (' <i>(' + entry.path + ')</i>') : '')
+            var folderIcon = UserInterfaceController.windows ? 'folder-windows.png' : 'folder.png' 
+            thisElement.innerHTML = '<img src="img/' + folderIcon + '">' + entry.name + (ownContext ? (' <i>(' + entry.path + ')</i>') : '')
             $(thisElement).click(function(e) {
                 if (!e.offsetX) e.offsetX = e.clientX - $(e.target).position().left;
                 if (!e.offsetY) e.offsetY = e.clientY - $(e.target).position().top;
@@ -293,4 +298,19 @@ var UserInterfaceController = function() {
         
         setCurrentEditor(editor)
     }
+}
+
+switch (true) {
+    case navigator.appVersion.indexOf("Windows") != -1:
+        $("html").addClass('windows')
+        UserInterfaceController.windows = true
+        break;
+    case navigator.appVersion.indexOf("Macintosh") != -1:
+        $("html").addClass('mac')
+        UserInterfaceController.mac = true
+        break;
+    case navigator.appVersion.indexOf("Linux") != -1:
+        $("html").addClass('linux')
+        UserInterfaceController.linux = true
+        break;
 }

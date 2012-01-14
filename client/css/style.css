@@ -58,6 +58,10 @@ body {
 	cursor: default;
 }
 
+.windows #sidebar {
+	background: #fafafa;
+}
+
 #sidebar ul {
 	margin: 8px 0;
 	padding-left: 0;
@@ -86,12 +90,20 @@ body {
 	background: url('../img/right-arrow.png') 6px 4px no-repeat;
 }
 
+.windows #sidebar li.folder {
+	background: url('../img/right-arrow-windows.png') 6px 4px no-repeat;
+}
+
 #sidebar li.folder > ul {
 	display: none;
 }
 
 #sidebar li.folder.open {
 	background: url('../img/down-arrow.png') 6px 4px no-repeat;
+}
+
+.windows #sidebar li.folder.open {
+	background: url('../img/down-arrow-windows.png') 6px 4px no-repeat;
 }
 
 #sidebar li.folder.open > ul {
@@ -102,7 +114,7 @@ body {
 	padding-left: 0;
 }
 
-#sidebar li.selected, #sidebar li.folder.selected {
+#sidebar li.selected, #sidebar li.folder.selected, .windows #sidebar li.folder.selected {
 	background-color: rgba(55,120,194,0.3);
 	border-radius: 5px 0 0 5px;
 	box-shadow: 0 1px 2px rgba(0,0,0,0.2) inset, 0 1px 0 rgba(255,255,255,0.5);
@@ -281,6 +293,10 @@ body {
 	background: url('../img/folder-large.png') no-repeat center center, url('../img/noise.png') #adbdc8;
 	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
 	color: rgba(0,0,0,0.75)
+}
+
+.windows .directory-editor {
+	background: url('../img/folder-large.png') no-repeat center center, url('../img/noise.png') #aba188;
 }
 
 #content .npm-editor {
