@@ -105,8 +105,12 @@ exports.listen = function(port, host, username, password, downgrade, launchBrows
           case "darwin": browser = "open"; break;
           default: browser = "xdg-open"; break;
         }
-        // if this fails, it'll just exit with a non-zero code.
-        child_process.spawn(browser, [nideUrl]);
+
+        child_process.exec(browser + ' ' + nideUrl, function(err) {
+            if (err) {
+                console.warn('Could not open the default browser.')
+            }
+        });
     }
 
     io.sockets.on('connection', function(socket) {
