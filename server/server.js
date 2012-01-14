@@ -68,6 +68,16 @@ exports.listen = function(port, host, username, password, downgrade, launchBrows
             }
         });
     });
+    
+    var serverErrorHandler = function(err) {
+        if (err.code == 'EADDRINUSE') {
+            console.error('Error: Address already in use. Try running nide under a different port.')
+            process.exit(-1)
+        }
+    }
+    
+    server.on('error', serverErrorHandler);
+    staticServer.on('error', serverErrorHandler);
 
     var nideUrl
 
