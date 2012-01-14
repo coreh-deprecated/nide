@@ -33,8 +33,12 @@ program
     .option('-p, --port <number>', 'use a custom http port')
     .option('-u, --username <username>', 'require a username for authentication')
     .option('-P, --password <password>', 'require a password for authentication')
-    .option('-d, --no-downgrade', 'do not downgrade, force run as root (must already be root)')
     .option('-b, --no-browser', 'do not attempt to launch the default browser')
+
+if (os.platform() != 'win32') {
+    program.option('-d, --no-downgrade', 'do not downgrade, force run as root (must already be root)')
+}
+
 program
     .command('init [directory]')
     .description('Initialize a new project and listen for connections.')

@@ -60,7 +60,7 @@ exports.listen = function(port, host, username, password, downgrade, launchBrows
         staticServer.listen(port+1, host, function() {
             // if run as root, downgrade to the owner of this file
             if (os.platform() != 'win32' && process.getuid() === 0) {
-                if(downgrade == true){
+                if (downgrade == true){
                     require('fs').stat(__filename, function(err, stats) {
                         if (err) return console.log(err)
                         process.setuid(stats.uid);
