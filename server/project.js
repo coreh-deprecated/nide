@@ -39,7 +39,7 @@ setInterval(function() {
                 date: (new Date()).valueOf(),
                 uuid: generatedUuid
             })
-            exec('cp -- "' + (process.cwd() + file).replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0') + '" "' + (process.cwd() + '/.nide/' + generatedUuid).replace(/[\\"']/g, '\\$&').replace(/\u0000/g, '\\0') + '"', function(err) {
+            fs.link(process.cwd() + file, process.cwd() + PATH_SEPARATOR + '.nide' + PATH_SEPARATOR + generatedUuid, function(err) {
                 if (!err) {
                     saveVersionHistory()
                 }
