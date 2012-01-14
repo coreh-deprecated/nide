@@ -345,13 +345,12 @@ body {
 	background: white;
 	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 	line-height: 1.5em;
+	display: inline-block;
 }
 
 #content .CodeMirror-scroll {
 	height: auto;
-	overflow-y: hidden;
-	overflow-x: auto;
-	width: 100%;
+	overflow: visible;
 }
 
 #lightbox {
