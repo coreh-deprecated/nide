@@ -23,6 +23,13 @@ input, button {
 	box-shadow: 0 0 10px rgba(0,0,0,0.125), 0 1px 0 rgba(0,0,0,0.25) inset
 }
 
+.windows #options {
+	background: #f1f5fb;
+	box-shadow: 0 1px 0 #ccd9ea inset, 0 2px 0 #d9e3f0 inset, 0 6px 6px -4px #d9e3f0 inset;
+	border-right: 1px solid #d9e3f0;
+	padding: 5px 0 8px;
+}
+
 #options button, button.gradient {
 	background: #fafafa;
 	border: 1px solid rgba(0,0,0,0.25);
@@ -32,6 +39,26 @@ input, button {
 	margin: 0 0 0 -1px;
 	height: 26px;
 }
+
+.windows #options button {
+	border: none;
+	background: transparent;
+	margin: 0 2px;
+	color: #5090d0;
+	border-radius: 4px;
+	box-shadow: none;
+	padding: 3px 6px
+}
+
+.windows #options button:hover {
+	box-shadow: 0 0 0 1px rgba(80, 144, 208, 0.3) inset, 0 0 0 2px rgba(255,255,255,0.8) inset, 0 12px 0 rgba(255,255,255,0.5) inset, 0 12px 12px -12px white inset, 0 -24px 12px -12px rgba(80, 144, 208, 0.15) inset;
+}
+
+.windows #options button:active {
+	box-shadow: 0 0 0 1px rgba(80, 144, 208, 0.4) inset, 0 12px 6px -12px rgba(80, 144, 208, 0.65) inset;
+	background: rgba(80, 144, 208, 0.1);
+}
+
 
 #options button img, button.gradient img {
 	-webkit-user-drag: none;
@@ -50,7 +77,7 @@ input, button {
 	position: absolute;
 	left: 0;
 	top: 0;
-	bottom: 25px;
+	bottom: 33px;
 	width: 239px;
 	padding-left: 10px;
 	padding-top: 10px;
@@ -63,8 +90,8 @@ input, button {
 }
 
 .windows #sidebar {
-	background: #fafafa;
-        border-right: 1px solid #60a0c0
+	background: #fcfcfc;
+	border-right: 1px solid #d9e3f0;
 }
 
 #sidebar ul {
@@ -178,7 +205,7 @@ input, button {
 }
 
 .windows #content {
-	background: url('../img/nide.png') center center no-repeat #fafafa;
+	background: url('../img/nide.png') center center no-repeat #fcfcfc;
 }
 
 .code-editor {
@@ -193,7 +220,7 @@ input, button {
 }
 
 .windows .code-editor {
-	background: #fafafa;
+	background: #fcfcfc;
 }
 
 .code-editor.windowed {
@@ -325,7 +352,7 @@ input, button {
 }
 
 .windows .directory-editor {
-	background: url('../img/folder-large.png') no-repeat center center #fafafa;
+	background: url('../img/folder-large.png') no-repeat center center #fcfcfc;
 	color: black;
 }
 
@@ -341,7 +368,7 @@ input, button {
 }
 
 .windows #content .npm-editor {
-	background: url('../img/npm-logo.png') no-repeat 90% 90% #fafafa;
+	background: url('../img/npm-logo.png') no-repeat 90% 90% #fcfcfc;
 }
 
 #content .npm-editor .packages {
@@ -356,7 +383,7 @@ input, button {
 }
 
 #content .npm-editor .package:nth-child(2n) {
-	background: #fafafa;
+	background: #fcfcfc;
 }
 
 #content .npm-editor .package.extraneous {
