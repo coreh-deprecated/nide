@@ -5,6 +5,10 @@ body {
 	overflow: hidden;
 }
 
+input, button {
+	font-family: 'Lucida Grande', 'Segoe UI', 'Ubuntu', sans-serif;
+}
+
 #options {
 	position: absolute;
 	left: 0;
@@ -60,6 +64,7 @@ body {
 
 .windows #sidebar {
 	background: #fafafa;
+        border-right: 1px solid #60a0c0
 }
 
 #sidebar ul {
@@ -114,12 +119,22 @@ body {
 	padding-left: 0;
 }
 
-#sidebar li.selected, #sidebar li.folder.selected, .windows #sidebar li.folder.selected {
+.windows #sidebar li.root {
+	margin-right: 10px;
+}
+
+#sidebar li.selected, #sidebar li.folder.selected {
 	background-color: rgba(55,120,194,0.3);
 	border-radius: 5px 0 0 5px;
 	box-shadow: 0 1px 2px rgba(0,0,0,0.2) inset, 0 1px 0 rgba(255,255,255,0.5);
 	color: #3d5979;
 	text-shadow: 0 1px 0 rgba(255,255,255,0.5);
+}
+
+.windows #sidebar li.selected, .windows #sidebar li.folder.selected {
+	border-radius: 5px;
+	box-shadow: 0 0 0 1px rgba(80, 144, 208, 0.4) inset, 0 0 0 2px rgba(255, 255, 255, 0.5) inset, 0 -24px 12px -12px rgba(80, 144, 208, 0.05) inset;
+	background-color: rgba(80, 144, 208, 0.1);
 }
 
 #sidebar li.selected.syncing {
@@ -147,6 +162,12 @@ body {
 	padding: 0;
 }
 
+.windows #sidebar input[type="search"] {
+	border: 1px solid #ccc;
+	border-radius: 1px;
+	padding: 3px;
+}
+
 #content {
 	position: absolute;
 	left: 250px;
@@ -154,6 +175,10 @@ body {
 	top: 0;
 	bottom: 0;
 	background: url('../img/nide.png') center center no-repeat, url('../img/noise.png') #aaa;
+}
+
+.windows #content {
+	background: url('../img/nide.png') center center no-repeat #fafafa;
 }
 
 .code-editor {
@@ -165,6 +190,10 @@ body {
 	overflow: auto;
 	background: #eee;
 	z-index: 100;
+}
+
+.windows .code-editor {
+	background: #fafafa;
 }
 
 .code-editor.windowed {
@@ -296,7 +325,8 @@ body {
 }
 
 .windows .directory-editor {
-	background: url('../img/folder-large.png') no-repeat center center, url('../img/noise.png') #aba188;
+	background: url('../img/folder-large.png') no-repeat center center #fafafa;
+	color: black;
 }
 
 #content .npm-editor {
@@ -308,6 +338,10 @@ body {
 	background: url('../img/noise.png'), url('../img/npm-logo.png') no-repeat 90% 90% #eee;
 	padding: 8px;
 	overflow: auto;
+}
+
+.windows #content .npm-editor {
+	background: url('../img/npm-logo.png') no-repeat 90% 90% #fafafa;
 }
 
 #content .npm-editor .packages {
@@ -339,6 +373,10 @@ body {
 	background: url('../img/noise.png') #fff;
 }
 
+.windows #content .documentation-viewer {
+	background: #fff;
+}
+
 #content .documentation-viewer iframe {
 	border: none;
 	position: absolute;
@@ -357,11 +395,38 @@ body {
 	overflow: hidden;
 }
 
+.windows .actions b {
+	font-weight: normal;
+	margin-right: 5px;
+}
+
+.windows #content .actions button {
+	border: none;
+	background: transparent;
+	padding: 4px 12px;
+	margin: 0 2px;
+	color: #5090d0;
+	border-radius: 4px;
+}
+
+.windows #content .actions button:hover {
+	box-shadow: 0 0 0 1px rgba(80, 144, 208, 0.3) inset, 0 0 0 2px rgba(255,255,255,0.8) inset, 0 12px 0 rgba(255,255,255,0.5) inset, 0 12px 12px -12px white inset, 0 -24px 12px -12px rgba(80, 144, 208, 0.15) inset;
+}
+
+.windows #content .actions button:active {
+	box-shadow: 0 0 0 1px rgba(80, 144, 208, 0.4) inset, 0 12px 6px -12px rgba(80, 144, 208, 0.65) inset;
+	background: rgba(80, 144, 208, 0.1);
+}
+
 #content .CodeMirror {
 	background: white;
 	box-shadow: 0 0 10px rgba(0,0,0,0.5);
 	line-height: 1.5em;
 	display: inline-block;
+}
+
+.windows #content .CodeMirror {
+	box-shadow: 0 0 8px rgba(0,0,0,0.25);
 }
 
 #content .CodeMirror-scroll {
@@ -389,6 +454,10 @@ body {
 	border-radius: 5px;
 	margin-left: -300px;
 	box-shadow: 0 10px 20px rgba(0,0,0,0.5), 0 0 1px rgba(0,0,0,0.5), 0 5px 5px rgba(255,255,255,0.25) inset, 0 1px 0 rgba(255,255,255,0.5) inset, 0 -7px 5px -5px rgba(0,0,0,0.125) inset
+}
+
+.windows .setup {
+	background: #ddd;
 }
 
 .setup h1 {
