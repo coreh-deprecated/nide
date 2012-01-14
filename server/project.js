@@ -5,6 +5,7 @@ var exec = require('child_process').exec
 var uuid = require('node-uuid')
 var os = require('os')
 var normalize = require('path').normalize
+var child_process = require('child_process')
 
 var fileStates = {}
 var versionHistory = {}
@@ -74,6 +75,13 @@ exports.init = function() {
         process.exit(-1)
     }
     console.log('Created `.nide` directory')
+    if (os.platform() == 'win32') {
+        child_process.exec('attrib +H .nide', function(err) {
+            if (err) {
+                console.warn('Warning: Unable to hide `.nide` directory.')
+            }
+        })
+    }
     var gitignore = ''
     try {
         gitignore = fs.readFileSync('.gitignore', 'utf8')
