@@ -86,6 +86,14 @@ var UserInterfaceController = function() {
         }
     }
     $('#search-field').keyup(doSearch).click(doSearch)
+    
+    $('#search-field').bind('input', function() {
+        if (typeof(this.value) == 'undefined' || this.value == '') {
+            $(this).removeClass('not-empty')
+        } else {
+            $(this).addClass('not-empty')
+        }
+    })
 
     $('#project').click(function(e) {
         if (e.target == $('#project')[0]) {
