@@ -193,6 +193,8 @@ input, button {
 	border: 1px solid #ccc;
 	border-radius: 1px;
 	padding: 3px;
+	-webkit-appearance: none;
+	-moz-appearance: none;
 	background: url('../img/search-windows.png') right no-repeat white;
 }
 
