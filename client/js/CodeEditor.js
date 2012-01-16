@@ -153,7 +153,8 @@
             $(".revert, .backward, .forward", galaxyBackground).show()
             
             var currentVersionDate = (new Date(versions[currentVersion].date)).toString();
-            $(galaxyBackground.then).html(currentVersionDate);
+            galaxyBackground.then.title = currentVersionDate;
+            $(galaxyBackground.then).easydate()
 
             for (var i = 0; i < versions.length; i++) {
                 var version = versions[i]
@@ -223,7 +224,8 @@
             }
             
             var currentVersionDate = (new Date(versions[currentVersion].date)).toString();
-            $(galaxyBackground.then).html(currentVersionDate)
+            galaxyBackground.then.title = currentVersionDate
+            $(galaxyBackground.then).easydate()
             
             for (var i = 0; i < versions.length; i++) {
                 var version = versions[i]
