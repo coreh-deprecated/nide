@@ -319,6 +319,7 @@ input, button {
 	font-size: 200%;
 	text-align: left;
 	left: 52.5%;
+	width: 47.5%;
 	font-weight: 100;
 }
 
@@ -401,6 +402,13 @@ input, button {
 	margin-top: -0.5em;
 	text-align: center;
 	text-shadow: 0 1px 1px black;
+}
+
+.windows .galaxy-background .no-previous {
+	text-shadow: none;
+	font-family: 'Segoe UI Light', 'Segoe UI', sans-serif;
+	font-size: 170%;
+	font-weight: 100;
 }
 
 .directory-editor {
