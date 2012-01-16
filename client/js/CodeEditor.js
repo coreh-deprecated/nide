@@ -44,10 +44,10 @@
         return CodeMirror(parentNode, options);
     }
 
-    var createGalaxyBackground = function() {
+    var createGalaxyBackground = function(name) {
         var galaxyBackground = document.createElement('div')
         galaxyBackground.innerHTML = 
-            '<h1 class="now">Now</h1>' +
+            '<h1 class="now">Now (' + name + ')</h1>' +
             '<h1 class="then">Then</h1>' +
             '<button class="done">Done</button>' +
             '<button class="revert">Revert</button>' +
@@ -91,7 +91,7 @@
     window.CodeEditor = function(entry) {
         var codeMirror;
         var currentVersion;
-        var galaxyBackground = createGalaxyBackground()
+        var galaxyBackground = createGalaxyBackground(entry.name)
         var actionsBar = createActionsBar(entry.path)
         var editor = document.createElement('div')
         var versionEditors = []
