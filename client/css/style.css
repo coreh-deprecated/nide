@@ -351,7 +351,7 @@ body {
 #content .CodeMirror-scroll {
 	height: auto;
 	overflow: visible;
-	min-width: 82em;
+	min-width: 55em;
 }
 
 #lightbox {
