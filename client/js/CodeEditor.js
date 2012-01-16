@@ -1,6 +1,13 @@
 (function() {
     
     var VERSIONS_ANIMATION_DURATION = 1000
+    var VERSIONS_SCREEN_VERTICAL_MARGIN 
+    
+    if (UserInterfaceController.windows) {
+        VERSIONS_SCREEN_VERTICAL_MARGIN = '75px'
+    } else {
+        VERSIONS_SCREEN_VERTICAL_MARGIN = '50px'
+    }
     
     var inferCodeMirrorModeFromPath = function(path){
         switch (true) {
@@ -138,8 +145,8 @@
             
             $(editor).animate({
                 left: '5%',
-                top: '50px',
-                bottom: '50px',
+                top: VERSIONS_SCREEN_VERTICAL_MARGIN,
+                bottom: VERSIONS_SCREEN_VERTICAL_MARGIN,
                 right: '52.5%'
             }, VERSIONS_ANIMATION_DURATION).addClass('windowed')
 
@@ -170,8 +177,8 @@
                 
                 $(versionEditor).animate({
                     right: '5%',
-                    top: '50px',
-                    bottom: '50px',
+                    top: VERSIONS_SCREEN_VERTICAL_MARGIN,
+                    bottom: VERSIONS_SCREEN_VERTICAL_MARGIN,
                     left: '52.5%'
                 }, VERSIONS_ANIMATION_DURATION).addClass('windowed');
                 
@@ -193,8 +200,8 @@
             versionEditors[currentVersion].style.zIndex = 100
             $(versionEditors[currentVersion]).animate({
                 left: '5%',
-                top: '50px',
-                bottom: '50px',
+                top: VERSIONS_SCREEN_VERTICAL_MARGIN,
+                bottom: VERSIONS_SCREEN_VERTICAL_MARGIN,
                 right: '52.5%'
             }, VERSIONS_ANIMATION_DURATION, function() {
                 codeMirror.setValue(versions[currentVersion].content)

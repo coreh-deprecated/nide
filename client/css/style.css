@@ -237,6 +237,12 @@ input, button {
 	background-clip: padding-box;
 }
 
+.windows .code-editor.windowed {
+	border-radius: 0;
+	border: none;
+	box-shadow: 0 0 10px rgba(0,0,0,0.3);
+}
+
 .code-editor .error {
 	background: #ffd url('../img/error.png') no-repeat 10px 10px;
 	padding: 18px 10px 18px 50px;
@@ -264,6 +270,10 @@ input, button {
 	background-size: cover;
 }
 
+.windows .galaxy-background {
+	background: url('../img/galaxy-windows.jpg') center center #000;
+}
+
 .galaxy-background h1.now {
 	position: absolute;
 	width: 50%;
@@ -278,6 +288,15 @@ input, button {
 	z-index: 99
 }
 
+.windows .galaxy-background h1.now {
+	left: 5%;
+	text-shadow: none;
+	font-family: 'Segoe UI Light', 'Segoe UI', sans-serif;
+	font-size: 200%;
+	text-align: left;
+	font-weight: 100;
+}
+
 .galaxy-background h1.then {
 	position: absolute;
 	width: 50%;
@@ -289,7 +308,18 @@ input, button {
 	font-size: 10pt;
 	font-weight: normal;
 	text-shadow: 0 1px 1px black;
-	z-index: 99
+	z-index: 99;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.windows .galaxy-background h1.then {
+	text-shadow: none;
+	font-family: 'Segoe UI Light', 'Segoe UI', sans-serif;
+	font-size: 200%;
+	text-align: left;
+	left: 52.5%;
+	font-weight: 100;
 }
 
 .galaxy-background > button {
@@ -305,9 +335,28 @@ input, button {
 	z-index: 99
 }
 
+.windows .galaxy-background > button {
+	border: none;
+	color: white;
+	background: transparent;
+	box-shadow: 0 0 0 1px rgba(255,255,255,0.8) inset, 0 0 10px rgba(0,0,0,0.1);
+	text-shadow: none;
+	border-radius: 1px;
+	margin: 0 0 10px;
+	font-size: 125%;
+	line-height: 20px;
+	padding: 6px 30px;
+}
+
 .galaxy-background > button:active {
 	box-shadow: 0 23px 5px -10px rgba(255,255,255,0.125) inset, 0 2px 5px black;
 	color: #aaa;
+}
+
+.windows .galaxy-background > button:active {
+	color: white;
+	background: rgba(0,0,0,0.25);
+	box-shadow: 0 0 0 1px rgba(255,255,255,1) inset, 0 0 10px rgba(0,0,0,0.1);
 }
 
 .galaxy-background > button.done {
@@ -328,10 +377,18 @@ input, button {
 	bottom: 10px;
 }
 
+.windows .galaxy-background > button.backward {
+	margin-right: 5px;
+}
+
 .galaxy-background > button.forward {
 	position: absolute;
 	left: 75%;
 	bottom: 10px;
+}
+
+.windows .galaxy-background > button.forward {
+	margin-left: 5px;
 }
 
 .galaxy-background .no-previous {
