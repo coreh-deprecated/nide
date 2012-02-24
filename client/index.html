@@ -6,7 +6,8 @@
 	<link rel="stylesheet" href="css/style.css">
 	
 	<link rel="stylesheet" href="css/codemirror.css">
-	<link rel="stylesheet" href="css/codemirror-default.css">
+	<link rel="stylesheet" href="css/codemirror-default.css" name="Default">
+        <link rel="stylesheet/less" href="css/codemirror-solarized.less" name="Solarized Light, Solarized Dark">
 
 	<!-- External Dependencies -->
 	<script src="socket.io/socket.io.js"></script>
@@ -15,6 +16,7 @@
 	<script src="js/external/transformjs.1.0.beta.2.js"></script>
 	<script src="js/external/codemirror.js"></script>
 	<script src="js/external/jquery.easydate-0.2.4.js"></script>
+        <script src="js/external/less-1.2.1.min.js"></script>
 	
 	<!-- CodeMirror syntax highlighting modes -->
 	<script src="js/external/mode/javascript/javascript.js"></script>
@@ -68,8 +70,10 @@
 	</div>
 	<div id="content"></div>
 	<ul id="gear-menu-popup" class="popup-menu">
-		<li><span id="project-refresh"><img src="img/refresh.png"> Refresh</span>
-		<li class="checkbox"><input type="checkbox" id="show-hidden"><label for="show-hidden">Show Hidden Files</label>
+               <li><span id="project-refresh"><img src="img/refresh.png"> Refresh</span>
+               <li class="checkbox"><input type="checkbox" id="show-hidden"><label for="show-hidden">Show Hidden Files</label>
+               <li class="separator"><hr>
+               <li><span id="project-settings">Project Settings</span>
 	</ul>
 	<div id="lightbox">
 		<div class="setup">
