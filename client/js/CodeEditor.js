@@ -29,6 +29,7 @@
     var createCodeMirror = function(parentNode, contents, path, options) {
         var mode = inferCodeMirrorModeFromPath(path);
         var options = {
+            theme: $.cookie('editor-theme') || 'default',
             value: contents,
             mode: mode,
             lineNumbers: true,

@@ -6,6 +6,20 @@ var UserInterfaceController = function() {
     var fileHtmlElementByPath
     var stateByPath = {}
     var fileEntries = []
+    var editorThemes = (function() {
+        // Getting available themes
+        var themes = [];
+        $('link[rel^="stylesheet"][name]').each(function() {
+            var $link   = $(this);
+            $.each($link.attr('name').split(','), function(id, item) {
+                var theme = {};
+                theme.name  = item.replace(/(^\s*|\s*$)/, '');
+                theme.value = theme.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
+                themes.push(theme);
+            });
+        });
+        return themes;
+    })();
 
     var ignore = ['.git', '.nide', '.DS_Store']
     var limitRecursion = ['node_modules']
@@ -176,81 +190,45 @@ var UserInterfaceController = function() {
         connection.list()
     })
 
-    $('#project-settings').click(function(e) {
+    $('#preference-settings').click(function(e) {
         e.preventDefault();
-        // Getting available themes
-        var themes = [];
-        $('link[rel^="stylesheet"][name]').each(function() {
-            var $link   = $(this);
-            $.each($link.attr('name').split(','), function(id, item) {
-                var theme = {};
-                theme.name  = item.replace(/(^\s*|\s*$)/, '')
-                theme.value = 'cm-s-' + theme.name.toLowerCase().replace(/[^a-z0-9]/g, '-')
-                themes.push(theme);
+        // Create Overlay
+        $.get('dialog.html', function(response) {
+            $('body').append(response);
+            $('.dialog-title').html('Preferences');
+            $('.dialog-content').html(
+                '<label for="theme-selection">Editor Theme : <select id="theme-selection"></select></label>'
+            );
+
+            // Center Dialog
+            $(window).resize(function() {
+                $('.dialog').css({
+                    'top'  : ($(window).height() - $('.dialog').outerHeight()) / 2,
+                    'left' : ($(window).width() - $('.dialog').outerWidth()) / 2
+                });
+            }).resize();
+
+            var $theme_selection = $('#theme-selection');
+            $.each(editorThemes || [], function() {
+                $('<option value=' + this.value + '>' + this.name + '</option>')
+                    .attr('selected', ($.cookie('editor-theme') == this.value))
+                    .appendTo($theme_selection);
+            });
+            $theme_selection.change(function() {
+                $('.CodeMirror-scroll')
+                        .removeClass(editorThemes.map(function(it) {return 'cm-s-' + it.value;}).join(' '))
+                        .addClass('cm-s-' + $(this).val());
+                // Store current value to a cookie
+                $.cookie('editor-theme', $(this).val(), {expires: 30});
+            });
+
+            $('.dialog-close').click(function(e) {
+                e.preventDefault();
+                $('#dialog-overlay, .dialog').fadeOut(200, function() {
+                    $(this).remove();
+                });
             });
         });
-
-        // Create Overlay
-        var overlay = $('<div></div>')
-                      .css({
-                        'position': 'absolute', 'background-color': '#000', 'z-index': 900, 'top' : 0, 'left' : 0,
-                        'right' : 0, 'bottom' : 0, 'opacity' : .3
-                      })
-                      .appendTo('body');
-
-        var dialog  = $('<div class="dialog">'
-                        +'<h1>Project Settings</h1><a href="#" class="close">&times;</a>'
-                        +'<div class="content"></div></div>'
-                       ).appendTo('body');
-
-        $(dialog).css({
-                'position': 'fixed',
-                'left': '50%',
-                'top': 150,
-                'max-width': 600,
-                'min-width': 250,
-                'padding': 15,
-                'border': '1px solid #eee',
-                'background': 'white',
-                'z-index': 1000,
-                'box-shadow': '0 1px 8px 0 black'
-        });
-
-        $('h1', dialog).css({
-                'margin': '0 0 5px 0',
-                'font-size': '16px',
-                'font-weight': 'normal'
-        });
-
-        $('.close', dialog).css({
-                'position': 'absolute',
-                'top': 3,
-                'right': 10,
-                'text-decoration': 'none',
-                'color': '#888',
-                'font-size': 16,
-                'font-weight': 'bold'
-        }).click(function() {
-                dialog.remove();
-                overlay.remove();
-        });
-
-        var content = $('.content', dialog).css({
-                'padding' : '40px 20px'
-        });
-
-        // Theme Selection
-        var select = $('<label for="theme-selection">Theme : </label><select id="theme-selection"></select>').appendTo(content);
-        $.each(themes, function() {
-            $('<option value=' + this.value + '>' + this.name + '</option>').appendTo(select);
-        });
-
-        select.change(function() {
-                $('.CodeMirror-scroll')
-                        .removeClass(themes.map(function(it) {return it.value;}).join(' '))
-                        .addClass($(this).val());
-        });
-
     });
 
     var shouldDismissGearMenuOnMouseUp = false;

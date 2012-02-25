@@ -43,35 +43,60 @@ html * {
     background-color: @rebase03;
     color: @rebase0;
 
+    .emphasis { font-weight:bold;}
+    .dotted   { border-bottom: 1px dotted @orange; }
+
     .CodeMirror-gutter {
         background-color: @rebase02;
         border-right: 3px solid @rebase02;
+        .CodeMirror-gutter-text  {
+            color: @rebase01;
+        }
+    }
+    .CodeMirror-cursor {
+        border-left-color: @rebase3 !important;
+    }
+
+    .CodeMirror-matchingbracket {
+        color: @rebase3;
+        background-color: @rebase02;
+        box-shadow: 0 0 10px @rebase02;
+        .emphasis;
+    }
+    .CodeMirror-nonmatchingbracket {
+        .CodeMirror-matchingbracket;
+        color: @red;
+        .dotted;
     }
 
     span {
-        .cm-keyword { color: @rebase1; }
-        .cm-atom { .cm-keyword; }
-        .cm-number { .cm-keyword; }
-        .cm-def { .cm-keyword; }
-        .cm-variable{ .cm-keyword; }
-        .cm-variable-2{ .cm-keyword; }
-        .cm-variable-3{ .cm-keyword; }
-        .cm-property { .cm-keyword; }
-        .cm-operator { .cm-keyword; }
-        .cm-comment { .cm-keyword; }
-        .cm-string { .cm-keyword; }
-        .cm-meta { .cm-keyword; }
-        .cm-error{ .cm-keyword; }
-        .cm-qualifier{ .cm-keyword; }
-        .cm-builtin { .cm-keyword; }
-        .cm-bracket { .cm-keyword; }
-        .cm-tag { .cm-keyword; }
-        .cm-attribute { .cm-keyword; }
-    }
-}
+        &.cm-keyword { color: @rebase0; .emphasis; }
+        &.cm-atom { color: @cyan; }
+        &.cm-number { color: @rebase1; }
+        &.cm-def { color: @blue; }
 
-.accentize(@accent) {
-    color: @accent;
+        &.cm-variable{ color: @orange; }
+        &.cm-variable-2{ .cm-variable; }
+        &.cm-variable-3{ .cm-variable; }
+
+        &.cm-comment { color: @rebase01; }
+
+        &.cm-property { color: @yellow; }
+        &.cm-operator { color: @rebase0; }
+        &.cm-string { color: @violet; }
+        &.cm-error{ .emphasis; .dotted; }
+        &.cm-bracket { color: @orange; }
+
+        &.cm-tag { color: @rebase0; }
+        &.cm-attribute { color: @rebase1; .emphasis; }
+        &.cm-meta { color: @blue; }
+
+        // Unstyled
+        &.cm-qualifier{ }
+        &.cm-builtin { }
+        &.cm-null {}
+        &.cm-undefined {}
+      }
 }
 
 .cm-s-solarized-light {
