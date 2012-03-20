@@ -18,6 +18,7 @@
             case !!path.match(/\.ejs$/): return 'application/x-ejs'
             case !!path.match(/\.jsp$/): return 'application/x-jsp'
             case !!path.match(/\.aspx$/): return 'application/x-aspx'
+            case !!path.match(/\.m(arkdown|d)$/): return 'text/x-markdown'
             default: return 'text/plain';
         }
     }
