@@ -6,6 +6,20 @@ var UserInterfaceController = function() {
     var fileHtmlElementByPath
     var stateByPath = {}
     var fileEntries = []
+    var editorThemes = (function() {
+        // Getting available themes
+        var themes = [];
+        $('link[rel^="stylesheet"][name]').each(function() {
+            var $link   = $(this);
+            $.each($link.attr('name').split(','), function(id, item) {
+                var theme = {};
+                theme.name  = item.replace(/(^\s*|\s*$)/, '');
+                theme.value = theme.name.toLowerCase().replace(/[^a-z0-9]/g, '-');
+                themes.push(theme);
+            });
+        });
+        return themes;
+    })();
 
     var ignore = ['.git', '.nide', '.DS_Store']
     var limitRecursion = ['node_modules']
@@ -175,6 +189,47 @@ var UserInterfaceController = function() {
     $('#project-refresh').click(function(e) {
         connection.list()
     })
+
+    $('#preference-settings').click(function(e) {
+        e.preventDefault();
+        // Create Overlay
+        $.get('dialog.html', function(response) {
+            $('body').append(response);
+            $('.dialog-title').html('Preferences');
+            $('.dialog-content').html(
+                '<label for="theme-selection">Editor Theme : <select id="theme-selection"></select></label>'
+            );
+
+            // Center Dialog
+            $(window).resize(function() {
+                $('.dialog').css({
+                    'top'  : ($(window).height() - $('.dialog').outerHeight()) / 2,
+                    'left' : ($(window).width() - $('.dialog').outerWidth()) / 2
+                });
+            }).resize();
+
+            var $theme_selection = $('#theme-selection');
+            $.each(editorThemes || [], function() {
+                $('<option value=' + this.value + '>' + this.name + '</option>')
+                    .attr('selected', ($.cookie('editor-theme') == this.value))
+                    .appendTo($theme_selection);
+            });
+            $theme_selection.change(function() {
+                $('.CodeMirror-scroll')
+                        .removeClass(editorThemes.map(function(it) {return 'cm-s-' + it.value;}).join(' '))
+                        .addClass('cm-s-' + $(this).val());
+                // Store current value to a cookie
+                $.cookie('editor-theme', $(this).val(), {expires: 30});
+            });
+
+            $('.dialog-close').click(function(e) {
+                e.preventDefault();
+                $('#dialog-overlay, .dialog').fadeOut(200, function() {
+                    $(this).remove();
+                });
+            });
+        });
+    });
 
     var shouldDismissGearMenuOnMouseUp = false;
     var hasJustDisplayedGearMenu = false;
