@@ -34,7 +34,7 @@ program
     .action(function(dir){checkForDependencies(function(){
         // Work around name collision caused by "password" function provided by commander
         var password = program.password instanceof Function ? undefined : program.password
-        if (dir && !path.existsSync(dir)) {
+        if (dir && !fs.existsSync(dir)) {
             console.log('Created `' + dir + '` directory.')
             fs.mkdirSync(dir)
         }
