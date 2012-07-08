@@ -110,7 +110,8 @@
 			contributors: FormBuilder.getValuesForGroupField(contributorsFieldDesc),
 			scripts: FormBuilder.getValuesForGroupField(scriptsFieldDesc),
 			bin: FormBuilder.getValuesForGroupField(binFieldDesc),
-			keywords: FormBuilder.getValuesForGroupField(keywordsFieldDesc)
+			keywords: FormBuilder.getValuesForGroupField(keywordsFieldDesc),
+			engines: FormBuilder.getValuesForGroupField(enginesFieldDesc)
 		};
 	};
 
@@ -176,6 +177,7 @@
 				FormBuilder.setValuesForGroupField(scriptsFieldDesc,packageData.scripts);
 				FormBuilder.setValuesForGroupField(binFieldDesc,packageData.bin);
 				FormBuilder.setValuesForGroupField(keywordsFieldDesc,packageData.keywords);
+				FormBuilder.setValuesForGroupField(enginesFieldDesc,packageData.engines);
 
 				$("#name",editor).focus();
 			}
@@ -209,6 +211,21 @@ var scriptsFieldDesc = {
 		},
 		{
 			name: "script",
+			type: "text"
+		}
+	]
+};
+
+var enginesFieldDesc = {
+	label: "Engines",
+	id: "engines",
+	fields: [
+		{
+			name: "name",
+			type: "text"
+		},
+		{
+			name: "version",
 			type: "text"
 		}
 	]
@@ -299,6 +316,7 @@ var editorForm =
 		'	<input type="url" placeholder="url" id="repository-url" name="repository-url" />' +
 		'  </div>' +
 		FormBuilder.generateMultiInputGroup(contributorsFieldDesc) +
+		FormBuilder.generateKeyValueGroup(enginesFieldDesc) +
 		FormBuilder.generateKeyValueGroup(scriptsFieldDesc) +
 		FormBuilder.generateKeyValueGroup(binFieldDesc) +
 		FormBuilder.generateValueArrayGroup(keywordsFieldDesc) +
