@@ -6,8 +6,13 @@ form#packageJSON {
 }
 
 form#packageJSON fieldset {
+	background-color: #FFF;
 	border: solid 1px #000000;
 	margin-bottom: 10px;
+}
+
+form#packageJSON fieldset input {
+	background-color: #EEE;
 }
 
 form#packageJSON div.formRow {
@@ -23,7 +28,7 @@ form#packageJSON label.formCell {
 
 #hint-container {
 	position: absolute;
-	top: 50px;
+	top: 75px;
 	right: 10px;
 	width: 40%;
 }
