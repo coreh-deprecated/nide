@@ -179,6 +179,9 @@
 			},
 			function(values)
 			{
+				if (!values)
+					return 0;
+				
 				return values.length;
 			},
 			function(rowIndex,colIndex,field,values)
@@ -215,6 +218,9 @@
 			},
 			function(values)
 			{
+				if (!values)
+					return 0;
+
 				return _.keys(values).sort().length;
 			},
 			function(rowIndex,colIndex,field,values)
@@ -264,6 +270,9 @@
 			},
 			function(values)
 			{
+				if (!values)
+					return 0;
+
 				return values.length;
 			},
 			function(rowIndex,colIndex,field,values)
@@ -276,24 +285,3 @@
 		);
 	};
 })();
-
-window.addMultiInput = function(e)
-{
-	var dest = $(e.target).parent();
-
-	FormBuilder.addMultiInput(dest);
-};
-
-window.addKeyValueInput = function(e)
-{
-	var dest = $(e.target).parent();
-
-	FormBuilder.addKeyValueInput(dest);
-};
-
-window.addValueArrayInput = function(e)
-{
-	var dest = $(e.target).parent();
-
-	FormBuilder.addValueArrayInput(dest);
-};
