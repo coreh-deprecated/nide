@@ -35,6 +35,9 @@
             case "npm":
                 editor.element = new NPMEditor(entry)
             break;
+			case "package.json":
+				editor.element = new PackageJSONEditor(entry)
+			break;
         }
         
         this.editors.splice(0, 0, editor)

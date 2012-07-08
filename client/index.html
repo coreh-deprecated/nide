@@ -4,20 +4,22 @@
 	<title>nide</title>
 	
 	<link rel="stylesheet" href="css/style.css">
-	
+	<link rel="stylesheet" href="css/package-json.css">
+
 	<link rel="stylesheet" href="css/codemirror.css">
 	<link rel="stylesheet" href="css/codemirror-default.css" name="Default">
-        <link rel="stylesheet/less" href="css/codemirror-solarized.less" name="Solarized Light, Solarized Dark">
+    <link rel="stylesheet/less" href="css/codemirror-solarized.less" name="Solarized Light, Solarized Dark">
 
 	<!-- External Dependencies -->
 	<script src="socket.io/socket.io.js"></script>
 	<script src="js/external/jquery-1.6.2.min.js"></script>
+	<script src="js/external/underscore-min.js"></script>
 	<script src="js/external/modernizr-2.0.6.js"></script>
 	<script src="js/external/transformjs.1.0.beta.2.js"></script>
 	<script src="js/external/codemirror.js"></script>
 	<script src="js/external/jquery.easydate-0.2.4.js"></script>
-        <script src="js/external/less-1.2.1.min.js"></script>
-        <script src="js/external/jquery.cookie.js"></script>
+    <script src="js/external/less-1.2.1.min.js"></script>
+    <script src="js/external/jquery.cookie.js"></script>
 	
 	<!-- CodeMirror syntax highlighting modes -->
 	<script src="js/external/mode/javascript/javascript.js"></script>
@@ -30,8 +32,11 @@
 	<script src="js/external/mode/css/css.js"></script>        
 	<script src="js/external/mode/clike/clike.js"></script>        
 	<script src="js/external/mode/xml/xml.js"></script>
-  <script src="js/external/mode/htmlembedded/htmlembedded.js"></script>
-  <script src="js/external/mode/markdown/markdown.js"></script>
+    <script src="js/external/mode/htmlembedded/htmlembedded.js"></script>
+    <script src="js/external/mode/markdown/markdown.js"></script>
+
+	<!-- Internal Dependencies -->
+	<script src="js/FormBuilder.js"></script>
 
 	<script src="js/ServerConnection.js"></script>
 	<script src="js/EditorPool.js"></script>
@@ -41,6 +46,7 @@
 	<script src="js/DirectoryEditor.js"></script>
 	<script src="js/DocumentationViewer.js"></script>
 	<script src="js/NPMEditor.js"></script>
+	<script src="js/PackageJSONEditor.js"></script>
 </head>
 <body>
 	<div id="sidebar">
@@ -61,6 +67,11 @@
 		</ul>
 		<ul>
 			<li class="root" id="npm"><img src="img/npm.png">NPM</li>
+			<div id="npm-items">
+				<ul>
+					<li id="npm-package-json"><img src="img/file.png">package.json</li>
+				</ul>
+			</div>
 		</ul>
 		<ul>
 			<li class="root" id="docs"><img src="img/documentation.png">Node.JS Documentation</li>

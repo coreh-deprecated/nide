@@ -1,0 +1,29 @@
+
+
+form#packageJSON {
+	padding: 5px;
+	width: 55%;
+}
+
+form#packageJSON fieldset {
+	border: solid 1px #000000;
+	margin-bottom: 10px;
+}
+
+form#packageJSON div.formRow {
+	display: table-row;
+}
+
+form#packageJSON label.formCell {
+	display: table-cell;
+	padding: 0 1em;
+	font-size: 13px;
+	line-height: 20px;
+}
+
+#hint-container {
+	position: absolute;
+	top: 50px;
+	right: 10px;
+	width: 40%;
+}

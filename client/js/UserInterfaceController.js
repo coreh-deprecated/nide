@@ -114,6 +114,15 @@ var UserInterfaceController = function() {
         }
     })
 
+	$("#npm-package-json").click(function(e){
+		if (e.target == $('#npm-package-json')[0]) {
+			_this.selectFile({
+				type: 'package.json',
+				path: '/package.json'
+			}, null, $('#npm-package-json')[0])
+		}
+	})
+
     $('#docs').click(function(e) {
         if (e.target == $('#docs')[0]) {
             _this.selectFile({

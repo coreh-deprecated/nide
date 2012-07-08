@@ -317,6 +317,17 @@ body {
 	color: rgb(180,0,0)
 }
 
+#content .package-json-editor {
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	bottom: 0;
+	background: url('../img/noise.png') no-repeat 90% 90% #eee;
+	padding: 8px;
+	overflow: auto;
+
+
 #content .documentation-viewer {
 	width: 100%;
 	height: 100%;
