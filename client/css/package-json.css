@@ -26,7 +26,7 @@ form#packageJSON label.formCell {
 	line-height: 20px;
 }
 
-#hint-container {
+#hint-content {
 	position: absolute;
 	top: 75px;
 	right: 10px;

@@ -259,7 +259,7 @@ var keywordsFieldDesc = {
 };
 
 var editorForm =
-	'<div class="actions"><b>package.json editor</b> <button class="refresh">Refresh</button></div>' +
+		'<div class="actions"><b>package.json editor</b> <button class="refresh">Refresh</button></div>' +
 		'<div id="packageJSONError" class="error">' +
 		'<b>Unable to open file:</b><span id="errorMsg"></span>' +
 		'</div>' +
@@ -323,9 +323,11 @@ var editorForm =
 		FormBuilder.generateValueArrayGroup(keywordsFieldDesc) +
 		'</fieldset>' +
 		'</form>' +
-		'<div id="hint-container" />' +
+		'</div>' +
+		'<div id="hint-content">' +
+			'  <p>Cheatsheet courtesy of <a href="http://package.json.jit.su/" target="_blank">http://package.json.jit.su/</a></p>' +
+			'  <div id="hint-container" />' +
 		'</div>';
-
 
 var hints = {
 	"home": "Welcome to the <strong>package.json</strong> cheatsheet! <br/><br/> This is an interactive guide for exploring various important properties of the <a target='_blank' href='http://blog.nodejitsu.com/npm-cheatsheet'>package.json</a> packaging format for <a target='_blank' href='http://nodejs.org'>node.js</a> applications. <br/> <br/> You can access information about properties by <strong>mousing over</strong> or <strong>clicking</strong> the property name.</div></ul>",
@@ -361,7 +363,7 @@ var hints = {
 	"request": "Require the <a target='_blank' href='http://github.com/mikeal/request'>request</a> module as a dependency with a ranged version. <br/><br/>Using an <strong>x</strong> indicates that the package will attempt to use the highest value version for <strong>x</strong>. <br/><br/>In <strong>2.1.x</strong>, we have a wildcard <strong>ONLY</strong> for the <strong>patch</strong> version. <br/><br/>The hope here, is that the package author has followed <a target='_blank' href='http://blog.nodejitsu.com/package-dependencies-done-right'>best-practices</a> and <strong>patch</strong> versions of the package will <strong>NOT</strong> be breaking.",
 	"bundleDependencies": "An array containing a list of package names you have bundled in your package. <br/><br/>The convention here is to make sure your bundled dependencies exist in the <strong>node_modules/</strong> folder. <br/><br/>Packages listed in <strong>bundleDependencies</strong> will now remain locked into the version contained in the <strong>node_modules/</strong> folder.",
 	"license": "The license which you prefer to release your project under. <br/><br/> <a target='_blank' href='http://en.wikipedia.org/wiki/MIT_License'>MIT</a> is a good choice.",
-	"engine": "A <a target='_blank' href='http://stackoverflow.com/questions/2364289/what-exactly-is-a-hash-in-regards-to-json'>hash</a> containing key/pair mappings of <strong>engine</strong> versions. <br/> <br/> This is used to specify the versions of <a target='_blank' href='http://nodejs.org'>node.js</a> your package is <strong>known</strong> to work correctly with.",
+	"engines": "A <a target='_blank' href='http://stackoverflow.com/questions/2364289/what-exactly-is-a-hash-in-regards-to-json'>hash</a> containing key/pair mappings of <strong>engine</strong> versions. <br/> <br/> This is used to specify the versions of <a target='_blank' href='http://nodejs.org'>node.js</a> your package is <strong>known</strong> to work correctly with.",
 	"node": "The version of <a target='_blank' href='http://nodejs.org'>node.js</a> this package is <strong>known</strong> to work with. <br/><br/> Like dependencies, this uses <a target='_blank' href='http://semver.org'>Semantic Versioning</a>."
 };
 
