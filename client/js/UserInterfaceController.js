@@ -6,7 +6,8 @@ var UserInterfaceController = function() {
     var fileHtmlElementByPath
     var stateByPath = {}
     var fileEntries = []
-    var editorThemes = (function() {
+	var editorPool = new EditorPool();
+	var editorThemes = (function() {
         // Getting available themes
         var themes = [];
         $('link[rel^="stylesheet"][name]').each(function() {
@@ -20,6 +21,7 @@ var UserInterfaceController = function() {
         });
         return themes;
     })();
+	var preferencesDialog = new PreferencesDialog(editorThemes);
 
     var ignore = ['.git', '.nide', '.DS_Store']
     var limitRecursion = ['node_modules']
@@ -199,8 +201,6 @@ var UserInterfaceController = function() {
         connection.list()
     })
 
-	var preferencesDialog = new PreferencesDialog(editorThemes);
-
     $('#preference-settings').click(function(e) {
         e.preventDefault();
 
@@ -264,8 +264,6 @@ var UserInterfaceController = function() {
         document.getElementById('search-results').appendChild(ul);
     }
     
-    var editorPool = new EditorPool();
-
     var setCurrentEditor = function(editor) {
         var children = $('#content').children()
         children.css({ visibility: 'hidden', zIndex: -1 });
@@ -275,7 +273,11 @@ var UserInterfaceController = function() {
             $('#content').append(editor)
         }
         editor.focus()
-    }
+    };
+
+	this.setOptionOnCodeEditors = function(name,value) {
+		editorPool.setOptionOnCodeEditors(name,value);
+	}
 
     this.displayWelcomeScreen = function() {
         $('#lightbox').fadeIn()

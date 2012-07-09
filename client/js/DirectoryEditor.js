@@ -13,6 +13,8 @@ var DirectoryEditor = function(entry) {
         }
     })
     actionsBar.appendChild(renameButton)
-    editor.appendChild(actionsBar)
-    return editor
+    editor.appendChild(actionsBar);
+
+	this.element = editor;
+    return this;
 }

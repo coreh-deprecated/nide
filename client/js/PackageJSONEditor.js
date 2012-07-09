@@ -42,7 +42,8 @@
 		this.saving = false;
 		this.setPackageValues(editor,entry);
 
-		return editor;
+		this.element = editor;
+		return this;
 	};
 
 	PackageJSONEditor.prototype.showHint = function(e)

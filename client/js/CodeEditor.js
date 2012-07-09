@@ -27,22 +27,28 @@
         return document.location.protocol + "//" + document.location.hostname + ':' + ((parseInt(document.location.port) || 80) + 1) + path
     }
 
+	var toBool = function(val)
+	{
+		return val == "true";
+	}
+
     var createCodeMirror = function(parentNode, contents, path, options) {
         var mode = inferCodeMirrorModeFromPath(path);
         var options = {
             theme: $.cookie('editor-theme') || 'default',
             value: contents,
             mode: mode,
-            lineNumbers: true,
+            lineNumbers: ($.cookie('show-line-numbers') ? toBool($.cookie('show-line-numbers')) : true),
             onChange: options.onChange,
             readOnly: options.readOnly,
-            indentUnit: 4,
+            indentUnit: parseInt($.cookie('indent-unit'),10) || 4,
             enterMode: 'keep',
             tabMode: 'shift',
             electricChars: false,
             smartHome: true,
             matchBrackets: true
-        }
+        };
+
         return CodeMirror(parentNode, options);
     }
 
@@ -98,7 +104,15 @@
         var editor = document.createElement('div')
         var versionEditors = []
         var versions;
-        
+
+		this.setOptionOnCodeEditor = function(name,value)
+		{
+			if (codeMirror)
+			{
+				codeMirror.setOption(name,value);
+			}
+		}
+
         $(actionsBar.renameButton).click(function(e) {
             var newName = prompt('New filename:', entry.name)
             if (newName) {
@@ -357,6 +371,7 @@
             }
         }
         
-        return galaxyBackground
+        this.element = galaxyBackground;
+		return this;
     }
 })()

@@ -3,11 +3,16 @@
 
 var PreferencesDialog = function (editorThemes)
 {
-	this.dialogHtml = undefined;
-	this.preferencesHtml = undefined;
+	this.dialog = undefined;
+	this.preferences = undefined;
 	this.editorThemes = editorThemes;
 
 	this.load();
+};
+
+PreferencesDialog.prototype.open = function()
+{
+	this.dialog.show();
 };
 
 PreferencesDialog.prototype.load = function()
@@ -16,23 +21,24 @@ PreferencesDialog.prototype.load = function()
 
 	$.get('dialog.html', function(response)
 	{
-		self.dialogHtml = response;
+		self.dialog = $(response);
+		self.dialog.hide();
+		$('body').append(self.dialog);
+		$('.dialog-title').html('Preferences');
 
 		$.get('preferences.html', function (response)
 		{
-			self.preferencesHtml = response;
+			self.preferences = $(response);
+			$('.dialog-content').html(response);
+
+			self.finalInit();
 		})
 	});
 }
 
-PreferencesDialog.prototype.open = function()
+PreferencesDialog.prototype.finalInit = function()
 {
 	var self = this;
-
-	// Create Overlay
-	$('body').append(this.dialogHtml);
-	$('.dialog-title').html('Preferences');
-	$('.dialog-content').html(this.preferencesHtml);
 
 	// Center Dialog
 	$(window).resize(function() {
@@ -41,6 +47,16 @@ PreferencesDialog.prototype.open = function()
 			'left' : ($(window).width() - $('.dialog').outerWidth()) / 2
 		});
 	}).resize();
+
+	this.handleDialogClose();
+	this.handleAllInputs();
+	this.handleThemeSelection();
+	this.handleCodeEditorUpdates();
+};
+
+PreferencesDialog.prototype.handleThemeSelection = function()
+{
+	var self = this;
 
 	var $theme_selection = $('#theme-selection');
 	$.each(self.editorThemes || [], function() {
@@ -52,14 +68,42 @@ PreferencesDialog.prototype.open = function()
 		$('.CodeMirror-scroll')
 			.removeClass(self.editorThemes.map(function(it) {return 'cm-s-' + it.value;}).join(' '))
 			.addClass('cm-s-' + $(this).val());
-		// Store current value to a cookie
-		$.cookie('editor-theme', $(this).val(), {expires: 30});
 	});
+};
+
+PreferencesDialog.prototype.handleAllInputs = function()
+{
+	var inputs = $('.preferences').find(":input");
+
+	inputs.change(function(e)
+	{
+		var input = $(e.target);
+		$.cookie(input.attr('name'), input.val(), {expires: 30});
+	});
+
+	inputs.each(function(index,e)
+	{
+		$(e).val($.cookie($(e).attr('name')));
+	});
+}
+
+PreferencesDialog.prototype.handleDialogClose = function()
+{
+	var self = this;
 
 	$('.dialog-close').click(function(e) {
 		e.preventDefault();
-		$('#dialog-overlay, .dialog').fadeOut(200, function() {
-			$(this).remove();
-		});
+		self.dialog.fadeOut(200);
 	});
+
+};
+
+PreferencesDialog.prototype.handleCodeEditorUpdates = function()
+{
+	var inputs = $('select[name="show-line-numbers"]');
+
+	inputs.change(function(e)
+	{
+		ui.setOptionOnCodeEditors('lineNumbers',$(e.target).val() == "true");
+	})
 }
