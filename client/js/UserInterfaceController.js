@@ -6,7 +6,8 @@ var UserInterfaceController = function() {
     var fileHtmlElementByPath
     var stateByPath = {}
     var fileEntries = []
-    var editorThemes = (function() {
+	var editorPool = new EditorPool();
+	var editorThemes = this.editorThemes = (function() {
         // Getting available themes
         var themes = [];
         $('link[rel^="stylesheet"][name]').each(function() {
@@ -20,6 +21,7 @@ var UserInterfaceController = function() {
         });
         return themes;
     })();
+
 
     var ignore = ['.git', '.nide', '.DS_Store']
     var limitRecursion = ['node_modules']
@@ -74,10 +76,6 @@ var UserInterfaceController = function() {
         parentElement.appendChild(thisElement)
     }
 
-    $('#show-hidden').click(function() {
-        $('#sidebar').toggleClass('show-hidden')
-    })
-
     var doSearch = function() {
         if (this.value != '') {
             for (var i = 0; i < fileEntries.length; i++) {
@@ -113,6 +111,15 @@ var UserInterfaceController = function() {
             }, null, $('#npm')[0])
         }
     })
+
+	$("#npm-package-json").click(function(e){
+		if (e.target == $('#npm-package-json')[0]) {
+			_this.selectFile({
+				type: 'package.json',
+				path: '/package.json'
+			}, null, $('#npm-package-json')[0])
+		}
+	})
 
     $('#docs').click(function(e) {
         if (e.target == $('#docs')[0]) {
@@ -186,88 +193,7 @@ var UserInterfaceController = function() {
         }
     })
 
-    $('#project-refresh').click(function(e) {
-        connection.list()
-    })
 
-    $('#preference-settings').click(function(e) {
-        e.preventDefault();
-        // Create Overlay
-        $.get('dialog.html', function(response) {
-            $('body').append(response);
-            $('.dialog-title').html('Preferences');
-            $('.dialog-content').html(
-                '<label for="theme-selection">Editor Theme : <select id="theme-selection"></select></label>'
-            );
-
-            // Center Dialog
-            $(window).resize(function() {
-                $('.dialog').css({
-                    'top'  : ($(window).height() - $('.dialog').outerHeight()) / 2,
-                    'left' : ($(window).width() - $('.dialog').outerWidth()) / 2
-                });
-            }).resize();
-
-            var $theme_selection = $('#theme-selection');
-            $.each(editorThemes || [], function() {
-                $('<option value=' + this.value + '>' + this.name + '</option>')
-                    .attr('selected', ($.cookie('editor-theme') == this.value))
-                    .appendTo($theme_selection);
-            });
-            $theme_selection.change(function() {
-                $('.CodeMirror-scroll')
-                        .removeClass(editorThemes.map(function(it) {return 'cm-s-' + it.value;}).join(' '))
-                        .addClass('cm-s-' + $(this).val());
-                // Store current value to a cookie
-                $.cookie('editor-theme', $(this).val(), {expires: 30});
-            });
-
-            $('.dialog-close').click(function(e) {
-                e.preventDefault();
-                $('#dialog-overlay, .dialog').fadeOut(200, function() {
-                    $(this).remove();
-                });
-            });
-        });
-    });
-
-    var shouldDismissGearMenuOnMouseUp = false;
-    var hasJustDisplayedGearMenu = false;
-    $('#gear-menu').mousedown(function(e){
-        shouldDismissGearMenuOnMouseUp = false;
-        hasJustDisplayedGearMenu = true;
-        $('#gear-menu-popup').show()
-        setTimeout(function(){
-            shouldDismissGearMenuOnMouseUp = true;
-        }, 500)
-        setTimeout(function(){
-            hasJustDisplayedGearMenu = false;
-        }, 0)
-    })
-
-    $('#gear-menu').mouseup(function(){
-        if (shouldDismissGearMenuOnMouseUp) {
-            $('#gear-menu-popup').fadeOut(200)
-        }
-    })
-
-    $('#gear-menu-popup').mousedown(function(e) {
-        e.stopPropagation();
-    })
-
-    $('#gear-menu-popup').mouseup(function(e) {
-        $('#gear-menu-popup').fadeOut(200);
-    })
-
-    $(document.body).mousedown(function() {
-        if (!hasJustDisplayedGearMenu) {
-            $('#gear-menu-popup').fadeOut(200);
-        }
-    })
-    
-    $(window).bind('blur resize', function() {
-        $('#gear-menu-popup').fadeOut(200);
-    })
 
     this.updateFileListing = function(files) {
         searchResultHtmlElementByPath = {}
@@ -288,8 +214,6 @@ var UserInterfaceController = function() {
         document.getElementById('search-results').appendChild(ul);
     }
     
-    var editorPool = new EditorPool();
-
     var setCurrentEditor = function(editor) {
         var children = $('#content').children()
         children.css({ visibility: 'hidden', zIndex: -1 });
@@ -299,7 +223,11 @@ var UserInterfaceController = function() {
             $('#content').append(editor)
         }
         editor.focus()
-    }
+    };
+
+	this.setOptionOnCodeEditors = function(name,value) {
+		editorPool.setOptionOnCodeEditors(name,value);
+	}
 
     this.displayWelcomeScreen = function() {
         $('#lightbox').fadeIn()

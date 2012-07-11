@@ -7,5 +7,7 @@ var DocumentationViewer = function(entry) {
         documentationIframe.src = 'http://nodejs.org/docs/' + nodeVersion + '/api/index.html'
     }
     editor.appendChild(documentationIframe)
-    return editor
+
+	this.element = editor;
+	return this;
 }

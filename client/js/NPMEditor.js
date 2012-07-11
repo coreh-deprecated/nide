@@ -59,5 +59,7 @@ var NPMEditor = function(entry) {
         connection.refreshPackages()
         sidebarEntry.addClass('syncing')
     })
-    return editor
+
+	this.element = editor;
+    return this;
 }

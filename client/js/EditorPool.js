@@ -7,7 +7,8 @@
     
     EditorPool.prototype.editorForEntry = function(entry, withDiscarted) {
         var editor;
-        for (var i=0; i < this.editors.length; i++) {
+
+		for (var i=0; i < this.editors.length; i++) {
             if (this.editors[i].path == entry.path &&
                 this.editors[i].type == entry.type) {
                 // Move editor to the first position in array
@@ -17,26 +18,27 @@
             }
         }
         
-        editor = {
-            type: entry.type,
-            path: entry.path
-        }
-        
         switch(entry.type) {
             case "file":
-                editor.element = new CodeEditor(entry)
+                editor = new CodeEditor(entry)
             break;
             case "directory":
-                editor.element = new DirectoryEditor(entry)
+                editor = new DirectoryEditor(entry)
             break;
             case "documentation":
-                editor.element = new DocumentationViewer(entry)
+                editor = new DocumentationViewer(entry)
             break;
             case "npm":
-                editor.element = new NPMEditor(entry)
+                editor = new NPMEditor(entry)
             break;
+			case "package.json":
+				editor = new PackageJSONEditor(entry)
+			break;
         }
-        
+
+		editor.type = entry.type;
+		editor.path = entry.path;
+
         this.editors.splice(0, 0, editor)
         
         if (this.editors.length > MAX_EDITORS) {
@@ -47,5 +49,16 @@
         }
         
         return editor.element
-    }
+    };
+
+	EditorPool.prototype.setOptionOnCodeEditors = function(name,value)
+	{
+		for (var i=0; i < this.editors.length; i++)
+		{
+			if (this.editors[i].type == "file")
+			{
+				this.editors[i].setOptionOnCodeEditor(name,value);
+			}
+		}
+	}
 })()
