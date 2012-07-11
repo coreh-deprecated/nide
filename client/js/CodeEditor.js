@@ -32,7 +32,7 @@
 		return val == "true";
 	}
 
-    var createCodeMirror = function(parentNode, contents, path, options) {
+	var createCodeMirror = function(parentNode, contents, path, options) {
         var mode = inferCodeMirrorModeFromPath(path);
         var options = {
             theme: $.cookie('editor-theme') || 'default',
@@ -46,7 +46,8 @@
             tabMode: 'shift',
             electricChars: false,
             smartHome: true,
-            matchBrackets: true
+            matchBrackets: true,
+			extraKeys: {"Cmd-Space": "autocomplete"}
         };
 
         return CodeMirror(parentNode, options);

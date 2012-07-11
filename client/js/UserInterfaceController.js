@@ -7,7 +7,7 @@ var UserInterfaceController = function() {
     var stateByPath = {}
     var fileEntries = []
 	var editorPool = new EditorPool();
-	var editorThemes = (function() {
+	var editorThemes = this.editorThemes = (function() {
         // Getting available themes
         var themes = [];
         $('link[rel^="stylesheet"][name]').each(function() {
@@ -21,7 +21,7 @@ var UserInterfaceController = function() {
         });
         return themes;
     })();
-	var preferencesDialog = new PreferencesDialog(editorThemes);
+
 
     var ignore = ['.git', '.nide', '.DS_Store']
     var limitRecursion = ['node_modules']
@@ -75,10 +75,6 @@ var UserInterfaceController = function() {
         }
         parentElement.appendChild(thisElement)
     }
-
-    $('#show-hidden').click(function() {
-        $('#sidebar').toggleClass('show-hidden')
-    })
 
     var doSearch = function() {
         if (this.value != '') {
@@ -197,53 +193,7 @@ var UserInterfaceController = function() {
         }
     })
 
-    $('#project-refresh').click(function(e) {
-        connection.list()
-    })
 
-    $('#preference-settings').click(function(e) {
-        e.preventDefault();
-
-		preferencesDialog.open();
-    });
-
-    var shouldDismissGearMenuOnMouseUp = false;
-    var hasJustDisplayedGearMenu = false;
-    $('#gear-menu').mousedown(function(e){
-        shouldDismissGearMenuOnMouseUp = false;
-        hasJustDisplayedGearMenu = true;
-        $('#gear-menu-popup').show()
-        setTimeout(function(){
-            shouldDismissGearMenuOnMouseUp = true;
-        }, 500)
-        setTimeout(function(){
-            hasJustDisplayedGearMenu = false;
-        }, 0)
-    })
-
-    $('#gear-menu').mouseup(function(){
-        if (shouldDismissGearMenuOnMouseUp) {
-            $('#gear-menu-popup').fadeOut(200)
-        }
-    })
-
-    $('#gear-menu-popup').mousedown(function(e) {
-        e.stopPropagation();
-    })
-
-    $('#gear-menu-popup').mouseup(function(e) {
-        $('#gear-menu-popup').fadeOut(200);
-    })
-
-    $(document.body).mousedown(function() {
-        if (!hasJustDisplayedGearMenu) {
-            $('#gear-menu-popup').fadeOut(200);
-        }
-    })
-    
-    $(window).bind('blur resize', function() {
-        $('#gear-menu-popup').fadeOut(200);
-    })
 
     this.updateFileListing = function(files) {
         searchResultHtmlElementByPath = {}

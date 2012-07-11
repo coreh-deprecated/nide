@@ -448,6 +448,7 @@ body {
 	-moz-user-select: none;
 	cursor: default;
 	display: none;
+	z-index: 100;
 }
 
 .popup-menu li {
@@ -499,12 +500,6 @@ body {
 	color: white;
 }
 
-#gear-menu-popup {
-	bottom: 25px;
-	left: 225px;
-	z-index: 100;
-}
-
 .right {
 	float: right;
 	position: relative;
@@ -517,7 +512,8 @@ body {
     left: 0; top: 0; right: 0; bottom: 0;
     background: #000;
     opacity: .3;
-    z-index: 900
+    z-index: 900;
+	visibility: hidden;
 }
 
 .dialog {
