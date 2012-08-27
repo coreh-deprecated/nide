@@ -149,8 +149,11 @@ exports.list = function(noCache) {
             path: "",
             children: {}
         }
+        var encountered = 0, added = 0;
         dive(process.cwd(), { recursive: true, all: true, directories: true },
         function(err, path) {
+            encountered++;
+
             if (err) {
                 console.warn(err);
                 return
@@ -167,9 +170,11 @@ exports.list = function(noCache) {
                 } else {
                     addToListCache(path + "/.")
                 }
+
+                if (++added == encountered) {
+                    ee.emit('success', listCache);
+                }
             })
-        }, function() {
-            ee.emit('success', listCache)
         })
     } else {
         process.nextTick(function() {
