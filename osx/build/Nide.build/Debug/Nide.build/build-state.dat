@@ -1,0 +1,385 @@
+TNide
+v7
+r0
+t368618354.875271
+cCheck dependencies
+cProcessInfoPlistFile /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Info.plist Nide/Nide-Info.plist
+cProcessPCH /var/folders/QT/QTR3MlUDFFOxoo7RF4yHV++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Nide-Prefix-fditlkrpeuzrxcdatwpjwayuigwk/Nide-Prefix.pch.pth Nide/Nide-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Nide.build/Debug/Nide.build/Objects-normal/i386/main.o /Users/Pau/Proyectos/nide/osx/Nide/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Nide.build/Debug/Nide.build/Objects-normal/i386/NDAppDelegate.o /Users/Pau/Proyectos/nide/osx/Nide/NDAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cCompileC build/Nide.build/Debug/Nide.build/Objects-normal/i386/NDProjectWindowController.o /Users/Pau/Proyectos/nide/osx/Nide/NDProjectWindowController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+cLd /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/MacOS/Nide normal i386
+cCopyStringsFile /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/en.lproj/InfoPlist.strings Nide/en.lproj/InfoPlist.strings
+cCpResource build/Debug/Nide.app/Contents/Resources/en.lproj/Credits.rtf Nide/en.lproj/Credits.rtf
+cCompileXIB /Users/Pau/Proyectos/nide/osx/Nide/en.lproj/MainMenu.xib
+cCompileXIB /Users/Pau/Proyectos/nide/osx/Nide/ProjectWindow.xib
+cCpResource build/Debug/Nide.app/Contents/Resources/nide.icns Nide/../nide.icns
+cCpResource build/Debug/Nide.app/Contents/Resources/nide-project.icns nide-project.icns
+cPhaseScriptExecution "Run Script" /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Script-F5B01A7814B5467000145F5E.sh
+cTouch /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app
+
+N/Developer/SDKs/MacOSX10.6.sdk
+c000000004DA8767D00000000000000EE
+t1302886013
+s238
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Cocoa.framework/Cocoa
+c000000004D5A27900000000000003430
+t1297754000
+s13360
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/Cocoa.framework/Headers/Cocoa.h
+c0000000040C4AA6800000000000001E5
+t1086630504
+s485
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/WebKit.framework/Headers/WebKit.h
+c000000004CC4316B0000000000000957
+t1287926123
+s2391
+
+N/Developer/SDKs/MacOSX10.6.sdk/System/Library/Frameworks/WebKit.framework/WebKit
+c000000004D5A2791000000000008DF08
+t1297754001
+s581384
+
+N/Users/Pau/Proyectos/nide/osx/Nide/../nide.icns
+c0000000050487310000000000003858C
+t1346925328
+s230796
+
+N/Users/Pau/Proyectos/nide/osx/Nide/NDAppDelegate.h
+c00000000504873100000000000000169
+t1346925328
+s361
+i<Cocoa/Cocoa.h>
+
+N/Users/Pau/Proyectos/nide/osx/Nide/NDAppDelegate.m
+c000000005048731000000000000007F9
+t1346925328
+s2041
+i"NDAppDelegate.h"
+i"NDProjectWindowController.h"
+
+N/Users/Pau/Proyectos/nide/osx/Nide/NDProjectWindowController.h
+c00000000504873100000000000000269
+t1346925328
+s617
+i<WebKit/WebKit.h>
+i<Cocoa/Cocoa.h>
+
+N/Users/Pau/Proyectos/nide/osx/Nide/NDProjectWindowController.m
+c000000005048731000000000000010F4
+t1346925328
+s4340
+i"NDProjectWindowController.h"
+
+N/Users/Pau/Proyectos/nide/osx/Nide/Nide-Prefix.pch
+c0000000050487310000000000000008B
+t1346925328
+s139
+i<Cocoa/Cocoa.h>
+
+N/Users/Pau/Proyectos/nide/osx/Nide/ProjectWindow.xib
+c000000005048731000000000000032E3
+t1346925328
+s13027
+
+N/Users/Pau/Proyectos/nide/osx/Nide/en.lproj/Credits.rtf
+c000000005048731000000000000006FA
+t1346925328
+s1786
+
+N/Users/Pau/Proyectos/nide/osx/Nide/en.lproj/InfoPlist.strings
+c0000000050487310000000000000002D
+t1346925328
+s45
+
+N/Users/Pau/Proyectos/nide/osx/Nide/en.lproj/MainMenu.xib
+c000000005048731000000000000154A9
+t1346925328
+s87209
+
+N/Users/Pau/Proyectos/nide/osx/Nide/main.m
+c0000000050487310000000000000010C
+t1346925328
+s268
+i<Cocoa/Cocoa.h>
+
+N/Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app
+t1346925554
+s102
+
+N/Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Info.plist
+t1346925526
+s1413
+
+N/Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/MacOS/Nide
+t1346925538
+s29872
+
+N/Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/PkgInfo
+t1346925526
+s8
+
+N/Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/ProjectWindow.nib
+t1346925539
+s3928
+
+N/Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/en.lproj/Credits.rtf
+t1346925538
+s1786
+
+N/Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/en.lproj/InfoPlist.strings
+t1346925538
+s92
+
+N/Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/en.lproj/MainMenu.nib
+t1346925539
+s21186
+
+N/Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/nide-project.icns
+t1346925540
+s154681
+
+N/Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/nide.icns
+t1346925540
+s230796
+
+N/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Objects-normal/i386/NDAppDelegate.o
+t1346925536
+s29744
+
+N/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Objects-normal/i386/NDProjectWindowController.o
+t1346925536
+s34232
+
+N/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Objects-normal/i386/Nide.LinkFileList
+c00000000504873D6000000000000012F
+t1346925526
+s303
+
+N/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Objects-normal/i386/main.o
+t1346925536
+s2140
+
+N/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Script-F5B01A7814B5467000145F5E.sh
+c00000000504873D600000000000001EC
+t1346925526
+s492
+
+N/Users/Pau/Proyectos/nide/osx/nide-project.icns
+c00000000504873100000000000025C39
+t1346925328
+s154681
+
+N/var/folders/QT/QTR3MlUDFFOxoo7RF4yHV++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Nide-Prefix-fditlkrpeuzrxcdatwpjwayuigwk/Nide-Prefix.pch.pth
+t1346925535
+s11829736
+
+NNide/Nide-Info.plist
+c0000000050487310000000000000045C
+t1346925328
+s1116
+
+CCheck dependencies
+r0
+lSLF07#2@18"Check dependencies368618326#368618326#0(0"0(0#1#0"2527998448#0"0#
+
+CCompileC build/Nide.build/Debug/Nide.build/Objects-normal/i386/NDAppDelegate.o /Users/Pau/Proyectos/nide/osx/Nide/NDAppDelegate.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s368618336.447036
+e368618336.730755
+r1
+xCompileC
+xbuild/Nide.build/Debug/Nide.build/Objects-normal/i386/NDAppDelegate.o
+x/Users/Pau/Proyectos/nide/osx/Nide/NDAppDelegate.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF07#2@58"Compile /Users/Pau/Proyectos/nide/osx/Nide/NDAppDelegate.m368618336#368618336#0(0"0(0#0#50"/Users/Pau/Proyectos/nide/osx/Nide/NDAppDelegate.m2527998448#1375"    cd /Users/Pau/Proyectos/nide/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wunused-variable -Wshorten-64-to-32 -DDEBUG=1 -isysroot /Developer/SDKs/MacOSX10.6.sdk -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Nide-generated-files.hmap -I/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Nide-own-target-headers.hmap -I/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Nide-all-target-headers.hmap -iquote /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Nide-project-headers.hmap -F/Users/Pau/Proyectos/nide/osx/build/Debug -I/Users/Pau/Proyectos/nide/osx/build/Debug/include -I/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/DerivedSources/i386 -I/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/DerivedSources -include /var/folders/QT/QTR3MlUDFFOxoo7RF4yHV++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Nide-Prefix-fditlkrpeuzrxcdatwpjwayuigwk/Nide-Prefix.pch -c /Users/Pau/Proyectos/nide/osx/Nide/NDAppDelegate.m -o /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Objects-normal/i386/NDAppDelegate.o0#
+
+CCompileC build/Nide.build/Debug/Nide.build/Objects-normal/i386/NDProjectWindowController.o /Users/Pau/Proyectos/nide/osx/Nide/NDProjectWindowController.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s368618336.730907
+e368618336.906573
+r1
+xCompileC
+xbuild/Nide.build/Debug/Nide.build/Objects-normal/i386/NDProjectWindowController.o
+x/Users/Pau/Proyectos/nide/osx/Nide/NDProjectWindowController.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF07#2@70"Compile /Users/Pau/Proyectos/nide/osx/Nide/NDProjectWindowController.m368618336#368618336#0(0"0(0#0#62"/Users/Pau/Proyectos/nide/osx/Nide/NDProjectWindowController.m2527998448#1399"    cd /Users/Pau/Proyectos/nide/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wunused-variable -Wshorten-64-to-32 -DDEBUG=1 -isysroot /Developer/SDKs/MacOSX10.6.sdk -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Nide-generated-files.hmap -I/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Nide-own-target-headers.hmap -I/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Nide-all-target-headers.hmap -iquote /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Nide-project-headers.hmap -F/Users/Pau/Proyectos/nide/osx/build/Debug -I/Users/Pau/Proyectos/nide/osx/build/Debug/include -I/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/DerivedSources/i386 -I/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/DerivedSources -include /var/folders/QT/QTR3MlUDFFOxoo7RF4yHV++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Nide-Prefix-fditlkrpeuzrxcdatwpjwayuigwk/Nide-Prefix.pch -c /Users/Pau/Proyectos/nide/osx/Nide/NDProjectWindowController.m -o /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Objects-normal/i386/NDProjectWindowController.o0#
+
+CCompileC build/Nide.build/Debug/Nide.build/Objects-normal/i386/main.o /Users/Pau/Proyectos/nide/osx/Nide/main.m normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s368618335.728678
+e368618336.446875
+r1
+xCompileC
+xbuild/Nide.build/Debug/Nide.build/Objects-normal/i386/main.o
+x/Users/Pau/Proyectos/nide/osx/Nide/main.m
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF07#2@49"Compile /Users/Pau/Proyectos/nide/osx/Nide/main.m368618335#368618336#0(0"0(0#0#41"/Users/Pau/Proyectos/nide/osx/Nide/main.m4261848#1357"    cd /Users/Pau/Proyectos/nide/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c -arch i386 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wunused-variable -Wshorten-64-to-32 -DDEBUG=1 -isysroot /Developer/SDKs/MacOSX10.6.sdk -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Nide-generated-files.hmap -I/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Nide-own-target-headers.hmap -I/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Nide-all-target-headers.hmap -iquote /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Nide-project-headers.hmap -F/Users/Pau/Proyectos/nide/osx/build/Debug -I/Users/Pau/Proyectos/nide/osx/build/Debug/include -I/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/DerivedSources/i386 -I/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/DerivedSources -include /var/folders/QT/QTR3MlUDFFOxoo7RF4yHV++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Nide-Prefix-fditlkrpeuzrxcdatwpjwayuigwk/Nide-Prefix.pch -c /Users/Pau/Proyectos/nide/osx/Nide/main.m -o /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Objects-normal/i386/main.o0#
+
+CCompileXIB /Users/Pau/Proyectos/nide/osx/Nide/ProjectWindow.xib
+s368618339.627830
+e368618340.088029
+r1
+xCompileXIB
+x/Users/Pau/Proyectos/nide/osx/Nide/ProjectWindow.xib
+lSLF07#2@33"CompileXIB Nide/ProjectWindow.xib368618339#368618340#0(0"0(0#0#52"/Users/Pau/Proyectos/nide/osx/Nide/ProjectWindow.xib2527998448#321"    cd /Users/Pau/Proyectos/nide/osx    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/ProjectWindow.nib /Users/Pau/Proyectos/nide/osx/Nide/ProjectWindow.xib --sdk /Developer/SDKs/MacOSX10.6.sdk0#
+
+CCompileXIB /Users/Pau/Proyectos/nide/osx/Nide/en.lproj/MainMenu.xib
+s368618338.717623
+e368618339.627713
+r1
+xCompileXIB
+x/Users/Pau/Proyectos/nide/osx/Nide/en.lproj/MainMenu.xib
+o/* com.apple.ibtool.document.warnings */
+o/Users/Pau/Proyectos/nide/osx/Nide/en.lproj/MainMenu.xib:-1: warning: The action of 'Menu Item (Enter Full Screen)' is connected to the 'toggleFullScreen:' selector of 'First Responder' but 'toggleFullScreen:' is no longer defined.
+lSLF07#2@37"CompileXIB Nide/en.lproj/MainMenu.xib368618338#368618339#0(273"/* com.apple.ibtool.document.warnings *//Users/Pau/Proyectos/nide/osx/Nide/en.lproj/MainMenu.xib:-1: warning: The action of 'Menu Item (Enter Full Screen)' is connected to the 'toggleFullScreen:' selector of 'First Responder' but 'toggleFullScreen:' is no longer defined.1(22@161"The action of 'Menu Item (Enter Full Screen)' is connected to the 'toggleFullScreen:' selector of 'First Responder' but 'toggleFullScreen:' is no longer defined.368618339#4294967295#0#0(6@56"/Users/Pau/Proyectos/nide/osx/Nide/en.lproj/MainMenu.xib368618128#4294967295#0#4294967295#0#0"0(0#0#56"/Users/Pau/Proyectos/nide/osx/Nide/en.lproj/MainMenu.xib2527998448#329"    cd /Users/Pau/Proyectos/nide/osx    /Developer/usr/bin/ibtool --errors --warnings --notices --output-format human-readable-text --compile /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/en.lproj/MainMenu.nib /Users/Pau/Proyectos/nide/osx/Nide/en.lproj/MainMenu.xib --sdk /Developer/SDKs/MacOSX10.6.sdk0#
+
+CCopyStringsFile /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/en.lproj/InfoPlist.strings Nide/en.lproj/InfoPlist.strings
+s368618338.214373
+e368618338.674059
+r1
+xCopyStringsFile
+x/Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/en.lproj/InfoPlist.strings
+xNide/en.lproj/InfoPlist.strings
+o/Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings:125: warning: Insecure world writable dir /usr/bin in PATH, mode 040777
+lSLF07#2@36"Copy Nide/en.lproj/InfoPlist.strings368618338#368618338#0(161"/Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings:125: warning: Insecure world writable dir /usr/bin in PATH, mode 0407770(0#0#61"/Users/Pau/Proyectos/nide/osx/Nide/en.lproj/InfoPlist.strings2527998448#339"    cd /Users/Pau/Proyectos/nide/osx    setenv ICONV /usr/bin/iconv    /Developer/Library/Xcode/Plug-ins/CoreBuildTasks.xcplugin/Contents/Resources/copystrings --validate --inputencoding utf-8 --outputencoding UTF-16 Nide/en.lproj/InfoPlist.strings --outdir /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/en.lproj0#
+
+CCpResource build/Debug/Nide.app/Contents/Resources/en.lproj/Credits.rtf Nide/en.lproj/Credits.rtf
+s368618338.674243
+e368618338.717226
+r1
+xCpResource
+xbuild/Debug/Nide.app/Contents/Resources/en.lproj/Credits.rtf
+xNide/en.lproj/Credits.rtf
+lSLF07#2@30"Copy Nide/en.lproj/Credits.rtf368618338#368618338#0(0"0(0#0#55"/Users/Pau/Proyectos/nide/osx/Nide/en.lproj/Credits.rtf2527998448#334"    cd /Users/Pau/Proyectos/nide/osx    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/Pau/Proyectos/nide/osx/Nide/en.lproj/Credits.rtf /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/en.lproj0#
+
+CCpResource build/Debug/Nide.app/Contents/Resources/nide-project.icns nide-project.icns
+s368618340.116723
+e368618340.126438
+r1
+xCpResource
+xbuild/Debug/Nide.app/Contents/Resources/nide-project.icns
+xnide-project.icns
+lSLF07#2@22"Copy nide-project.icns368618340#368618340#0(0"0(0#0#47"/Users/Pau/Proyectos/nide/osx/nide-project.icns2527998448#317"    cd /Users/Pau/Proyectos/nide/osx    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/Pau/Proyectos/nide/osx/nide-project.icns /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources0#
+
+CCpResource build/Debug/Nide.app/Contents/Resources/nide.icns Nide/../nide.icns
+s368618340.088268
+e368618340.116598
+r1
+xCpResource
+xbuild/Debug/Nide.app/Contents/Resources/nide.icns
+xNide/../nide.icns
+lSLF07#2@22"Copy Nide/../nide.icns368618340#368618340#0(0"0(0#0#47"/Users/Pau/Proyectos/nide/osx/Nide/../nide.icns2527998448#317"    cd /Users/Pau/Proyectos/nide/osx    /Developer/Library/PrivateFrameworks/DevToolsCore.framework/Resources/pbxcp -exclude .DS_Store -exclude CVS -exclude .svn -exclude .git -resolve-src-symlinks /Users/Pau/Proyectos/nide/osx/Nide/../nide.icns /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources0#
+
+CLd /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/MacOS/Nide normal i386
+s368618336.906703
+e368618338.214129
+r1
+xLd
+x/Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/MacOS/Nide
+xnormal
+xi386
+lSLF07#2@75"Link /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/MacOS/Nide368618336#368618338#0(0"0(0#0#0"2527998448#503"    cd /Users/Pau/Proyectos/nide/osx    setenv MACOSX_DEPLOYMENT_TARGET 10.6    /Developer/usr/bin/clang -arch i386 -isysroot /Developer/SDKs/MacOSX10.6.sdk -L/Users/Pau/Proyectos/nide/osx/build/Debug -F/Users/Pau/Proyectos/nide/osx/build/Debug -filelist /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Objects-normal/i386/Nide.LinkFileList -mmacosx-version-min=10.6 -framework WebKit -framework Cocoa -prebind -o /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/MacOS/Nide0#
+
+CPhaseScriptExecution "Run Script" /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Script-F5B01A7814B5467000145F5E.sh
+s368618340.126590
+e368618354.811138
+r1
+xPhaseScriptExecution
+xRun Script
+x/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Script-F5B01A7814B5467000145F5E.sh
+onpm WARN package.json nide@0.2.0 No README.md file found!
+onpm http GET https://registry.npmjs.org/dive
+onpm http GET https://registry.npmjs.org/node-uuid
+onpm http GET https://registry.npmjs.org/commander
+onpm http GET https://registry.npmjs.org/socket.io
+onpm http GET https://registry.npmjs.org/express
+onpm http 304 https://registry.npmjs.org/socket.io
+onpm http 304 https://registry.npmjs.org/dive
+onpm http 304 https://registry.npmjs.org/commander
+onpm http 304 https://registry.npmjs.org/node-uuid
+onpm http 304 https://registry.npmjs.org/express
+onpm WARN engine commander@0.4.3: wanted: {"node":">= 0.4.x < 0.7.0"} (current: {"node":"v0.8.8","npm":"1.1.59"})
+onpm http GET https://registry.npmjs.org/append
+onpm http GET https://registry.npmjs.org/qs
+onpm http GET https://registry.npmjs.org/mkdirp/0.3.0
+onpm http GET https://registry.npmjs.org/mime/1.2.4
+onpm http GET https://registry.npmjs.org/connect
+onpm http GET https://registry.npmjs.org/socket.io-client/0.8.7
+onpm http GET https://registry.npmjs.org/policyfile/0.0.4
+onpm http GET https://registry.npmjs.org/redis/0.6.7
+onpm http 304 https://registry.npmjs.org/append
+onpm http 304 https://registry.npmjs.org/socket.io-client/0.8.7
+onpm http 304 https://registry.npmjs.org/qs
+onpm http 304 https://registry.npmjs.org/mime/1.2.4
+onpm http 304 https://registry.npmjs.org/policyfile/0.0.4
+onpm http 304 https://registry.npmjs.org/mkdirp/0.3.0
+onpm http 304 https://registry.npmjs.org/connect
+onpm http 304 https://registry.npmjs.org/redis/0.6.7
+onpm WARN package.json connect@1.9.2 No README.md file found!
+onpm http GET https://registry.npmjs.org/formidable
+onpm http 304 https://registry.npmjs.org/formidable
+onpm http GET https://registry.npmjs.org/uglify-js/1.0.6
+onpm http GET https://registry.npmjs.org/websocket-client/1.0.0
+onpm http GET https://registry.npmjs.org/xmlhttprequest/1.2.2
+onpm http 304 https://registry.npmjs.org/uglify-js/1.0.6
+onpm http 304 https://registry.npmjs.org/websocket-client/1.0.0
+onpm http 304 https://registry.npmjs.org/xmlhttprequest/1.2.2
+ocommander@0.4.3 node_modules/commander
+o
+onode-uuid@1.3.3 node_modules/node-uuid
+o
+odive@0.2.0 node_modules/dive
+o└── append@0.1.1
+o
+oexpress@2.5.11 node_modules/express
+o├── qs@0.4.2
+o├── mime@1.2.4
+o├── mkdirp@0.3.0
+o└── connect@1.9.2 (formidable@1.0.11)
+o
+osocket.io@0.8.7 node_modules/socket.io
+o├── policyfile@0.0.4
+o├── redis@0.6.7
+o└── socket.io-client@0.8.7 (xmlhttprequest@1.2.2, websocket-client@1.0.0, uglify-js@1.0.6)
+lSLF07#2@36"Run custom shell script 'Run Script'368618340#368618354#0(2470"npm WARN package.json nide@0.2.0 No README.md file found!npm http GET https://registry.npmjs.org/divenpm http GET https://registry.npmjs.org/node-uuidnpm http GET https://registry.npmjs.org/commandernpm http GET https://registry.npmjs.org/socket.ionpm http GET https://registry.npmjs.org/expressnpm http 304 https://registry.npmjs.org/socket.ionpm http 304 https://registry.npmjs.org/divenpm http 304 https://registry.npmjs.org/commandernpm http 304 https://registry.npmjs.org/node-uuidnpm http 304 https://registry.npmjs.org/expressnpm WARN engine commander@0.4.3: wanted: {"node":">= 0.4.x < 0.7.0"} (current: {"node":"v0.8.8","npm":"1.1.59"})npm http GET https://registry.npmjs.org/appendnpm http GET https://registry.npmjs.org/qsnpm http GET https://registry.npmjs.org/mkdirp/0.3.0npm http GET https://registry.npmjs.org/mime/1.2.4npm http GET https://registry.npmjs.org/connectnpm http GET https://registry.npmjs.org/socket.io-client/0.8.7npm http GET https://registry.npmjs.org/policyfile/0.0.4npm http GET https://registry.npmjs.org/redis/0.6.7npm http 304 https://registry.npmjs.org/appendnpm http 304 https://registry.npmjs.org/socket.io-client/0.8.7npm http 304 https://registry.npmjs.org/qsnpm http 304 https://registry.npmjs.org/mime/1.2.4npm http 304 https://registry.npmjs.org/policyfile/0.0.4npm http 304 https://registry.npmjs.org/mkdirp/0.3.0npm http 304 https://registry.npmjs.org/connectnpm http 304 https://registry.npmjs.org/redis/0.6.7npm WARN package.json connect@1.9.2 No README.md file found!npm http GET https://registry.npmjs.org/formidablenpm http 304 https://registry.npmjs.org/formidablenpm http GET https://registry.npmjs.org/uglify-js/1.0.6npm http GET https://registry.npmjs.org/websocket-client/1.0.0npm http GET https://registry.npmjs.org/xmlhttprequest/1.2.2npm http 304 https://registry.npmjs.org/uglify-js/1.0.6npm http 304 https://registry.npmjs.org/websocket-client/1.0.0npm http 304 https://registry.npmjs.org/xmlhttprequest/1.2.2commander@0.4.3 node_modules/commandernode-uuid@1.3.3 node_modules/node-uuiddive@0.2.0 node_modules/dive└── append@0.1.1express@2.5.11 node_modules/express├── qs@0.4.2├── mime@1.2.4├── mkdirp@0.3.0└── connect@1.9.2 (formidable@1.0.11)socket.io@0.8.7 node_modules/socket.io├── policyfile@0.0.4├── redis@0.6.7└── socket.io-client@0.8.7 (xmlhttprequest@1.2.2, websocket-client@1.0.0, uglify-js@1.0.6)50(13@58"npm WARN package.json nide@0.2.0 No README.md file found!368618342#0#58#0(1@0"0(13@45"npm http GET https://registry.npmjs.org/dive368618343#58#45#0(1@0"0(13@50"npm http GET https://registry.npmjs.org/node-uuid368618343#103#50#0(1@0"0(13@50"npm http GET https://registry.npmjs.org/commander368618343#153#50#0(1@0"0(13@50"npm http GET https://registry.npmjs.org/socket.io368618343#203#50#0(1@0"0(13@48"npm http GET https://registry.npmjs.org/express368618343#253#48#0(1@0"0(13@50"npm http 304 https://registry.npmjs.org/socket.io368618345#301#50#0(1@0"0(13@45"npm http 304 https://registry.npmjs.org/dive368618345#351#45#0(1@0"0(13@50"npm http 304 https://registry.npmjs.org/commander368618345#396#50#0(1@0"0(13@50"npm http 304 https://registry.npmjs.org/node-uuid368618345#446#50#0(1@0"0(13@48"npm http 304 https://registry.npmjs.org/express368618345#496#48#0(1@0"0(13@113"npm WARN engine commander@0.4.3: wanted: {"node":">= 0.4.x < 0.7.0"} (current: {"node":"v0.8.8","npm":"1.1.59"})368618345#544#113#0(1@0"0(13@47"npm http GET https://registry.npmjs.org/append368618345#657#47#0(1@0"0(13@43"npm http GET https://registry.npmjs.org/qs368618346#704#43#0(1@0"0(13@53"npm http GET https://registry.npmjs.org/mkdirp/0.3.0368618346#747#53#0(1@0"0(13@51"npm http GET https://registry.npmjs.org/mime/1.2.4368618346#800#51#0(1@0"0(13@48"npm http GET https://registry.npmjs.org/connect368618346#851#48#0(1@0"0(13@63"npm http GET https://registry.npmjs.org/socket.io-client/0.8.7368618346#899#63#0(1@0"0(13@57"npm http GET https://registry.npmjs.org/policyfile/0.0.4368618346#962#57#0(1@0"0(13@52"npm http GET https://registry.npmjs.org/redis/0.6.7368618346#1019#52#0(1@0"0(13@47"npm http 304 https://registry.npmjs.org/append368618346#1071#47#0(1@0"0(13@63"npm http 304 https://registry.npmjs.org/socket.io-client/0.8.7368618347#1118#63#0(1@0"0(13@43"npm http 304 https://registry.npmjs.org/qs368618347#1181#43#0(1@0"0(13@51"npm http 304 https://registry.npmjs.org/mime/1.2.4368618347#1224#51#0(1@0"0(13@57"npm http 304 https://registry.npmjs.org/policyfile/0.0.4368618347#1275#57#0(1@0"0(13@53"npm http 304 https://registry.npmjs.org/mkdirp/0.3.0368618347#1332#53#0(1@0"0(13@48"npm http 304 https://registry.npmjs.org/connect368618347#1385#48#0(1@0"0(13@52"npm http 304 https://registry.npmjs.org/redis/0.6.7368618347#1433#52#0(1@0"0(13@61"npm WARN package.json connect@1.9.2 No README.md file found!368618347#1485#61#0(1@0"0(13@51"npm http GET https://registry.npmjs.org/formidable368618348#1546#51#0(1@0"0(13@51"npm http 304 https://registry.npmjs.org/formidable368618349#1597#51#0(1@0"0(13@56"npm http GET https://registry.npmjs.org/uglify-js/1.0.6368618351#1648#56#0(1@0"0(13@63"npm http GET https://registry.npmjs.org/websocket-client/1.0.0368618351#1704#63#0(1@0"0(13@61"npm http GET https://registry.npmjs.org/xmlhttprequest/1.2.2368618351#1767#61#0(1@0"0(13@56"npm http 304 https://registry.npmjs.org/uglify-js/1.0.6368618352#1828#56#0(1@0"0(13@63"npm http 304 https://registry.npmjs.org/websocket-client/1.0.0368618353#1884#63#0(1@0"0(13@61"npm http 304 https://registry.npmjs.org/xmlhttprequest/1.2.2368618353#1947#61#0(1@0"0(13@39"commander@0.4.3 node_modules/commander368618354#2008#39#0(1@0"0(13@39"node-uuid@1.3.3 node_modules/node-uuid368618354#2048#39#0(1@0"0(13@29"dive@0.2.0 node_modules/dive368618354#2088#29#0(1@0"0(13@23"└── append@0.1.1368618354#2117#17#0(1@0"0(13@36"express@2.5.11 node_modules/express368618354#2135#36#0(1@0"0(13@19"├── qs@0.4.2368618354#2171#13#0(1@0"0(13@21"├── mime@1.2.4368618354#2184#15#0(1@0"0(13@23"├── mkdirp@0.3.0368618354#2199#17#0(1@0"0(13@44"└── connect@1.9.2 (formidable@1.0.11)368618354#2216#38#0(1@0"0(13@39"socket.io@0.8.7 node_modules/socket.io368618354#2255#39#0(1@0"0(13@27"├── policyfile@0.0.4368618354#2294#21#0(1@0"0(13@22"├── redis@0.6.7368618354#2315#16#0(1@0"0(13@97"└── socket.io-client@0.8.7 (xmlhttprequest@1.2.2, websocket-client@1.0.0, uglify-js@1.0.6)368618354#2331#91#0(1@0"0(0#0#0"2527998448#15730"    cd /Users/Pau/Proyectos/nide/osx    setenv ACTION build    setenv ALTERNATE_GROUP staff    setenv ALTERNATE_MODE u+w,go-w,a+rX    setenv ALTERNATE_OWNER Pau    setenv ALWAYS_SEARCH_USER_PATHS NO    setenv APPLE_INTERNAL_DEVELOPER_DIR /AppleInternal/Developer    setenv APPLE_INTERNAL_DIR /AppleInternal    setenv APPLE_INTERNAL_DOCUMENTATION_DIR /AppleInternal/Documentation    setenv APPLE_INTERNAL_LIBRARY_DIR /AppleInternal/Library    setenv APPLE_INTERNAL_TOOLS /AppleInternal/Developer/Tools    setenv APPLY_RULES_IN_COPY_FILES NO    setenv ARCHS i386    setenv ARCHS_STANDARD_32_64_BIT "x86_64 i386"    setenv ARCHS_STANDARD_32_BIT i386    setenv ARCHS_STANDARD_64_BIT x86_64    setenv BUILD_COMPONENTS "headers build"    setenv BUILD_DIR /Users/Pau/Proyectos/nide/osx/build    setenv BUILD_ROOT /Users/Pau/Proyectos/nide/osx/build    setenv BUILD_STYLE Debug    setenv BUILD_VARIANTS normal    setenv BUILT_PRODUCTS_DIR /Users/Pau/Proyectos/nide/osx/build/Debug    setenv CACHE_ROOT /var/folders/QT/QTR3MlUDFFOxoo7RF4yHV++++TI/-Caches-/com.apple.Xcode.501    setenv CCHROOT /var/folders/QT/QTR3MlUDFFOxoo7RF4yHV++++TI/-Caches-/com.apple.Xcode.501    setenv CHMOD /bin/chmod    setenv CHOWN /usr/sbin/chown    setenv CLANG_ENABLE_OBJC_ARC NO    setenv CLASS_FILE_DIR /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/JavaClasses    setenv CLEAN_PRECOMPS YES    setenv CLONE_HEADERS NO    setenv CODESIGNING_FOLDER_PATH /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app    setenv CODE_SIGNING_ALLOWED YES    setenv COMMAND_MODE legacy    setenv COMPOSITE_SDK_DIRS /var/folders/QT/QTR3MlUDFFOxoo7RF4yHV++++TI/-Caches-/com.apple.Xcode.501/CompositeSDKs    setenv CONFIGURATION Debug    setenv CONFIGURATION_BUILD_DIR /Users/Pau/Proyectos/nide/osx/build/Debug    setenv CONFIGURATION_TEMP_DIR /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug    setenv CONTENTS_FOLDER_PATH Nide.app/Contents    setenv COPYING_PRESERVES_HFS_DATA NO    setenv COPY_PHASE_STRIP NO    setenv COPY_RESOURCES_FROM_STATIC_FRAMEWORKS YES    setenv CP /bin/cp    setenv CURRENT_ARCH i386    setenv CURRENT_VARIANT normal    setenv DEAD_CODE_STRIPPING NO    setenv DEBUGGING_SYMBOLS YES    setenv DEBUG_INFORMATION_FORMAT dwarf    setenv DEPLOYMENT_LOCATION NO    setenv DEPLOYMENT_POSTPROCESSING NO    setenv DERIVED_FILES_DIR /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/DerivedSources    setenv DERIVED_FILE_DIR /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/DerivedSources    setenv DERIVED_SOURCES_DIR /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/DerivedSources    setenv DEVELOPER_APPLICATIONS_DIR /Developer/Applications    setenv DEVELOPER_BIN_DIR /Developer/usr/bin    setenv DEVELOPER_DIR /Developer    setenv DEVELOPER_FRAMEWORKS_DIR /Developer/Library/Frameworks    setenv DEVELOPER_FRAMEWORKS_DIR_QUOTED "\"/Developer/Library/Frameworks\""    setenv DEVELOPER_LIBRARY_DIR /Developer/Library    setenv DEVELOPER_SDK_DIR /Developer/SDKs    setenv DEVELOPER_TOOLS_DIR /Developer/Tools    setenv DEVELOPER_USR_DIR /Developer/usr    setenv DEVELOPMENT_LANGUAGE English    setenv DOCUMENTATION_FOLDER_PATH Nide.app/Contents/Resources/English.lproj/Documentation    setenv DO_HEADER_SCANNING_IN_JAM NO    setenv DSTROOT /tmp/Nide.dst    setenv DWARF_DSYM_FILE_NAME Nide.app.dSYM    setenv DWARF_DSYM_FOLDER_PATH /Users/Pau/Proyectos/nide/osx/build/Debug    setenv ENABLE_HEADER_DEPENDENCIES YES    setenv ENABLE_OPENMP_SUPPORT NO    setenv EXCLUDED_INSTALLSRC_SUBDIRECTORY_PATTERNS ".svn .git CVS"    setenv EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES "*.nib *.lproj *.framework *.gch (*) CVS .svn .git *.xcodeproj *.xcode *.pbproj *.pbxproj"    setenv EXECUTABLES_FOLDER_PATH Nide.app/Contents/Executables    setenv EXECUTABLE_FOLDER_PATH Nide.app/Contents/MacOS    setenv EXECUTABLE_NAME Nide    setenv EXECUTABLE_PATH Nide.app/Contents/MacOS/Nide    setenv FILE_LIST /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Objects/LinkFileList    setenv FIXED_FILES_DIR /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/FixedFiles    setenv FRAMEWORKS_FOLDER_PATH Nide.app/Contents/Frameworks    setenv FRAMEWORK_FLAG_PREFIX -framework    setenv FRAMEWORK_SEARCH_PATHS "\"/Users/Pau/Proyectos/nide/osx/build/Debug\" "    setenv FRAMEWORK_VERSION A    setenv FULL_PRODUCT_NAME Nide.app    setenv GCC3_VERSION 3.3    setenv GCC_C_LANGUAGE_STANDARD gnu99    setenv GCC_DYNAMIC_NO_PIC NO    setenv GCC_ENABLE_OBJC_EXCEPTIONS YES    setenv GCC_INLINES_ARE_PRIVATE_EXTERN YES    setenv GCC_OPTIMIZATION_LEVEL 0    setenv GCC_PFE_FILE_C_DIALECTS "c objective-c c++ objective-c++"    setenv GCC_PRECOMPILE_PREFIX_HEADER YES    setenv GCC_PREFIX_HEADER Nide/Nide-Prefix.pch    setenv GCC_PREPROCESSOR_DEFINITIONS "DEBUG=1 "    setenv GCC_SYMBOLS_PRIVATE_EXTERN NO    setenv GCC_TREAT_WARNINGS_AS_ERRORS NO    setenv GCC_VERSION com.apple.compilers.llvm.clang.1_0    setenv GCC_VERSION_IDENTIFIER com_apple_compilers_llvm_clang_1_0    setenv GCC_WARN_64_TO_32_BIT_CONVERSION YES    setenv GCC_WARN_ABOUT_MISSING_PROTOTYPES YES    setenv GCC_WARN_ABOUT_RETURN_TYPE YES    setenv GCC_WARN_UNUSED_VARIABLE YES    setenv GENERATE_MASTER_OBJECT_FILE NO    setenv GENERATE_PKGINFO_FILE YES    setenv GENERATE_PROFILING_CODE NO    setenv GID 20    setenv GROUP staff    setenv HEADERMAP_INCLUDES_FLAT_ENTRIES_FOR_TARGET_BEING_BUILT YES    setenv HEADERMAP_INCLUDES_FRAMEWORK_ENTRIES_FOR_ALL_PRODUCT_TYPES YES    setenv HEADERMAP_INCLUDES_NONPUBLIC_NONPRIVATE_HEADERS YES    setenv HEADERMAP_INCLUDES_PROJECT_HEADERS YES    setenv HEADER_SEARCH_PATHS "\"/Users/Pau/Proyectos/nide/osx/build/Debug/include\" "    setenv ICONV /usr/bin/iconv    setenv INFOPLIST_EXPAND_BUILD_SETTINGS YES    setenv INFOPLIST_FILE Nide/Nide-Info.plist    setenv INFOPLIST_OUTPUT_FORMAT same-as-input    setenv INFOPLIST_PATH Nide.app/Contents/Info.plist    setenv INFOPLIST_PREPROCESS NO    setenv INFOSTRINGS_PATH Nide.app/Contents/Resources/English.lproj/InfoPlist.strings    setenv INSTALL_DIR /tmp/Nide.dst/Users/Pau/Applications    setenv INSTALL_GROUP staff    setenv INSTALL_MODE_FLAG u+w,go-w,a+rX    setenv INSTALL_OWNER Pau    setenv INSTALL_PATH /Users/Pau/Applications    setenv INSTALL_ROOT /tmp/Nide.dst    setenv JAVAC_DEFAULT_FLAGS "-J-Xms64m -J-XX:NewSize=4M -J-Dfile.encoding=UTF8"    setenv JAVA_APP_STUB /System/Library/Frameworks/JavaVM.framework/Resources/MacOS/JavaApplicationStub    setenv JAVA_ARCHIVE_CLASSES YES    setenv JAVA_ARCHIVE_TYPE JAR    setenv JAVA_COMPILER /usr/bin/javac    setenv JAVA_FOLDER_PATH Nide.app/Contents/Resources/Java    setenv JAVA_FRAMEWORK_RESOURCES_DIRS Resources    setenv JAVA_JAR_FLAGS cv    setenv JAVA_SOURCE_SUBDIR .    setenv JAVA_USE_DEPENDENCIES YES    setenv JAVA_ZIP_FLAGS -urg    setenv JIKES_DEFAULT_FLAGS "+E +OLDCSO"    setenv KEEP_PRIVATE_EXTERNS NO    setenv LD_GENERATE_MAP_FILE NO    setenv LD_MAP_FILE_PATH /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Nide-LinkMap-normal-i386.txt    setenv LD_OPENMP_FLAGS -fopenmp    setenv LEX /Developer/usr/bin/lex    setenv LIBRARY_FLAG_NOSPACE YES    setenv LIBRARY_FLAG_PREFIX -l    setenv LIBRARY_SEARCH_PATHS "\"/Users/Pau/Proyectos/nide/osx/build/Debug\" "    setenv LINKER_DISPLAYS_MANGLED_NAMES NO    setenv LINK_FILE_LIST_normal_i386 /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Objects-normal/i386/Nide.LinkFileList    setenv LINK_WITH_STANDARD_LIBRARIES YES    setenv LOCALIZED_RESOURCES_FOLDER_PATH Nide.app/Contents/Resources/English.lproj    setenv LOCAL_ADMIN_APPS_DIR /Applications/Utilities    setenv LOCAL_APPS_DIR /Applications    setenv LOCAL_DEVELOPER_DIR /Library/Developer    setenv LOCAL_LIBRARY_DIR /Library    setenv MACH_O_TYPE mh_execute    setenv MACOSX_DEPLOYMENT_TARGET 10.6    setenv MAC_OS_X_PRODUCT_BUILD_VERSION 10K549    setenv MAC_OS_X_VERSION_ACTUAL 1068    setenv MAC_OS_X_VERSION_MAJOR 1060    setenv MAC_OS_X_VERSION_MINOR 0608    setenv NATIVE_ARCH i386    setenv NATIVE_ARCH_32_BIT i386    setenv NATIVE_ARCH_64_BIT x86_64    setenv NATIVE_ARCH_ACTUAL i386    setenv NO_COMMON YES    setenv OBJECT_FILE_DIR /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Objects    setenv OBJECT_FILE_DIR_normal /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Objects-normal    setenv OBJROOT /Users/Pau/Proyectos/nide/osx/build    setenv ONLY_ACTIVE_ARCH YES    setenv OPTIMIZATION_LEVEL 0    setenv OS MACOS    setenv OSAC /usr/bin/osacompile    setenv PACKAGE_TYPE com.apple.package-type.wrapper.application    setenv PASCAL_STRINGS YES    setenv PATH_PREFIXES_EXCLUDED_FROM_HEADER_DEPENDENCIES "/usr/include /usr/local/include /System/Library/Frameworks /System/Library/PrivateFrameworks /Developer/Headers /Developer/SDKs /Developer/Platforms"    setenv PBDEVELOPMENTPLIST_PATH Nide.app/Contents/pbdevelopment.plist    setenv PFE_FILE_C_DIALECTS objective-c    setenv PKGINFO_FILE_PATH /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/PkgInfo    setenv PKGINFO_PATH Nide.app/Contents/PkgInfo    setenv PLATFORM_DEVELOPER_APPLICATIONS_DIR /Developer/Applications    setenv PLATFORM_DEVELOPER_BIN_DIR /Developer/usr/bin    setenv PLATFORM_DEVELOPER_LIBRARY_DIR /Developer/Library    setenv PLATFORM_DEVELOPER_SDK_DIR /Developer/SDKs    setenv PLATFORM_DEVELOPER_TOOLS_DIR /Developer/Tools    setenv PLATFORM_DEVELOPER_USR_DIR /Developer/usr    setenv PLATFORM_NAME macosx    setenv PLATFORM_PRODUCT_BUILD_VERSION 10M2518    setenv PLIST_FILE_OUTPUT_FORMAT same-as-input    setenv PLUGINS_FOLDER_PATH Nide.app/Contents/PlugIns    setenv PREBINDING YES    setenv PRECOMPS_INCLUDE_HEADERS_FROM_BUILT_PRODUCTS_DIR YES    setenv PRECOMP_DESTINATION_DIR /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/PrefixHeaders    setenv PRESERVE_DEAD_CODE_INITS_AND_TERMS NO    setenv PRIVATE_HEADERS_FOLDER_PATH Nide.app/Contents/PrivateHeaders    setenv PRODUCT_NAME Nide    setenv PRODUCT_SETTINGS_PATH /Users/Pau/Proyectos/nide/osx/Nide/Nide-Info.plist    setenv PRODUCT_TYPE com.apple.product-type.application    setenv PROFILING_CODE NO    setenv PROJECT Nide    setenv PROJECT_DERIVED_FILE_DIR /Users/Pau/Proyectos/nide/osx/build/Nide.build/DerivedSources    setenv PROJECT_DIR /Users/Pau/Proyectos/nide/osx    setenv PROJECT_FILE_PATH /Users/Pau/Proyectos/nide/osx/Nide.xcodeproj    setenv PROJECT_NAME Nide    setenv PROJECT_TEMP_DIR /Users/Pau/Proyectos/nide/osx/build/Nide.build    setenv PUBLIC_HEADERS_FOLDER_PATH Nide.app/Contents/Headers    setenv RECURSIVE_SEARCH_PATHS_FOLLOW_SYMLINKS YES    setenv REMOVE_CVS_FROM_RESOURCES YES    setenv REMOVE_GIT_FROM_RESOURCES YES    setenv REMOVE_SVN_FROM_RESOURCES YES    setenv REZ_COLLECTOR_DIR /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/ResourceManagerResources    setenv REZ_OBJECTS_DIR /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/ResourceManagerResources/Objects    setenv REZ_SEARCH_PATHS "\"/Users/Pau/Proyectos/nide/osx/build/Debug\" "    setenv RUN_CLANG_STATIC_ANALYZER NO    setenv SCAN_ALL_SOURCE_FILES_FOR_INCLUDES NO    setenv SCRIPTS_FOLDER_PATH Nide.app/Contents/Resources/Scripts    setenv SCRIPT_INPUT_FILE_COUNT 0    setenv SCRIPT_OUTPUT_FILE_COUNT 0    setenv SDKROOT /Developer/SDKs/MacOSX10.6.sdk    setenv SDK_DIR /Developer/SDKs/MacOSX10.6.sdk    setenv SDK_NAME macosx10.6    setenv SDK_PRODUCT_BUILD_VERSION 10M2518    setenv SED /usr/bin/sed    setenv SEPARATE_STRIP NO    setenv SEPARATE_SYMBOL_EDIT NO    setenv SET_DIR_MODE_OWNER_GROUP YES    setenv SET_FILE_MODE_OWNER_GROUP NO    setenv SHARED_DERIVED_FILE_DIR /Users/Pau/Proyectos/nide/osx/build/Debug/DerivedSources    setenv SHARED_FRAMEWORKS_FOLDER_PATH Nide.app/Contents/SharedFrameworks    setenv SHARED_PRECOMPS_DIR /var/folders/QT/QTR3MlUDFFOxoo7RF4yHV++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders    setenv SHARED_SUPPORT_FOLDER_PATH Nide.app/Contents/SharedSupport    setenv SKIP_INSTALL YES    setenv SOURCE_ROOT /Users/Pau/Proyectos/nide/osx    setenv SRCROOT /Users/Pau/Proyectos/nide/osx    setenv STANDARD_C_PLUS_PLUS_LIBRARY_TYPE dynamic    setenv STRINGS_FILE_OUTPUT_ENCODING UTF-16    setenv STRIP_INSTALLED_PRODUCT YES    setenv STRIP_STYLE all    setenv SYMBOL_REPOSITORY_DIR /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/SymbolRepositories    setenv SYMROOT /Users/Pau/Proyectos/nide/osx/build    setenv SYSTEM_ADMIN_APPS_DIR /Applications/Utilities    setenv SYSTEM_APPS_DIR /Applications    setenv SYSTEM_CORE_SERVICES_DIR /System/Library/CoreServices    setenv SYSTEM_DEMOS_DIR /Applications/Extras    setenv SYSTEM_DEVELOPER_APPS_DIR /Developer/Applications    setenv SYSTEM_DEVELOPER_BIN_DIR /Developer/usr/bin    setenv SYSTEM_DEVELOPER_DEMOS_DIR "/Developer/Applications/Utilities/Built Examples"    setenv SYSTEM_DEVELOPER_DIR /Developer    setenv SYSTEM_DEVELOPER_DOC_DIR "/Developer/ADC Reference Library"    setenv SYSTEM_DEVELOPER_GRAPHICS_TOOLS_DIR "/Developer/Applications/Graphics Tools"    setenv SYSTEM_DEVELOPER_JAVA_TOOLS_DIR "/Developer/Applications/Java Tools"    setenv SYSTEM_DEVELOPER_PERFORMANCE_TOOLS_DIR "/Developer/Applications/Performance Tools"    setenv SYSTEM_DEVELOPER_RELEASENOTES_DIR "/Developer/ADC Reference Library/releasenotes"    setenv SYSTEM_DEVELOPER_TOOLS /Developer/Tools    setenv SYSTEM_DEVELOPER_TOOLS_DOC_DIR "/Developer/ADC Reference Library/documentation/DeveloperTools"    setenv SYSTEM_DEVELOPER_TOOLS_RELEASENOTES_DIR "/Developer/ADC Reference Library/releasenotes/DeveloperTools"    setenv SYSTEM_DEVELOPER_USR_DIR /Developer/usr    setenv SYSTEM_DEVELOPER_UTILITIES_DIR /Developer/Applications/Utilities    setenv SYSTEM_DOCUMENTATION_DIR /Library/Documentation    setenv SYSTEM_LIBRARY_DIR /System/Library    setenv TARGETNAME Nide    setenv TARGET_BUILD_DIR /Users/Pau/Proyectos/nide/osx/build/Debug    setenv TARGET_NAME Nide    setenv TARGET_TEMP_DIR /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build    setenv TEMP_DIR /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build    setenv TEMP_FILES_DIR /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build    setenv TEMP_FILE_DIR /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build    setenv TEMP_ROOT /Users/Pau/Proyectos/nide/osx/build    setenv UID 501    setenv UNLOCALIZED_RESOURCES_FOLDER_PATH Nide.app/Contents/Resources    setenv UNSTRIPPED_PRODUCT NO    setenv USER Pau    setenv USER_APPS_DIR /Users/Pau/Applications    setenv USER_LIBRARY_DIR /Users/Pau/Library    setenv USE_DYNAMIC_NO_PIC YES    setenv USE_HEADERMAP YES    setenv USE_HEADER_SYMLINKS NO    setenv VALIDATE_PRODUCT NO    setenv VALID_ARCHS "i386 ppc ppc64 ppc7400 ppc970 x86_64"    setenv VERBOSE_PBXCP NO    setenv VERSIONPLIST_PATH Nide.app/Contents/version.plist    setenv VERSION_INFO_BUILDER Pau    setenv VERSION_INFO_FILE Nide_vers.c    setenv VERSION_INFO_STRING "\"@(#)PROGRAM:Nide  PROJECT:Nide-\""    setenv WRAPPER_EXTENSION app    setenv WRAPPER_NAME Nide.app    setenv WRAPPER_SUFFIX .app    setenv XCODE_APP_SUPPORT_DIR /Developer/Library/Xcode    setenv XCODE_PRODUCT_BUILD_VERSION 10M2518    setenv XCODE_VERSION_ACTUAL 0400    setenv XCODE_VERSION_MAJOR 0400    setenv XCODE_VERSION_MINOR 0400    setenv YACC /Developer/usr/bin/yacc    setenv _REAL_SDKROOT macosx10.6    /bin/sh -c /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Script-F5B01A7814B5467000145F5E.sh0#
+
+CProcessInfoPlistFile /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Info.plist Nide/Nide-Info.plist
+s368618326.721247
+e368618326.747179
+r1
+xProcessInfoPlistFile
+x/Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Info.plist
+xNide/Nide-Info.plist
+lSLF07#2@28"Process Nide/Nide-Info.plist368618326#368618326#0(0"0(0#0#50"/Users/Pau/Proyectos/nide/osx/Nide/Nide-Info.plist2527998448#279"    cd /Users/Pau/Proyectos/nide/osx    builtin-infoPlistUtility Nide/Nide-Info.plist -genpkginfo /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/PkgInfo -expandbuildsettings -platform macosx -o /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Info.plist0#
+
+CProcessPCH /var/folders/QT/QTR3MlUDFFOxoo7RF4yHV++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Nide-Prefix-fditlkrpeuzrxcdatwpjwayuigwk/Nide-Prefix.pch.pth Nide/Nide-Prefix.pch normal i386 objective-c com.apple.compilers.llvm.clang.1_0.compiler
+s368618326.747372
+e368618335.728465
+r1
+xProcessPCH
+x/var/folders/QT/QTR3MlUDFFOxoo7RF4yHV++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Nide-Prefix-fditlkrpeuzrxcdatwpjwayuigwk/Nide-Prefix.pch.pth
+xNide/Nide-Prefix.pch
+xnormal
+xi386
+xobjective-c
+xcom.apple.compilers.llvm.clang.1_0.compiler
+lSLF07#2@31"Precompile Nide/Nide-Prefix.pch368618326#368618335#0(0"0(0#0#50"/Users/Pau/Proyectos/nide/osx/Nide/Nide-Prefix.pch2527998448#1277"    cd /Users/Pau/Proyectos/nide/osx    setenv LANG en_US.US-ASCII    /Developer/usr/bin/clang -x objective-c-header -arch i386 -fmessage-length=0 -pipe -fdiagnostics-print-source-range-info -std=gnu99 -Wno-trigraphs -fpascal-strings -O0 -Wmissing-prototypes -Wreturn-type -Wunused-variable -Wshorten-64-to-32 -DDEBUG=1 -isysroot /Developer/SDKs/MacOSX10.6.sdk -fasm-blocks -mmacosx-version-min=10.6 -gdwarf-2 -iquote /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Nide-generated-files.hmap -I/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Nide-own-target-headers.hmap -I/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Nide-all-target-headers.hmap -iquote /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Nide-project-headers.hmap -F/Users/Pau/Proyectos/nide/osx/build/Debug -I/Users/Pau/Proyectos/nide/osx/build/Debug/include -I/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/DerivedSources/i386 -I/Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/DerivedSources -c /Users/Pau/Proyectos/nide/osx/Nide/Nide-Prefix.pch -o /var/folders/QT/QTR3MlUDFFOxoo7RF4yHV++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Nide-Prefix-fditlkrpeuzrxcdatwpjwayuigwk/Nide-Prefix.pch.pth0#
+
+CTouch /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app
+s368618354.811391
+e368618354.875196
+r1
+xTouch
+x/Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app
+lSLF07#2@56"Touch /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app368618354#368618354#0(0"0(0#0#0"2527998448#110"    cd /Users/Pau/Proyectos/nide/osx    /usr/bin/touch -c /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app0#
+

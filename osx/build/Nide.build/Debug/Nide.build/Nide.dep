@@ -1,0 +1,14 @@
+d1e801a1099bd7b58118777b1c497c5a b2aee4b9daf23b221376c2483f2fc2e8 ffffffffffffffffffffffffffffffff 102 /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app
+00000000000000000000000000000000 e037f6e849674bafbfed422e71c7670c ffffffffffffffffffffffffffffffff 154681 /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/nide-project.icns
+00000000000000000000000000000000 431f1847ea34d135974329dd656691a7 ffffffffffffffffffffffffffffffff 230796 /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/nide.icns
+000000005048731000000000000032e3 ff11d2c52f6eac06583f0730f04e8796 ffffffffffffffffffffffffffffffff 3928 /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/ProjectWindow.nib
+000000005048731000000000000154a9 e52c0ed5eca67829f8f3f0693beb74d9 ffffffffffffffffffffffffffffffff 21186 /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/en.lproj/MainMenu.nib
+00000000000000000000000000000000 2980af29ba4cc10664e2c65107de9b50 ffffffffffffffffffffffffffffffff 1786 /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/en.lproj/Credits.rtf
+0000000050487310000000000000002d 211c63b004813260d56857510705ed7c ffffffffffffffffffffffffffffffff 92 /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Resources/en.lproj/InfoPlist.strings
+034d10cd91fd11ca84c9e38caa6202c0 632cef4a167808bc3c39995d69f56b35 ffffffffffffffffffffffffffffffff 29872 /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/MacOS/Nide
+00000000000000000000000000000000 ee0854a98660b245f18a3d7a36640164 ffffffffffffffffffffffffffffffff 8 /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/PkgInfo
+00000000000000000000000000000000 ee0854a98660b245f18a3d7a36640164 ffffffffffffffffffffffffffffffff 1413 /Users/Pau/Proyectos/nide/osx/build/Debug/Nide.app/Contents/Info.plist
+1ceecf394822b8ba292526881ab779b5 98b30bcaafba3975883c01fff9c32fe9 ffffffffffffffffffffffffffffffff 34232 /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Objects-normal/i386/NDProjectWindowController.o
+1ceecf3958ae61c2292526881ab76e34 9120215503597cb5b93a9b6298c6045c ffffffffffffffffffffffffffffffff 29744 /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Objects-normal/i386/NDAppDelegate.o
+1ceecf3954aefac1292526881ab76373 1630f56b349401cf9cea5f99d1d8b651 ffffffffffffffffffffffffffffffff 2140 /Users/Pau/Proyectos/nide/osx/build/Nide.build/Debug/Nide.build/Objects-normal/i386/main.o
+00000000108cd978000000000000016e 1ceecf3954aefac1292526881ab762f4 ffffffffffffffffffffffffffffffff 11829736 /var/folders/QT/QTR3MlUDFFOxoo7RF4yHV++++TI/-Caches-/com.apple.Xcode.501/SharedPrecompiledHeaders/Nide-Prefix-fditlkrpeuzrxcdatwpjwayuigwk/Nide-Prefix.pch.pth
