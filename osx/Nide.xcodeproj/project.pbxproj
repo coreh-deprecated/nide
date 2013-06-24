@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9428CF8C177887BF00968D67 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9428CF8B177887BF00968D67 /* WebKit.framework */; };
 		F52B613214B568F400031F38 /* nide.icns in Resources */ = {isa = PBXBuildFile; fileRef = F52B613114B568F400031F38 /* nide.icns */; };
 		F5B0128914B482BA00145F5E /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B0128814B482BA00145F5E /* Cocoa.framework */; };
 		F5B0129314B482BA00145F5E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F5B0129114B482BA00145F5E /* InfoPlist.strings */; };
@@ -14,13 +15,13 @@
 		F5B0129914B482BA00145F5E /* Credits.rtf in Resources */ = {isa = PBXBuildFile; fileRef = F5B0129714B482BA00145F5E /* Credits.rtf */; };
 		F5B0129C14B482BA00145F5E /* NDAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B0129B14B482BA00145F5E /* NDAppDelegate.m */; };
 		F5B0129F14B482BA00145F5E /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5B0129D14B482BA00145F5E /* MainMenu.xib */; };
-		F5B012BD14B485CA00145F5E /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F5B012BC14B485CA00145F5E /* WebKit.framework */; };
 		F5B012BF14B48A3A00145F5E /* ProjectWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = F5B012BE14B48A3A00145F5E /* ProjectWindow.xib */; };
 		F5B012C214B48C0600145F5E /* NDProjectWindowController.m in Sources */ = {isa = PBXBuildFile; fileRef = F5B012C114B48C0600145F5E /* NDProjectWindowController.m */; };
 		F5B0CCD614BE82D6007CD4A6 /* nide-project.icns in Resources */ = {isa = PBXBuildFile; fileRef = F5B0CCD514BE82D6007CD4A6 /* nide-project.icns */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9428CF8B177887BF00968D67 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		F52B613114B568F400031F38 /* nide.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; name = nide.icns; path = ../nide.icns; sourceTree = "<group>"; };
 		F5B0128414B482BA00145F5E /* Nide.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Nide.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F5B0128814B482BA00145F5E /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
@@ -36,7 +37,6 @@
 		F5B0129B14B482BA00145F5E /* NDAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NDAppDelegate.m; sourceTree = "<group>"; };
 		F5B0129E14B482BA00145F5E /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		F5B012A614B482BB00145F5E /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		F5B012BC14B485CA00145F5E /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = SDKs/MacOSX10.6.sdk/System/Library/Frameworks/WebKit.framework; sourceTree = DEVELOPER_DIR; };
 		F5B012BE14B48A3A00145F5E /* ProjectWindow.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProjectWindow.xib; sourceTree = "<group>"; };
 		F5B012C014B48C0600145F5E /* NDProjectWindowController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NDProjectWindowController.h; sourceTree = "<group>"; };
 		F5B012C114B48C0600145F5E /* NDProjectWindowController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NDProjectWindowController.m; sourceTree = "<group>"; };
@@ -48,7 +48,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				F5B012BD14B485CA00145F5E /* WebKit.framework in Frameworks */,
+				9428CF8C177887BF00968D67 /* WebKit.framework in Frameworks */,
 				F5B0128914B482BA00145F5E /* Cocoa.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -56,6 +56,35 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		94AAEB31177889A10001AF1A /* Delegates */ = {
+			isa = PBXGroup;
+			children = (
+				F5B0129A14B482BA00145F5E /* NDAppDelegate.h */,
+				F5B0129B14B482BA00145F5E /* NDAppDelegate.m */,
+			);
+			name = Delegates;
+			sourceTree = "<group>";
+		};
+		94AAEB32177889A80001AF1A /* ProjectWindowController */ = {
+			isa = PBXGroup;
+			children = (
+				F5B012C014B48C0600145F5E /* NDProjectWindowController.h */,
+				F5B012C114B48C0600145F5E /* NDProjectWindowController.m */,
+				F5B012BE14B48A3A00145F5E /* ProjectWindow.xib */,
+			);
+			name = ProjectWindowController;
+			sourceTree = "<group>";
+		};
+		94AAEB33177889B50001AF1A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F5B0CCD514BE82D6007CD4A6 /* nide-project.icns */,
+				F52B613114B568F400031F38 /* nide.icns */,
+				F5B0129D14B482BA00145F5E /* MainMenu.xib */,
+			);
+			name = Resources;
+			sourceTree = "<group>";
+		};
 		F5B0127914B482B900145F5E = {
 			isa = PBXGroup;
 			children = (
@@ -76,7 +105,7 @@
 		F5B0128714B482BA00145F5E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				F5B012BC14B485CA00145F5E /* WebKit.framework */,
+				9428CF8B177887BF00968D67 /* WebKit.framework */,
 				F5B0128814B482BA00145F5E /* Cocoa.framework */,
 				F5B012A614B482BB00145F5E /* SenTestingKit.framework */,
 				F5B0128A14B482BA00145F5E /* Other Frameworks */,
@@ -97,15 +126,10 @@
 		F5B0128E14B482BA00145F5E /* Nide */ = {
 			isa = PBXGroup;
 			children = (
-				F5B0CCD514BE82D6007CD4A6 /* nide-project.icns */,
-				F52B613114B568F400031F38 /* nide.icns */,
-				F5B0129A14B482BA00145F5E /* NDAppDelegate.h */,
-				F5B0129B14B482BA00145F5E /* NDAppDelegate.m */,
-				F5B0129D14B482BA00145F5E /* MainMenu.xib */,
-				F5B012BE14B48A3A00145F5E /* ProjectWindow.xib */,
+				94AAEB31177889A10001AF1A /* Delegates */,
+				94AAEB32177889A80001AF1A /* ProjectWindowController */,
+				94AAEB33177889B50001AF1A /* Resources */,
 				F5B0128F14B482BA00145F5E /* Supporting Files */,
-				F5B012C014B48C0600145F5E /* NDProjectWindowController.h */,
-				F5B012C114B48C0600145F5E /* NDProjectWindowController.m */,
 			);
 			path = Nide;
 			sourceTree = "<group>";
@@ -149,7 +173,7 @@
 		F5B0127B14B482B900145F5E /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0420;
+				LastUpgradeCheck = 0460;
 			};
 			buildConfigurationList = F5B0127E14B482B900145F5E /* Build configuration list for PBXProject "Nide" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -247,6 +271,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
@@ -261,8 +289,9 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = macosx;
 			};
@@ -274,6 +303,10 @@
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -282,8 +315,9 @@
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				MACOSX_DEPLOYMENT_TARGET = 10.7;
+				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = macosx;
 			};
 			name = Release;
@@ -292,12 +326,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Nide/Nide-Prefix.pch";
 				INFOPLIST_FILE = "Nide/Nide-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -306,12 +341,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				CLANG_ENABLE_OBJC_ARC = NO;
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "Nide/Nide-Prefix.pch";
 				INFOPLIST_FILE = "Nide/Nide-Info.plist";
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
