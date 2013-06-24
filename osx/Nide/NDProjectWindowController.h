@@ -10,6 +10,7 @@
 #import <Cocoa/Cocoa.h>
 
 @interface NDProjectWindowController : NSWindowController<NSWindowDelegate> {
+    
     NSString *projectPath;
     int port;
     BOOL shouldInit;
