@@ -13,7 +13,7 @@
             case !!path.match(/\.rb$/): return 'ruby'
             case !!path.match(/\.lua$/): return 'lua'
             case !!path.match(/\.(c|h|cpp|hpp|cc|m|cs|java)$/): return 'clike'
-            case !!path.match(/\.css$/): return 'css'
+            case !!path.match(/\.(css|less)$/): return 'css'
             case !!path.match(/\.(xml|svg|od(t|p|s))$/): return 'xml'
             case !!path.match(/\.ejs$/): return 'application/x-ejs'
             case !!path.match(/\.jsp$/): return 'application/x-jsp'
