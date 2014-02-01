@@ -6,11 +6,14 @@ var project = require('./server/project');
 var exec = require('child_process').exec
 var path = require('path')
 var fs = require('fs')
+var os = require('os');
 
 var packageJSON = JSON.parse(fs.readFileSync(__dirname + '/package.json', 'utf-8'))
 
 var checkForDependencies = function(callback) {
-    exec('which npm', function(err, stdout, stderr) {
+    //Windows does not, by default, have the command which. The equivelant is where, thus, adding here.
+    var execCommand = ( os.type == "Windows NT" ) ? "where npm" : "which npm";
+    exec(execCommand, function(err, stdout, stderr) {
         if (err) {
             console.error('Could not find `npm` command. Is npm installed?')
             process.exit(-1)
