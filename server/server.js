@@ -2,6 +2,7 @@ var express = require('express');
 var sockeio = require('socket.io')
 var project = require('./project.js')
 var child_process = require('child_process')
+var os = require( 'os' )
 
 var server = express.createServer();
 var staticServer = express.createServer();
@@ -57,6 +58,8 @@ exports.listen = function(port, host, username, password, downgrade, launchBrows
 
     server.listen(port, host, function() {
         staticServer.listen(port+1, host, function() {
+            //ignore this work for windows Operating Systems
+            if (os.type != "Windows_NT" )
             // if run as root, downgrade to the owner of this file
             if (process.getuid() === 0) {
                 if(downgrade == true){
